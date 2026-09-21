@@ -445,37 +445,55 @@ footer {
 
 @media (max-width: 650px) {
     .nav-links {
-        display: none; /* Oculta enlaces (puedes implementar un menú hamburguesa más adelante) */
+        display: none;
     }
 
     .hero-container {
-        padding: 40px 20px;
+        padding: 30px 20px;
     }
 
-    /* En celulares ponemos la foto arriba y el texto centrado debajo */
+    /* Forzamos que la foto quede arriba y el texto abajo perfectamente ordenados */
     .hero {
         flex-direction: column;
         text-align: center;
-        gap: 25px;
+        gap: 20px;
+    }
+
+    /* Aseguramos que la foto aparezca primero arriba en celulares */
+    .hero-image-container {
+        order: -1; 
+        margin-bottom: 5px;
     }
 
     .hero-text {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
 
     .hero-description {
         text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .terminal-label {
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .hero-socials {
         justify-content: center;
     }
 
+    .buttons {
+        justify-content: center;
+    }
+
     .profile-img {
-        width: 160px;
-        height: 160px;
+        width: 180px; /* Tamaño ideal para que se luzca en celulares */
+        height: 180px;
     }
 
     .section {

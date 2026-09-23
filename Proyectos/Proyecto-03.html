@@ -1,1 +1,1040 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Proyecto 03 | Windows Server & Active Directory</title>
+
+    <link rel="stylesheet" href="../styles.css">
+
+    <style>
+        /* ================================
+           PROYECTO 03
+        ================================= */
+
+        .project-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px 80px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 50px;
+            text-decoration: none;
+            opacity: 0.7;
+        }
+
+        .project-header {
+            margin-bottom: 80px;
+        }
+
+        .project-number {
+            font-size: 13px;
+            letter-spacing: 3px;
+            opacity: 0.5;
+            margin-bottom: 20px;
+        }
+
+        .project-header h1 {
+            font-size: clamp(42px, 7vw, 75px);
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .project-description {
+            max-width: 750px;
+            font-size: 19px;
+            line-height: 1.7;
+            opacity: 0.75;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .tag {
+            padding: 8px 14px;
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 50px;
+            font-size: 13px;
+        }
+
+        /* INTRO */
+
+        .section {
+            margin-bottom: 100px;
+        }
+
+        .section-number {
+            font-size: 12px;
+            letter-spacing: 3px;
+            opacity: 0.45;
+            margin-bottom: 10px;
+        }
+
+        .section h2 {
+            font-size: clamp(30px, 5vw, 48px);
+            margin-bottom: 25px;
+        }
+
+        .section p {
+            max-width: 800px;
+            line-height: 1.8;
+            opacity: 0.75;
+        }
+
+        /* ARCHITECTURE */
+
+        .architecture {
+            margin-top: 35px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 18px;
+            overflow-x: auto;
+        }
+
+        .architecture pre {
+            font-family: monospace;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* STEP */
+
+        .step {
+            margin-bottom: 100px;
+        }
+
+        .step-header {
+            margin-bottom: 25px;
+        }
+
+        .step-number {
+            font-size: 13px;
+            letter-spacing: 2px;
+            opacity: 0.45;
+            margin-bottom: 8px;
+        }
+
+        .step h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .step-description {
+            max-width: 800px;
+            line-height: 1.8;
+            opacity: 0.75;
+        }
+
+        /* IMAGE */
+
+        .evidence {
+            margin-top: 30px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(255,255,255,.03);
+        }
+
+        .evidence img {
+            width: 100%;
+            display: block;
+        }
+
+        .evidence-caption {
+            padding: 20px;
+        }
+
+        .evidence-caption strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .evidence-caption span {
+            font-size: 14px;
+            opacity: 0.6;
+        }
+
+        /* WHAT DEMONSTRATES */
+
+        .demonstrates {
+            margin-top: 25px;
+            padding: 25px;
+            border-left: 3px solid currentColor;
+            background: rgba(255,255,255,.03);
+            border-radius: 0 12px 12px 0;
+        }
+
+        .demonstrates h4 {
+            margin-bottom: 12px;
+        }
+
+        .demonstrates ul {
+            margin: 0;
+            padding-left: 20px;
+            line-height: 1.8;
+            opacity: .75;
+        }
+
+        /* BUTTON */
+
+        .project-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .project-button {
+            display: inline-block;
+            padding: 13px 20px;
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 10px;
+            text-decoration: none;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .project-container {
+                padding: 25px 18px 60px;
+            }
+
+            .project-header {
+                margin-bottom: 60px;
+            }
+
+            .section {
+                margin-bottom: 70px;
+            }
+
+            .step {
+                margin-bottom: 70px;
+            }
+
+            .step h3 {
+                font-size: 27px;
+            }
+
+            .architecture {
+                padding: 20px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+<main class="project-container">
+
+    <!-- VOLVER -->
+
+    <a href="../index.html" class="back-link">
+        ← Volver al portafolio
+    </a>
+
+
+    <!-- HEADER -->
+
+    <header class="project-header">
+
+        <div class="project-number">
+            PROYECTO 03 / INFRAESTRUCTURA
+        </div>
+
+        <h1>
+            Windows Server<br>
+            & Active Directory
+        </h1>
+
+        <p class="project-description">
+            Laboratorio práctico de infraestructura Windows
+            desarrollado con Windows Server 2025, Active Directory,
+            DNS, DHCP y Group Policy utilizando VMware Workstation.
+        </p>
+
+        <div class="tags">
+
+            <span class="tag">Windows Server 2025</span>
+            <span class="tag">Active Directory</span>
+            <span class="tag">DNS</span>
+            <span class="tag">DHCP</span>
+            <span class="tag">Group Policy</span>
+            <span class="tag">VMware</span>
+
+        </div>
+
+    </header>
+
+
+    <!-- 01 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            01 / OBJETIVO
+        </div>
+
+        <h2>
+            ¿Qué construí?
+        </h2>
+
+        <p>
+            Construí un laboratorio de infraestructura Windows
+            completamente virtualizado. El objetivo fue implementar
+            un dominio utilizando Windows Server 2025 y conectar
+            un cliente Windows 10 Pro al dominio.
+        </p>
+
+        <p>
+            Durante el laboratorio configuré Active Directory,
+            DNS, DHCP y Group Policy y posteriormente realicé
+            diferentes pruebas para comprobar que los servicios
+            funcionaban correctamente.
+        </p>
+
+    </section>
+
+
+    <!-- 02 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            02 / ARQUITECTURA
+        </div>
+
+        <h2>
+            Arquitectura del laboratorio
+        </h2>
+
+        <p>
+            El laboratorio utiliza una red VMware VMnet1
+            Host-Only para mantener las máquinas virtuales
+            aisladas de la red física.
+        </p>
+
+        <div class="architecture">
+
+<pre>
+                    VMware VMnet1
+                  192.168.78.0/24
+                         |
+             +-----------+-----------+
+             |                       |
+             |                       |
+       DC01-LAB-WS              WIN10-CLIENTE01
+    Windows Server 2025          Windows 10 Pro
+     192.168.78.10             192.168.78.101
+             |
+             |
+      Active Directory
+          DNS / DHCP
+             |
+       alvarez.local
+</pre>
+
+        </div>
+
+    </section>
+
+
+    <!-- PASOS -->
+
+    <section class="section">
+
+        <div class="section-number">
+            03 / IMPLEMENTACIÓN
+        </div>
+
+        <h2>
+            Implementación paso a paso
+        </h2>
+
+        <p>
+            A continuación se muestra el proceso completo
+            de implementación del laboratorio, acompañado
+            de las evidencias obtenidas durante cada etapa.
+        </p>
+
+    </section>
+
+
+    <!-- PASO 01 -->
+
+    <article class="step">
+
+        <div class="step-header">
+
+            <div class="step-number">
+                PASO 01
+            </div>
+
+            <h3>
+                Configuración de VMware VMnet1
+            </h3>
+
+            <p class="step-description">
+                Primero configuré VMware Workstation utilizando
+                una red VMnet1 en modo Host-Only. Esta configuración
+                permite que las máquinas virtuales se comuniquen
+                entre ellas sin depender de la red física.
+            </p>
+
+        </div>
+
+        <div class="evidence">
+
+            <img
+                src="../assets/proyectos/windows-server/01-vmware-vmnet1.png"
+                alt="Configuración VMware VMnet1"
+                loading="lazy"
+            >
+
+            <div class="evidence-caption">
+
+                <strong>
+                    Evidencia 01 — VMware VMnet1
+                </strong>
+
+                <span>
+                    Configuración de la red virtual utilizada
+                    por el laboratorio.
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="demonstrates">
+
+            <h4>¿Qué demuestra esta captura?</h4>
+
+            <ul>
+                <li>Red virtual Host-Only.</li>
+                <li>Comunicación entre las máquinas virtuales.</li>
+                <li>Laboratorio aislado de la red física.</li>
+            </ul>
+
+        </div>
+
+    </article>
+
+
+    <!-- PASO 02 -->
+
+    <article class="step">
+
+        <div class="step-header">
+
+            <div class="step-number">
+                PASO 02
+            </div>
+
+            <h3>
+                Configuración IP del servidor
+            </h3>
+
+            <p class="step-description">
+                Configuré una dirección IPv4 estática para
+                el servidor DC01-LAB-WS. El servidor necesita
+                una dirección estable para proporcionar los
+                servicios de infraestructura del dominio.
+            </p>
+
+        </div>
+
+        <div class="evidence">
+
+            <img
+                src="../assets/proyectos/windows-server/02-server-ip.png"
+                alt="Configuración IP Windows Server"
+                loading="lazy"
+            >
+
+            <div class="evidence-caption">
+
+                <strong>
+                    Evidencia 02 — Dirección IP del servidor
+                </strong>
+
+                <span>
+                    Configuración IPv4 estática del controlador
+                    de dominio.
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="demonstrates">
+
+            <h4>¿Qué demuestra esta captura?</h4>
+
+            <ul>
+                <li>IP estática del servidor.</li>
+                <li>Configuración de red del laboratorio.</li>
+                <li>Preparación del servidor para los servicios de dominio.</li>
+            </ul>
+
+        </div>
+
+    </article>
+
+
+    <!-- PASO 03 -->
+
+    <article class="step">
+
+        <div class="step-header">
+
+            <div class="step-number">
+                PASO 03
+            </div>
+
+            <h3>
+                Active Directory
+            </h3>
+
+            <p class="step-description">
+                Instalé Active Directory Domain Services y
+                configuré el dominio alvarez.local. También
+                se organizaron los objetos mediante unidades
+                organizativas, usuarios y grupos.
+            </p>
+
+        </div>
+
+        <div class="evidence">
+
+            <img
+                src="../assets/proyectos/windows-server/03-active-directory.png"
+                alt="Active Directory"
+                loading="lazy"
+            >
+
+            <div class="evidence-caption">
+
+                <strong>
+                    Evidencia 03 — Active Directory
+                </strong>
+
+                <span>
+                    Estructura del dominio y objetos administrativos.
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="demonstrates">
+
+            <h4>¿Qué demuestra esta captura?</h4>
+
+            <ul>
+                <li>Dominio alvarez.local.</li>
+                <li>Unidades organizativas.</li>
+                <li>Usuarios y grupos.</li>
+                <li>Administración centralizada.</li>
+            </ul>
+
+        </div>
+
+    </article>
+
+
+    <!-- PASO 04 -->
+
+    <article class="step">
+
+        <div class="step-header">
+
+            <div class="step-number">
+                PASO 04
+            </div>
+
+            <h3>
+                Configuración de DNS
+            </h3>
+
+            <p class="step-description">
+                Configuré el servicio DNS utilizado por Active
+                Directory. DNS permite que los equipos del
+                laboratorio puedan resolver nombres asociados
+                al dominio.
+            </p>
+
+        </div>
+
+        <div class="evidence">
+
+            <img
+                src="../assets/proyectos/windows-server/04-dns.png"
+                alt="Configuración DNS"
+                loading="lazy"
+            >
+
+            <div class="evidence-caption">
+
+                <strong>
+                    Evidencia 04 — DNS
+                </strong>
+
+                <span>
+                    Servicio DNS utilizado por el dominio.
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="demonstrates">
+
+            <h4>¿Qué demuestra esta captura?</h4>
+
+            <ul>
+                <li>Servicio DNS instalado.</li>
+                <li>Zona asociada al dominio.</li>
+                <li>Resolución de nombres del laboratorio.</li>
+            </ul>
+
+        </div>
+
+    </article>
+
+
+    <!-- PASO 05 -->
+
+    <article class="step">
+
+        <div class="step-header">
+
+            <div class="step-number">
+                PASO 05
+            </div>
+
+            <h3>
+                Configuración de DHCP
+            </h3>
+
+            <p class="step-description">
+                Configuré un ámbito DHCP para entregar
+                automáticamente direcciones IP a los clientes
+                del laboratorio.
+            </p>
+
+        </div>
+
+        <div class="evidence">
+
+            <img
+                src="../assets/proyectos/windows-server/05-dhcp.png"
+                alt="Configuración DHCP"
+                loading="lazy"
+            >
+
+            <div class="evidence-caption">
+
+                <strong>
+                    Evidencia 05 — DHCP
+                </strong>
+
+                <span>
+                    Configuración del ámbito DHCP-LAB.
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="demonstrates">
+
+            <h4>¿Qué demuestra esta captura?</h4>
+
+            <ul>
+                <li>Servicio DHCP funcionando.</li>
+                <li>Ámbito configurado.</li>
+                <li>Asignación automática de direcciones IP.</li>
+            </ul>
+
+        </div>
+
+    </article>
+
+
+    <!-- PASO 06 -->
+
+    <article class="step">
+
+        <div class="step-header">
+
+            <div class="step-number">
+                PASO 06
+            </div>
+
+            <h3>
+                Cliente Windows 10 unido al dominio
+            </h3>
+
+            <p class="step-description">
+                Configuré Windows 10 Pro como cliente y lo
+                incorporé al dominio alvarez.local. Esto permite
+                que el equipo utilice la infraestructura de
+                autenticación proporcionada por Active Directory.
+            </p>
+
+        </div>
+
+        <div class="evidence">
+
+            <img
+                src="../assets/proyectos/windows-server/06-cliente-dominio.png"
+                alt="Windows 10 unido al dominio"
+                loading="lazy"
+            >
+
+            <div class="evidence-caption">
+
+                <strong>
+                    Evidencia 06 — Cliente de dominio
+                </strong>
+
+                <span>
+                    Windows 10 Pro integrado al dominio.
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="demonstrates">
+
+            <h4>¿Qué demuestra esta captura?</h4>
+
+            <ul>
+                <li>Cliente Windows 10 Pro.</li>
+                <li>Integración con alvarez.local.</li>
+                <li>Comunicación con el controlador de dominio.</li>
+            </ul>
+
+        </div>
+
+    </article>
+
+
+    <!-- PASO 07 -->
+
+    <article class="step">
+
+        <div class="step-header">
+
+            <div class="step-number">
+                PASO 07
+            </div>
+
+            <h3>
+                Cliente obteniendo IP mediante DHCP
+            </h3>
+
+            <p class="step-description">
+                Verifiqué que el cliente Windows 10 recibiera
+                automáticamente su configuración de red desde
+                el servidor DHCP.
+            </p>
+
+        </div>
+
+        <div class="evidence">
+
+            <img
+                src="../assets/proyectos/windows-server/07-dhcp-client.png"
+                alt="Cliente Windows 10 DHCP"
+                loading="lazy"
+            >
+
+            <div class="evidence-caption">
+
+                <strong>
+                    Evidencia 07 — DHCP Client
+                </strong>
+
+                <span>
+                    Dirección IP obtenida automáticamente.
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="demonstrates">
+
+            <h4>¿Qué demuestra esta captura?</h4>
+
+            <ul>
+                <li>El cliente obtiene configuración automáticamente.</li>
+                <li>Comunicación con el servidor DHCP.</li>
+                <li>Funcionamiento del ámbito configurado.</li>
+            </ul>
+
+        </div>
+
+    </article>
+
+
+    <!-- PASO 08 -->
+
+    <article class="step">
+
+        <div class="step-header">
+
+            <div class="step-number">
+                PASO 08
+            </div>
+
+            <h3>
+                Creación de Group Policy
+            </h3>
+
+            <p class="step-description">
+                Creé la política de grupo
+                GPO-IT-Restriccion-Panel y la vinculé
+                a la unidad organizativa correspondiente.
+            </p>
+
+        </div>
+
+        <div class="evidence">
+
+            <img
+                src="../assets/proyectos/windows-server/08-gpo-creada.png"
+                alt="Group Policy creada"
+                loading="lazy"
+            >
+
+            <div class="evidence-caption">
+
+                <strong>
+                    Evidencia 08 — Group Policy
+                </strong>
+
+                <span>
+                    Creación y configuración de la política.
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="demonstrates">
+
+            <h4>¿Qué demuestra esta captura?</h4>
+
+            <ul>
+                <li>Creación de una GPO.</li>
+                <li>Administración centralizada.</li>
+                <li>Aplicación de políticas mediante Active Directory.</li>
+            </ul>
+
+        </div>
+
+    </article>
+
+
+    <!-- PASO 09 -->
+
+    <article class="step">
+
+        <div class="step-header">
+
+            <div class="step-number">
+                PASO 09
+            </div>
+
+            <h3>
+                Actualización de políticas
+            </h3>
+
+            <p class="step-description">
+                Utilicé gpupdate /force para solicitar al cliente
+                una actualización inmediata de las políticas
+                de grupo.
+            </p>
+
+        </div>
+
+        <div class="evidence">
+
+            <img
+                src="../assets/proyectos/windows-server/09-gpupdate.png"
+                alt="GPUpdate"
+                loading="lazy"
+            >
+
+            <div class="evidence-caption">
+
+                <strong>
+                    Evidencia 09 — GPUpdate
+                </strong>
+
+                <span>
+                    Actualización de las políticas del cliente.
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="demonstrates">
+
+            <h4>¿Qué demuestra esta captura?</h4>
+
+            <ul>
+                <li>Actualización manual de Group Policy.</li>
+                <li>Comunicación entre cliente y dominio.</li>
+                <li>Aplicación de las políticas configuradas.</li>
+            </ul>
+
+        </div>
+
+    </article>
+
+
+    <!-- PASO 10 -->
+
+    <article class="step">
+
+        <div class="step-header">
+
+            <div class="step-number">
+                PASO 10
+            </div>
+
+            <h3>
+                Validación de Group Policy
+            </h3>
+
+            <p class="step-description">
+                Finalmente utilicé gpresult para comprobar
+                las políticas que fueron recibidas por el
+                cliente Windows 10.
+            </p>
+
+        </div>
+
+        <div class="evidence">
+
+            <img
+                src="../assets/proyectos/windows-server/10-gpo-aplicada.png"
+                alt="GPO aplicada"
+                loading="lazy"
+            >
+
+            <div class="evidence-caption">
+
+                <strong>
+                    Evidencia 10 — GPO aplicada
+                </strong>
+
+                <span>
+                    Validación de la política mediante gpresult.
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="demonstrates">
+
+            <h4>¿Qué demuestra esta captura?</h4>
+
+            <ul>
+                <li>La GPO fue recibida por el cliente.</li>
+                <li>La política aparece aplicada.</li>
+                <li>Validación final del laboratorio.</li>
+            </ul>
+
+        </div>
+
+    </article>
+
+
+    <!-- RESULTADO -->
+
+    <section class="section">
+
+        <div class="section-number">
+            04 / RESULTADO
+        </div>
+
+        <h2>
+            Resultado final
+        </h2>
+
+        <p>
+            El laboratorio quedó funcionando como un entorno
+            Windows basado en dominio. Windows Server 2025
+            proporciona los servicios principales de infraestructura
+            y Windows 10 Pro funciona como cliente del dominio.
+        </p>
+
+        <p>
+            Las pruebas realizadas permitieron comprobar
+            conectividad, resolución DNS, asignación DHCP,
+            autenticación mediante Active Directory y aplicación
+            de políticas de grupo.
+        </p>
+
+    </section>
+
+
+    <!-- GITHUB -->
+
+    <section class="section">
+
+        <div class="section-number">
+            05 / DOCUMENTACIÓN
+        </div>
+
+        <h2>
+            Repositorio
+        </h2>
+
+        <p>
+            La documentación técnica y las evidencias originales
+            del laboratorio están disponibles en GitHub.
+        </p>
+
+        <div class="project-buttons">
+
+            <a
+                href="https://github.com/orlandyvalvarez/windows-server-directory-services"
+                target="_blank"
+                rel="noopener"
+                class="project-button"
+            >
+                Ver repositorio en GitHub →
+            </a>
+
+            <a
+                href="../index.html"
+                class="project-button"
+            >
+                ← Volver al portafolio
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>

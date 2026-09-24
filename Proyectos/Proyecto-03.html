@@ -282,7 +282,7 @@
         }
 
         /* =========================
-           PROJECT INFO
+           INFO
         ========================= */
 
         .info-grid {
@@ -740,11 +740,8 @@
         <div class="nav-links">
 
             <a href="#overview">Overview</a>
-
             <a href="#architecture">Architecture</a>
-
             <a href="#evidence">Evidence</a>
-
             <a href="#results">Results</a>
 
         </div>
@@ -756,217 +753,183 @@
 
 <main>
 
-    <!-- =========================
-         HERO
-    ========================== -->
 
-    <section class="hero">
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-        <div class="container">
+<section class="hero">
 
-            <div class="hero-label">
+    <div class="container">
 
-                <span class="hero-dot"></span>
+        <div class="hero-label">
 
-                PROJECT 03 / INFRASTRUCTURE LAB
+            <span class="hero-dot"></span>
 
+            PROJECT 03 / INFRASTRUCTURE LAB
+
+        </div>
+
+        <h1>
+            Windows Server
+            <span>Directory Services</span>
+        </h1>
+
+        <p class="hero-subtitle">
+            Active Directory · DNS · DHCP · Group Policy
+        </p>
+
+        <p class="hero-text">
+
+            Laboratorio práctico de infraestructura Windows desarrollado
+            utilizando VMware Workstation, Windows Server 2025 y
+            Windows 10 Pro.
+
+            El objetivo fue construir un entorno de dominio funcional,
+            implementar servicios de infraestructura y validar su
+            funcionamiento mediante pruebas reales.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="https://github.com/orlandyvalvarez/windows-server-directory-services"
+                target="_blank"
+                class="btn btn-primary"
+            >
+
+                <i class="fab fa-github"></i>
+
+                Ver repositorio
+
+            </a>
+
+            <a
+                href="../index.html"
+                class="btn btn-secondary"
+            >
+
+                <i class="fas fa-arrow-left"></i>
+
+                Volver al portafolio
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     OVERVIEW
+===================================================== -->
+
+<section id="overview" class="section">
+
+    <div class="container">
+
+        <p class="section-number">
+            01 / OVERVIEW
+        </p>
+
+        <h2 class="section-title">
+            Entorno del laboratorio
+        </h2>
+
+        <p class="section-description">
+
+            El laboratorio fue construido sobre una red virtual aislada
+            utilizando VMware VMnet1 Host-Only. Esto permitió realizar
+            las pruebas de infraestructura sin depender de la red física.
+
+        </p>
+
+
+        <div class="info-grid">
+
+            <div class="info-card">
+                <i class="fas fa-server"></i>
+                <h3>Servidor</h3>
+                <p>Windows Server 2025</p>
             </div>
 
-            <h1>
-                Windows Server
-                <span>Directory Services</span>
-            </h1>
+            <div class="info-card">
+                <i class="fab fa-windows"></i>
+                <h3>Cliente</h3>
+                <p>Windows 10 Pro</p>
+            </div>
 
-            <p class="hero-subtitle">
-                Active Directory · DNS · DHCP · Group Policy
-            </p>
+            <div class="info-card">
+                <i class="fas fa-network-wired"></i>
+                <h3>Network</h3>
+                <p>192.168.78.0/24</p>
+            </div>
 
-            <p class="hero-text">
+            <div class="info-card">
+                <i class="fas fa-globe"></i>
+                <h3>Domain</h3>
+                <p>alvarez.local</p>
+            </div>
 
-                Laboratorio práctico de infraestructura Windows desarrollado
-                utilizando VMware Workstation, Windows Server 2025 y
-                Windows 10 Pro.
+            <div class="info-card">
+                <i class="fas fa-desktop"></i>
+                <h3>Domain Controller</h3>
+                <p>DC01-LAB-WS</p>
+            </div>
 
-                El objetivo fue construir un entorno de dominio funcional,
-                implementar servicios de infraestructura y validar su
-                funcionamiento mediante pruebas reales.
+            <div class="info-card">
+                <i class="fas fa-network-wired"></i>
+                <h3>Server IP</h3>
+                <p>192.168.78.10</p>
+            </div>
 
-            </p>
+            <div class="info-card">
+                <i class="fas fa-server"></i>
+                <h3>DHCP Scope</h3>
+                <p>192.168.78.100 - 200</p>
+            </div>
 
-            <div class="hero-buttons">
-
-                <a
-                    href="https://github.com/orlandyvalvarez/windows-server-directory-services"
-                    target="_blank"
-                    class="btn btn-primary"
-                >
-                    <i class="fab fa-github"></i>
-
-                    Ver repositorio
-                </a>
-
-                <a
-                    href="../index.html"
-                    class="btn btn-secondary"
-                >
-                    <i class="fas fa-arrow-left"></i>
-
-                    Volver al portafolio
-                </a>
-
+            <div class="info-card">
+                <i class="fas fa-shield-halved"></i>
+                <h3>Group Policy</h3>
+                <p>GPO-IT-Restriccion-Panel</p>
             </div>
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
-    <!-- =========================
-         OVERVIEW
-    ========================== -->
 
-    <section id="overview" class="section">
+<!-- =====================================================
+     ARCHITECTURE
+===================================================== -->
 
-        <div class="container">
+<section id="architecture" class="section">
 
-            <p class="section-number">
-                01 / OVERVIEW
-            </p>
+    <div class="container">
 
-            <h2 class="section-title">
-                Entorno del laboratorio
-            </h2>
+        <p class="section-number">
+            02 / ARCHITECTURE
+        </p>
 
-            <p class="section-description">
+        <h2 class="section-title">
+            Arquitectura de la infraestructura
+        </h2>
 
-                El laboratorio fue construido sobre una red virtual aislada
-                utilizando VMware VMnet1 Host-Only. Esto permitió realizar
-                las pruebas de infraestructura sin depender de la red física.
+        <p class="section-description">
 
-            </p>
+            El controlador de dominio proporciona Active Directory,
+            DNS, DHCP y Group Policy al cliente Windows 10.
 
+        </p>
 
-            <div class="info-grid">
 
-                <div class="info-card">
-
-                    <i class="fas fa-server"></i>
-
-                    <h3>Servidor</h3>
-
-                    <p>Windows Server 2025</p>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <i class="fab fa-windows"></i>
-
-                    <h3>Cliente</h3>
-
-                    <p>Windows 10 Pro</p>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <i class="fas fa-network-wired"></i>
-
-                    <h3>Network</h3>
-
-                    <p>192.168.78.0/24</p>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <i class="fas fa-globe"></i>
-
-                    <h3>Domain</h3>
-
-                    <p>alvarez.local</p>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <i class="fas fa-desktop"></i>
-
-                    <h3>Domain Controller</h3>
-
-                    <p>DC01-LAB-WS</p>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <i class="fas fa-network-wired"></i>
-
-                    <h3>Server IP</h3>
-
-                    <p>192.168.78.10</p>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <i class="fas fa-dhcp"></i>
-
-                    <h3>DHCP Scope</h3>
-
-                    <p>192.168.78.100 - 200</p>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <i class="fas fa-shield-halved"></i>
-
-                    <h3>Group Policy</h3>
-
-                    <p>GPO-IT-Restriccion-Panel</p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         ARCHITECTURE
-    ========================== -->
-
-    <section id="architecture" class="section">
-
-        <div class="container">
-
-            <p class="section-number">
-                02 / ARCHITECTURE
-            </p>
-
-            <h2 class="section-title">
-                Arquitectura de la infraestructura
-            </h2>
-
-            <p class="section-description">
-
-                El controlador de dominio proporciona Active Directory,
-                DNS, DHCP y Group Policy al cliente Windows 10.
-
-            </p>
-
-
-            <div class="architecture">
+        <div class="architecture">
 
 <pre>
                          VMware VMnet1
@@ -977,7 +940,7 @@
                     |                       |
              DC01-LAB-WS              WIN10-CLIENTE01
            Windows Server 2025          Windows 10 Pro
-             192.168.78.10              192.168.78.101
+             192.168.78.10              DHCP
                     |                       |
                     |                       |
           +---------+---------+             |
@@ -997,952 +960,1563 @@
                 GPO-IT-Restriccion-Panel
 </pre>
 
-            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TECHNOLOGIES
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+        <p class="section-number">
+            03 / TECHNOLOGIES
+        </p>
+
+        <h2 class="section-title">
+            Tecnologías utilizadas
+        </h2>
+
+        <div class="tech-grid">
+
+            <div class="tech">Windows Server 2025</div>
+            <div class="tech">Windows 10 Pro</div>
+            <div class="tech">Active Directory</div>
+            <div class="tech">DNS</div>
+            <div class="tech">DHCP</div>
+            <div class="tech">Group Policy</div>
+            <div class="tech">VMware Workstation</div>
+            <div class="tech">VMware VMnet1</div>
+            <div class="tech">IPv4</div>
+            <div class="tech">PowerShell</div>
+            <div class="tech">CMD</div>
+            <div class="tech">Network Administration</div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- =========================
-         TECHNOLOGIES
-    ========================== -->
+<!-- =====================================================
+     EVIDENCIAS
+===================================================== -->
 
-    <section class="section">
+<section id="evidence" class="section">
 
-        <div class="container">
+    <div class="container">
 
-            <p class="section-number">
-                03 / TECHNOLOGIES
-            </p>
+        <p class="section-number">
+            04 / VISUAL EVIDENCE
+        </p>
 
-            <h2 class="section-title">
-                Tecnologías utilizadas
-            </h2>
+        <h2 class="section-title">
+            Implementación paso a paso
+        </h2>
 
-            <div class="tech-grid">
+        <p class="section-description">
 
-                <div class="tech">
-                    Windows Server 2025
+            Evidencias visuales del proceso de instalación,
+            configuración y validación del laboratorio.
+
+        </p>
+
+
+        <div class="evidence-list">
+
+
+            <!-- =================================================
+                 01 - CAMBIO DE NOMBRE
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 01
+                    </p>
+
+                    <h3>
+                        Cambio de nombre del servidor
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se configuró el nombre del servidor para
+                        identificarlo dentro del laboratorio como
+                        controlador de dominio.
+
+                    </p>
+
                 </div>
 
-                <div class="tech">
-                    Windows 10 Pro
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Cambio%20de%20nombre%20del%20servidor.png"
+                        alt="Cambio de nombre del servidor"
+                        loading="lazy"
+                    >
+
                 </div>
 
-                <div class="tech">
-                    Active Directory
-                </div>
+                <div class="evidence-footer">
 
-                <div class="tech">
-                    DNS
-                </div>
-
-                <div class="tech">
-                    DHCP
-                </div>
-
-                <div class="tech">
-                    Group Policy
-                </div>
-
-                <div class="tech">
-                    VMware Workstation
-                </div>
-
-                <div class="tech">
-                    VMware VMnet1
-                </div>
-
-                <div class="tech">
-                    IPv4
-                </div>
-
-                <div class="tech">
-                    PowerShell
-                </div>
-
-                <div class="tech">
-                    CMD
-                </div>
-
-                <div class="tech">
-                    Network Administration
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         EVIDENCE
-    ========================== -->
-
-    <section id="evidence" class="section">
-
-        <div class="container">
-
-            <p class="section-number">
-                04 / VISUAL EVIDENCE
-            </p>
-
-            <h2 class="section-title">
-                Implementación paso a paso
-            </h2>
-
-            <p class="section-description">
-
-                Las siguientes evidencias documentan las principales etapas
-                de construcción, configuración y validación del laboratorio.
-
-            </p>
-
-
-            <div class="evidence-list">
-
-
-                <!-- 01 -->
-
-                <article class="evidence">
-
-                    <div class="evidence-header">
-
-                        <p class="evidence-number">
-                            EVIDENCE 01
-                        </p>
-
-                        <h3>
-                            VMware VMnet1 — Red aislada
-                        </h3>
-
-                        <p class="evidence-description">
-
-                            Configuración del entorno virtual utilizando
-                            VMware VMnet1 en modo Host-Only. Las máquinas
-                            virtuales utilizan esta red para comunicarse
-                            entre sí sin depender de la red física.
-
-                        </p>
-
-                    </div>
-
-                    <div class="evidence-image">
-
-                        <img
-                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/01-vmware-vmnet1.png"
-                            alt="Configuración VMware VMnet1"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="evidence-footer">
-
-                        <span class="evidence-tag">
-                            VMware / VMnet1
-                        </span>
-
-                        <span class="evidence-tag">
-                            192.168.78.0/24
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 02 -->
-
-                <article class="evidence">
-
-                    <div class="evidence-header">
-
-                        <p class="evidence-number">
-                            EVIDENCE 02
-                        </p>
-
-                        <h3>
-                            Configuración IP del servidor
-                        </h3>
-
-                        <p class="evidence-description">
-
-                            Se configuró el servidor Windows Server 2025
-                            con una dirección IPv4 estática para mantener
-                            una dirección conocida dentro de la infraestructura
-                            del dominio.
-
-                        </p>
-
-                    </div>
-
-                    <div class="evidence-image">
-
-                        <img
-                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/02-server-ip.png"
-                            alt="Configuración IP Windows Server"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="evidence-footer">
-
-                        <span class="evidence-tag">
-                            DC01-LAB-WS
-                        </span>
-
-                        <span class="evidence-tag">
-                            192.168.78.10
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 03 -->
-
-                <article class="evidence">
-
-                    <div class="evidence-header">
-
-                        <p class="evidence-number">
-                            EVIDENCE 03
-                        </p>
-
-                        <h3>
-                            Active Directory Domain Services
-                        </h3>
-
-                        <p class="evidence-description">
-
-                            Implementación del dominio Active Directory
-                            <strong>alvarez.local</strong> y estructura
-                            organizativa con las unidades IT, HR y Ventas.
-
-                            También se configuraron grupos de seguridad
-                            y usuarios de dominio.
-
-                        </p>
-
-                    </div>
-
-                    <div class="evidence-image">
-
-                        <img
-                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/03-active-directory.png"
-                            alt="Active Directory"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="evidence-footer">
-
-                        <span class="evidence-tag">
-                            Active Directory
-                        </span>
-
-                        <span class="evidence-tag">
-                            alvarez.local
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 04 -->
-
-                <article class="evidence">
-
-                    <div class="evidence-header">
-
-                        <p class="evidence-number">
-                            EVIDENCE 04
-                        </p>
-
-                        <h3>
-                            Configuración DNS
-                        </h3>
-
-                        <p class="evidence-description">
-
-                            DNS fue implementado como parte de la
-                            infraestructura del controlador de dominio.
-
-                            El cliente utiliza el servidor
-                            <strong>192.168.78.10</strong> como DNS
-                            para resolver el dominio y el nombre del
-                            controlador de dominio.
-
-                        </p>
-
-                    </div>
-
-                    <div class="evidence-image">
-
-                        <img
-                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/04-dns.png"
-                            alt="Configuración DNS"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="evidence-footer">
-
-                        <span class="evidence-tag">
-                            DNS
-                        </span>
-
-                        <span class="evidence-tag">
-                            alvarez.local
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 05 -->
-
-                <article class="evidence">
-
-                    <div class="evidence-header">
-
-                        <p class="evidence-number">
-                            EVIDENCE 05
-                        </p>
-
-                        <h3>
-                            Servidor DHCP
-                        </h3>
-
-                        <p class="evidence-description">
-
-                            Se instaló y configuró DHCP en Windows Server
-                            mediante el ámbito <strong>DHCP-LAB</strong>.
-
-                            El rango disponible es
-                            <strong>192.168.78.100 - 192.168.78.200</strong>.
-
-                            El servidor también entrega la configuración
-                            DNS correspondiente al dominio.
-
-                        </p>
-
-                    </div>
-
-                    <div class="evidence-image">
-
-                        <img
-                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/05-dhcp.png"
-                            alt="Configuración DHCP Windows Server"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="evidence-footer">
-
-                        <span class="evidence-tag">
-                            DHCP-LAB
-                        </span>
-
-                        <span class="evidence-tag">
-                            192.168.78.100 - 200
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 06 -->
-
-                <article class="evidence">
-
-                    <div class="evidence-header">
-
-                        <p class="evidence-number">
-                            EVIDENCE 06
-                        </p>
-
-                        <h3>
-                            Windows 10 unido al dominio
-                        </h3>
-
-                        <p class="evidence-description">
-
-                            El equipo Windows 10 Pro fue integrado al dominio
-                            <strong>alvarez.local</strong> y configurado como
-                            <strong>WIN10-CLIENTE01</strong>.
-
-                            Posteriormente se comprobó el inicio de sesión
-                            utilizando una cuenta de dominio.
-
-                        </p>
-
-                    </div>
-
-                    <div class="evidence-image">
-
-                        <img
-                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/06-cliente-dominio.png"
-                            alt="Windows 10 unido al dominio"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="evidence-footer">
-
-                        <span class="evidence-tag">
-                            Windows 10 Pro
-                        </span>
-
-                        <span class="evidence-tag">
-                            ALVAREZ\orlandy
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 07 -->
-
-                <article class="evidence">
-
-                    <div class="evidence-header">
-
-                        <p class="evidence-number">
-                            EVIDENCE 07
-                        </p>
-
-                        <h3>
-                            Cliente obteniendo IP mediante DHCP
-                        </h3>
-
-                        <p class="evidence-description">
-
-                            El cliente fue configurado para obtener
-                            automáticamente su configuración de red.
-
-                            La asignación fue comprobada mediante
-                            <strong>ipconfig /all</strong>.
-
-                            El cliente recibió la dirección
-                            <strong>192.168.78.101</strong>.
-
-                        </p>
-
-                    </div>
-
-                    <div class="evidence-image">
-
-                        <img
-                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/07-dhcp-client.png"
-                            alt="Cliente Windows obteniendo IP por DHCP"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="evidence-footer">
-
-                        <span class="evidence-tag">
-                            DHCP Client
-                        </span>
-
-                        <span class="evidence-tag">
-                            192.168.78.101
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 08 -->
-
-                <article class="evidence">
-
-                    <div class="evidence-header">
-
-                        <p class="evidence-number">
-                            EVIDENCE 08
-                        </p>
-
-                        <h3>
-                            Creación de Group Policy
-                        </h3>
-
-                        <p class="evidence-description">
-
-                            Se creó la política
-                            <strong>GPO-IT-Restriccion-Panel</strong>
-                            mediante Group Policy Management y se vinculó
-                            a la OU <strong>IT</strong>.
-
-                            La configuración corresponde a las políticas
-                            administrativas del Panel de control.
-
-                        </p>
-
-                    </div>
-
-                    <div class="evidence-image">
-
-                        <img
-                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/08-gpo-creada.png"
-                            alt="Creación de GPO"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="evidence-footer">
-
-                        <span class="evidence-tag">
-                            Group Policy
-                        </span>
-
-                        <span class="evidence-tag">
-                            OU: IT
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 09 -->
-
-                <article class="evidence">
-
-                    <div class="evidence-header">
-
-                        <p class="evidence-number">
-                            EVIDENCE 09
-                        </p>
-
-                        <h3>
-                            Actualización de políticas
-                        </h3>
-
-                        <p class="evidence-description">
-
-                            Después de configurar la GPO se ejecutó
-                            <strong>gpupdate /force</strong> en el cliente
-                            Windows 10 para forzar la actualización de
-                            las directivas.
-
-                        </p>
-
-                    </div>
-
-                    <div class="evidence-image">
-
-                        <img
-                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/09-gpupdate.png"
-                            alt="GPUpdate Force"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="evidence-footer">
-
-                        <span class="evidence-tag">
-                            gpupdate /force
-                        </span>
-
-                        <span class="evidence-tag">
-                            Policy Refresh
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 10 -->
-
-                <article class="evidence">
-
-                    <div class="evidence-header">
-
-                        <p class="evidence-number">
-                            EVIDENCE 10
-                        </p>
-
-                        <h3>
-                            Validación de la GPO aplicada
-                        </h3>
-
-                        <p class="evidence-description">
-
-                            Finalmente se utilizó
-                            <strong>gpresult /r</strong> para comprobar
-                            que la política
-                            <strong>GPO-IT-Restriccion-Panel</strong>
-                            fue aplicada correctamente al usuario
-                            del dominio.
-
-                            La política implementada bloquea el acceso
-                            al Panel de control y a Configuración del PC.
-
-                        </p>
-
-                    </div>
-
-                    <div class="evidence-image">
-
-                        <img
-                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/10-gpo-aplicada.png"
-                            alt="GPO aplicada mediante Group Policy"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="evidence-footer">
-
-                        <span class="evidence-tag">
-                            gpresult /r
-                        </span>
-
-                        <span class="evidence-tag">
-                            GPO Applied
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         VALIDATION
-    ========================== -->
-
-    <section class="section">
-
-        <div class="container">
-
-            <p class="section-number">
-                05 / VALIDATION
-            </p>
-
-            <h2 class="section-title">
-                Pruebas realizadas
-            </h2>
-
-            <p class="section-description">
-
-                Además de las configuraciones visuales, el laboratorio
-                fue validado mediante comandos de Windows para comprobar
-                conectividad, DNS, autenticación, DHCP y aplicación de
-                políticas.
-
-            </p>
-
-
-            <div class="commands">
-
-                <div class="command-box">
-
-                    <span>
-                        Conectividad
+                    <span class="evidence-tag">
+                        Windows Server
                     </span>
 
-                    <code>
-                        ping 192.168.78.10
-                    </code>
-
-                </div>
-
-
-                <div class="command-box">
-
-                    <span>
-                        DNS
+                    <span class="evidence-tag">
+                        DC01-LAB-WS
                     </span>
 
-                    <code>
-                        nslookup alvarez.local
-                    </code>
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 02 - ROLES
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 02
+                    </p>
+
+                    <h3>
+                        Agregando roles y servicios
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se inició la instalación de los roles necesarios
+                        para convertir Windows Server en el servidor de
+                        infraestructura del laboratorio.
+
+                    </p>
 
                 </div>
 
+                <div class="evidence-image">
 
-                <div class="command-box">
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Agregar%20roles%20y%20servicios.png"
+                        alt="Agregar roles y servicios"
+                        loading="lazy"
+                    >
 
-                    <span>
-                        DNS Controller
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        Server Manager
                     </span>
 
-                    <code>
-                        nslookup dc01-lab-ws.alvarez.local
-                    </code>
+                    <span class="evidence-tag">
+                        Roles & Services
+                    </span>
 
                 </div>
 
+            </article>
 
-                <div class="command-box">
 
-                    <span>
+            <!-- =================================================
+                 03 - ACTIVE DIRECTORY
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 03
+                    </p>
+
+                    <h3>
+                        Active Directory Domain Services
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se implementó Active Directory Domain Services
+                        y se configuró el dominio
+                        <strong>alvarez.local</strong>.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Active%20D.png"
+                        alt="Active Directory"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        Active Directory
+                    </span>
+
+                    <span class="evidence-tag">
+                        alvarez.local
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 04 - USUARIOS Y GRUPOS
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 04
+                    </p>
+
+                    <h3>
+                        Usuarios y grupos
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se organizaron usuarios y grupos de seguridad
+                        dentro del dominio para administrar el acceso
+                        de los usuarios.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Usuarios%20y%20grupos.png"
+                        alt="Usuarios y grupos de Active Directory"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        Users & Groups
+                    </span>
+
+                    <span class="evidence-tag">
+                        Active Directory
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 05 - CREACION USUARIO
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 05
+                    </p>
+
+                    <h3>
+                        Creación de usuario de dominio
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se creó el usuario de prueba utilizado
+                        posteriormente para validar la autenticación
+                        dentro del dominio.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Creacion-usuario.png"
+                        alt="Creación de usuario"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        Domain User
+                    </span>
+
+                    <span class="evidence-tag">
+                        Active Directory
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 06 - CONTRASEÑA
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 06
+                    </p>
+
+                    <h3>
+                        Política de cambio de contraseña
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se validó el comportamiento del usuario cuando
+                        debe realizar el cambio de contraseña.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/User%20debe%20cambiar%20la%20contrase%C3%B1a.png"
+                        alt="Usuario debe cambiar la contraseña"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        User Policy
+                    </span>
+
+                    <span class="evidence-tag">
+                        Password
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 07 - CAMBIO CONTRASEÑA
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 07
+                    </p>
+
+                    <h3>
+                        Cambio de contraseña
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se completó el cambio de contraseña del usuario
+                        de dominio como parte de la validación del
+                        proceso de autenticación.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/User%20cambio%20de%20contrase%C3%B1a.png"
+                        alt="Usuario cambia la contraseña"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
                         Authentication
                     </span>
 
-                    <code>
-                        whoami
-                    </code>
-
-                </div>
-
-
-                <div class="command-box">
-
-                    <span>
-                        Computer Name
+                    <span class="evidence-tag">
+                        Password Change
                     </span>
 
-                    <code>
-                        hostname
-                    </code>
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 08 - CLIENTE CONFIG RED
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 08
+                    </p>
+
+                    <h3>
+                        Configuración de red del cliente
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se preparó el equipo Windows 10 Pro para
+                        comunicarse con el controlador de dominio
+                        dentro de la red virtual del laboratorio.
+
+                    </p>
 
                 </div>
 
+                <div class="evidence-image">
 
-                <div class="command-box">
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Cliente%20Config%20de%20red.png"
+                        alt="Configuración de red del cliente"
+                        loading="lazy"
+                    >
 
-                    <span>
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        Windows 10 Pro
+                    </span>
+
+                    <span class="evidence-tag">
+                        Networking
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 09 - UNIENDO CLIENTE
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 09
+                    </p>
+
+                    <h3>
+                        Uniendo el cliente al dominio
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        El equipo Windows 10 Pro fue incorporado al dominio
+                        <strong>alvarez.local</strong>.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Uniendo%20clien%20a%20dominio.png"
+                        alt="Uniendo cliente al dominio"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        Domain Join
+                    </span>
+
+                    <span class="evidence-tag">
+                        alvarez.local
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 10 - CLIENTE UNIDO
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 10
+                    </p>
+
+                    <h3>
+                        Cliente unido correctamente
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se verificó que el equipo Windows 10 quedó
+                        correctamente integrado al dominio.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Cliente%20unido%20al%20dominio.png"
+                        alt="Cliente unido al dominio"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        Windows 10
+                    </span>
+
+                    <span class="evidence-tag">
+                        Domain
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 11 - DHCP ROLE
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 11
+                    </p>
+
+                    <h3>
+                        Instalación del rol DHCP
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se agregó el rol DHCP al servidor Windows Server
+                        para proporcionar automáticamente direcciones IP
+                        al cliente.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Role%20dhcp.png"
+                        alt="Rol DHCP"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        DHCP Server
+                    </span>
+
+                    <span class="evidence-tag">
+                        Windows Server
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 12 - CONFIG DHCP
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 12
+                    </p>
+
+                    <h3>
+                        Configuración de DHCP
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se configuró el servicio DHCP para administrar
+                        automáticamente la configuración IPv4 de los
+                        equipos del laboratorio.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/configuraci%C3%B3n%20de%20DHCP.png"
+                        alt="Configuración de DHCP"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
                         DHCP
                     </span>
 
-                    <code>
-                        ipconfig /all
-                    </code>
-
-                </div>
-
-
-                <div class="command-box">
-
-                    <span>
-                        Renew DHCP
+                    <span class="evidence-tag">
+                        IPv4
                     </span>
 
-                    <code>
-                        ipconfig /release<br>
-                        ipconfig /renew
-                    </code>
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 13 - DHCP
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 13
+                    </p>
+
+                    <h3>
+                        Servicio DHCP configurado
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Evidencia de la configuración y administración
+                        del servicio DHCP dentro del servidor.
+
+                    </p>
 
                 </div>
 
+                <div class="evidence-image">
 
-                <div class="command-box">
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/DHCP.png"
+                        alt="DHCP"
+                        loading="lazy"
+                    >
 
-                    <span>
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        DHCP
+                    </span>
+
+                    <span class="evidence-tag">
+                        Network Services
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 14 - RANGO IP
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 14
+                    </p>
+
+                    <h3>
+                        Intervalo de direcciones IP
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se definió el rango de direcciones que DHCP
+                        puede entregar a los clientes del laboratorio.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Intervalo%20de%20direciones%20ip.png"
+                        alt="Intervalo de direcciones IP DHCP"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        DHCP Scope
+                    </span>
+
+                    <span class="evidence-tag">
+                        IPv4 Range
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 15 - DHCP COMPLETO
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 15
+                    </p>
+
+                    <h3>
+                        DHCP completado
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se completó la configuración del ámbito DHCP
+                        dentro del servidor.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/DHCP%20al%20100%25.png"
+                        alt="DHCP completado"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        DHCP
+                    </span>
+
+                    <span class="evidence-tag">
+                        Scope Active
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 16 - GPO CREADA
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 16
+                    </p>
+
+                    <h3>
+                        Creación de Group Policy
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se creó la política de grupo
+                        <strong>GPO-IT-Restriccion-Panel</strong>
+                        para controlar el acceso al Panel de control
+                        y Configuración.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/gpo-creada.png"
+                        alt="GPO creada"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
                         Group Policy
                     </span>
 
-                    <code>
-                        gpupdate /force<br>
+                    <span class="evidence-tag">
+                        GPO
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 17 - CREAR GPO
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 17
+                    </p>
+
+                    <h3>
+                        Configuración de la GPO
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se configuró la política administrativa para
+                        restringir el acceso al Panel de control y
+                        Configuración del PC.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Crear%20una%20GPO.png"
+                        alt="Crear una GPO"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        GPO
+                    </span>
+
+                    <span class="evidence-tag">
+                        Administrative Templates
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 18 - APLICANDO POLITICAS
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 18
+                    </p>
+
+                    <h3>
+                        Aplicando políticas
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se actualizó la configuración de políticas en
+                        el equipo cliente para aplicar las directivas
+                        configuradas en el controlador de dominio.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Aplicando%20politicas.png"
+                        alt="Aplicando políticas"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        Group Policy
+                    </span>
+
+                    <span class="evidence-tag">
+                        Client
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 19 - DIRECTIVA ACTUALIZADA
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 19
+                    </p>
+
+                    <h3>
+                        Directiva actualizada
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se comprobó que las políticas fueron actualizadas
+                        correctamente en el cliente.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/directiva%20Actualizada.png"
+                        alt="Directiva actualizada"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        Policy Update
+                    </span>
+
+                    <span class="evidence-tag">
+                        gpupdate
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 20 - GPRESULT
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 20
+                    </p>
+
+                    <h3>
+                        Validación con gpresult
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se utilizó <strong>gpresult /r</strong> para
+                        comprobar las políticas de grupo aplicadas
+                        al usuario y al equipo cliente.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/gpresult%20r.png"
+                        alt="GPResult"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
                         gpresult /r
-                    </code>
+                    </span>
+
+                    <span class="evidence-tag">
+                        GPO Validation
+                    </span>
 
                 </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 21 - PING
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 21
+                    </p>
+
+                    <h3>
+                        Prueba de conectividad
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se realizó una prueba de conectividad desde
+                        el cliente hacia el servidor utilizando ICMP.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Prueba-Ping-Exitosa-Cliente-A-Servidor.png"
+                        alt="Ping exitoso desde cliente al servidor"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        ICMP
+                    </span>
+
+                    <span class="evidence-tag">
+                        Connectivity
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 22 - WHOAMI
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 22
+                    </p>
+
+                    <h3>
+                        Validación del usuario de dominio
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se utilizó el comando <strong>whoami</strong>
+                        para comprobar la identidad del usuario
+                        autenticado dentro del dominio.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/whoami.png"
+                        alt="Comando whoami"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        whoami
+                    </span>
+
+                    <span class="evidence-tag">
+                        Authentication
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 23 - FIREWALL
+            ================================================== -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 23
+                    </p>
+
+                    <h3>
+                        Regla de Firewall
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se creó una regla de firewall como parte de
+                        la configuración de seguridad y conectividad
+                        del entorno de laboratorio.
+
+                    </p>
+
+                </div>
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Creacion-Regla-Firew.png"
+                        alt="Creación de regla de Firewall"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        Windows Firewall
+                    </span>
+
+                    <span class="evidence-tag">
+                        Security
+                    </span>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     VALIDATION
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+        <p class="section-number">
+            05 / VALIDATION
+        </p>
+
+        <h2 class="section-title">
+            Comandos de validación
+        </h2>
+
+        <p class="section-description">
+
+            Se utilizaron diferentes comandos de Windows para validar
+            conectividad, autenticación, DHCP y políticas de grupo.
+
+        </p>
+
+
+        <div class="commands">
+
+            <div class="command-box">
+
+                <span>
+                    Conectividad
+                </span>
+
+                <code>
+                    ping 192.168.78.10
+                </code>
+
+            </div>
+
+
+            <div class="command-box">
+
+                <span>
+                    DNS
+                </span>
+
+                <code>
+                    nslookup alvarez.local
+                </code>
+
+            </div>
+
+
+            <div class="command-box">
+
+                <span>
+                    DNS Controller
+                </span>
+
+                <code>
+                    nslookup dc01-lab-ws.alvarez.local
+                </code>
+
+            </div>
+
+
+            <div class="command-box">
+
+                <span>
+                    Authentication
+                </span>
+
+                <code>
+                    whoami
+                </code>
+
+            </div>
+
+
+            <div class="command-box">
+
+                <span>
+                    Computer Name
+                </span>
+
+                <code>
+                    hostname
+                </code>
+
+            </div>
+
+
+            <div class="command-box">
+
+                <span>
+                    DHCP
+                </span>
+
+                <code>
+                    ipconfig /all
+                </code>
+
+            </div>
+
+
+            <div class="command-box">
+
+                <span>
+                    Renew DHCP
+                </span>
+
+                <code>
+                    ipconfig /release<br>
+                    ipconfig /renew
+                </code>
+
+            </div>
+
+
+            <div class="command-box">
+
+                <span>
+                    Group Policy
+                </span>
+
+                <code>
+                    gpupdate /force<br>
+                    gpresult /r
+                </code>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- =========================
-         RESULTS
-    ========================== -->
+<!-- =====================================================
+     RESULTS
+===================================================== -->
 
-    <section id="results" class="section">
+<section id="results" class="section">
 
-        <div class="container">
+    <div class="container">
 
-            <p class="section-number">
-                06 / FINAL RESULT
-            </p>
+        <p class="section-number">
+            06 / FINAL RESULT
+        </p>
 
-            <h2 class="section-title">
-                Resultado del laboratorio
-            </h2>
-
-            <div class="result-box">
-
-                <h3>
-                    <i class="fas fa-circle-check"></i>
-                    Infraestructura Windows funcional
-                </h3>
-
-                <p>
-
-                    El laboratorio quedó funcionando como un entorno
-                    de infraestructura Windows basado en dominio.
-
-                    Windows Server 2025 opera como controlador de dominio
-                    y proporciona los servicios de Active Directory,
-                    DNS y DHCP.
-
-                </p>
-
-                <p>
-
-                    El equipo Windows 10 Pro fue integrado correctamente
-                    al dominio <strong>alvarez.local</strong>, obtiene
-                    su configuración de red mediante DHCP y utiliza
-                    el controlador de dominio como servidor DNS.
-
-                </p>
-
-                <p>
-
-                    También se implementó una política de grupo vinculada
-                    a la OU <strong>IT</strong> y se comprobó mediante
-                    <strong>gpresult</strong> que la política fue recibida
-                    correctamente por el usuario de prueba.
-
-                </p>
+        <h2 class="section-title">
+            Resultado del laboratorio
+        </h2>
 
 
-                <div class="check-list">
+        <div class="result-box">
 
-                    <div class="check">
-                        <i class="fas fa-check"></i>
-                        Active Directory implementado
-                    </div>
-
-                    <div class="check">
-                        <i class="fas fa-check"></i>
-                        Dominio alvarez.local
-                    </div>
-
-                    <div class="check">
-                        <i class="fas fa-check"></i>
-                        DNS funcional
-                    </div>
-
-                    <div class="check">
-                        <i class="fas fa-check"></i>
-                        DHCP funcional
-                    </div>
-
-                    <div class="check">
-                        <i class="fas fa-check"></i>
-                        Windows 10 unido al dominio
-                    </div>
-
-                    <div class="check">
-                        <i class="fas fa-check"></i>
-                        Usuario de dominio validado
-                    </div>
-
-                    <div class="check">
-                        <i class="fas fa-check"></i>
-                        Group Policy implementada
-                    </div>
-
-                    <div class="check">
-                        <i class="fas fa-check"></i>
-                        GPO validada con gpresult
-                    </div>
-
-                    <div class="check">
-                        <i class="fas fa-check"></i>
-                        Red virtual aislada
-                    </div>
-
-                    <div class="check">
-                        <i class="fas fa-check"></i>
-                        Pruebas de conectividad realizadas
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         REPOSITORY
-    ========================== -->
-
-    <section class="repo">
-
-        <div class="container">
-
-            <p class="section-number">
-                07 / SOURCE CODE & DOCUMENTATION
-            </p>
-
-            <h2>
-                Documentación completa
-            </h2>
+            <h3>
+                <i class="fas fa-circle-check"></i>
+                Infraestructura Windows funcional
+            </h3>
 
             <p>
 
-                El repositorio contiene el README técnico y las evidencias
-                originales utilizadas para documentar el laboratorio.
+                El laboratorio quedó funcionando como un entorno
+                de infraestructura Windows basado en dominio.
+
+                Windows Server 2025 funciona como controlador de dominio
+                y proporciona los servicios de Active Directory,
+                DNS y DHCP.
 
             </p>
 
-            <div class="hero-buttons"
-                 style="justify-content:center;">
+            <p>
 
-                <a
-                    href="https://github.com/orlandyvalvarez/windows-server-directory-services"
-                    target="_blank"
-                    class="btn btn-primary"
-                >
+                El equipo Windows 10 Pro fue integrado correctamente
+                al dominio <strong>alvarez.local</strong> y se realizaron
+                pruebas de conectividad, autenticación y configuración
+                de red.
 
-                    <i class="fab fa-github"></i>
+            </p>
 
-                    GitHub Repository
+            <p>
 
-                </a>
+                También se implementó una política de grupo para
+                restringir el acceso al Panel de control y
+                Configuración, validando posteriormente su aplicación
+                mediante las herramientas de Windows.
+
+            </p>
 
 
-                <a
-                    href="../index.html"
-                    class="btn btn-secondary"
-                >
+            <div class="check-list">
 
-                    <i class="fas fa-arrow-left"></i>
+                <div class="check">
+                    <i class="fas fa-check"></i>
+                    Active Directory implementado
+                </div>
 
-                    Volver al portafolio
+                <div class="check">
+                    <i class="fas fa-check"></i>
+                    Dominio alvarez.local
+                </div>
 
-                </a>
+                <div class="check">
+                    <i class="fas fa-check"></i>
+                    DNS configurado
+                </div>
+
+                <div class="check">
+                    <i class="fas fa-check"></i>
+                    DHCP configurado
+                </div>
+
+                <div class="check">
+                    <i class="fas fa-check"></i>
+                    Cliente Windows 10 unido al dominio
+                </div>
+
+                <div class="check">
+                    <i class="fas fa-check"></i>
+                    Usuario de dominio validado
+                </div>
+
+                <div class="check">
+                    <i class="fas fa-check"></i>
+                    Group Policy implementada
+                </div>
+
+                <div class="check">
+                    <i class="fas fa-check"></i>
+                    GPO validada
+                </div>
+
+                <div class="check">
+                    <i class="fas fa-check"></i>
+                    Pruebas de conectividad
+                </div>
+
+                <div class="check">
+                    <i class="fas fa-check"></i>
+                    Configuración de Firewall
+                </div>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     REPOSITORY
+===================================================== -->
+
+<section class="repo">
+
+    <div class="container">
+
+        <p class="section-number">
+            07 / SOURCE CODE & DOCUMENTATION
+        </p>
+
+        <h2>
+            Documentación completa
+        </h2>
+
+        <p>
+
+            El repositorio contiene la documentación técnica,
+            configuraciones y evidencias originales del laboratorio.
+
+        </p>
+
+
+        <div
+            class="hero-buttons"
+            style="justify-content:center;"
+        >
+
+            <a
+                href="https://github.com/orlandyvalvarez/windows-server-directory-services"
+                target="_blank"
+                class="btn btn-primary"
+            >
+
+                <i class="fab fa-github"></i>
+
+                GitHub Repository
+
+            </a>
+
+
+            <a
+                href="../index.html"
+                class="btn btn-secondary"
+            >
+
+                <i class="fas fa-arrow-left"></i>
+
+                Volver al portafolio
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
 
 </main>
 

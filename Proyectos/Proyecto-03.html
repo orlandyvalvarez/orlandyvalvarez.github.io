@@ -1,1135 +1,1964 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>Windows Server Directory Services | Orlandy Vilorio</title>
-
-<meta
-    name="description"
-    content="Laboratorio práctico de Windows Server, Active Directory, DNS y administración de dominio realizado por Orlandy Vilorio."
->
-
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
->
-
-<style>
-
-    /* =========================================
-       GLOBAL
-    ========================================= */
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-        background: #0d1117;
-        color: #e6edf3;
-        font-family:
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
-        line-height: 1.6;
-    }
-
-    :root {
-        --background: #0d1117;
-        --card: #161b22;
-        --card-hover: #1c2128;
-        --border: #30363d;
-        --text: #e6edf3;
-        --muted: #8b949e;
-        --green: #3fb950;
-        --blue: #58a6ff;
-    }
-
-
-    /* =========================================
-       NAVBAR
-    ========================================= */
-
-    header {
-        border-bottom: 1px solid var(--border);
-        position: sticky;
-        top: 0;
-        background: rgba(13, 17, 23, 0.94);
-        backdrop-filter: blur(10px);
-        z-index: 100;
-    }
-
-    .navbar {
-        max-width: 1000px;
-        margin: auto;
-        padding: 16px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo {
-        color: var(--green);
-        font-size: 20px;
-        font-weight: 700;
-        text-decoration: none;
-        font-family: monospace;
-    }
-
-    .logo span {
-        color: var(--blue);
-    }
-
-    .back-link {
-        color: var(--muted);
-        text-decoration: none;
-        font-size: 14px;
-        transition: 0.2s;
-    }
-
-    .back-link:hover {
-        color: var(--green);
-    }
-
-
-    /* =========================================
-       HERO DEL PROYECTO
-    ========================================= */
-
-    .project-hero {
-        max-width: 1000px;
-        margin: auto;
-        padding: 70px 20px 50px;
-    }
-
-    .terminal-label {
-        display: inline-flex;
-        align-items: center;
-        width: fit-content;
-        border: 1px solid var(--border);
-        background: var(--card);
-        padding: 6px 12px;
-        border-radius: 20px;
-        color: var(--muted);
-        font-size: 12px;
-        margin-bottom: 20px;
-    }
-
-    .dot {
-        width: 7px;
-        height: 7px;
-        background: var(--green);
-        border-radius: 50%;
-        margin-right: 8px;
-        box-shadow: 0 0 8px var(--green);
-    }
-
-    .project-hero h1 {
-        font-size: clamp(30px, 5vw, 48px);
-        line-height: 1.15;
-        margin-bottom: 12px;
-        letter-spacing: -1px;
-    }
-
-    .project-hero h2 {
-        color: var(--blue);
-        font-size: clamp(18px, 3vw, 25px);
-        font-weight: 500;
-        margin-bottom: 18px;
-    }
-
-    .project-description {
-        max-width: 760px;
-        color: var(--muted);
-        font-size: 16px;
-        margin-bottom: 25px;
-    }
-
-    .buttons {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-    }
-
-    .btn {
-        display: inline-block;
-        padding: 10px 18px;
-        border-radius: 6px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 13px;
-        transition: 0.2s;
-    }
-
-    .primary {
-        background: var(--green);
-        color: #0d1117;
-    }
-
-    .primary:hover {
-        background: #56d364;
-        transform: translateY(-2px);
-    }
-
-    .secondary {
-        border: 1px solid var(--border);
-        color: var(--text);
-        background: var(--card);
-    }
-
-    .secondary:hover {
-        border-color: var(--blue);
-        color: var(--blue);
-    }
-
-
-    /* =========================================
-       SECCIONES
-    ========================================= */
-
-    .section {
-        max-width: 1000px;
-        margin: auto;
-        padding: 55px 20px;
-        border-top: 1px solid rgba(48, 54, 61, 0.4);
-    }
-
-    .section-number {
-        color: var(--green);
-        font-family: monospace;
-        font-size: 12px;
-        margin-bottom: 6px;
-    }
-
-    .section h2 {
-        font-size: 28px;
-        line-height: 1.2;
-        margin-bottom: 18px;
-    }
-
-    .section-intro {
-        color: var(--muted);
-        max-width: 760px;
-        margin-bottom: 25px;
-    }
-
-
-    /* =========================================
-       PROJECT INFO
-    ========================================= */
-
-    .info-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-        margin-top: 25px;
-    }
-
-    .info-card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        padding: 20px;
-        border-radius: 8px;
-    }
-
-    .info-card span {
-        font-size: 22px;
-    }
-
-    .info-card h3 {
-        font-size: 16px;
-        margin-top: 8px;
-        margin-bottom: 5px;
-    }
-
-    .info-card p {
-        color: var(--muted);
-        font-size: 13px;
-    }
-
-
-    /* =========================================
-       ARQUITECTURA
-    ========================================= */
-
-    .architecture {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 25px;
-        margin-top: 25px;
-        overflow-x: auto;
-    }
-
-    .architecture pre {
-        color: var(--green);
-        font-family: monospace;
-        font-size: 13px;
-        line-height: 1.7;
-    }
-
-
-    /* =========================================
-       TECNOLOGÍAS
-    ========================================= */
-
-    .tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 20px;
-    }
-
-    .tags span {
-        background: #21262d;
-        border: 1px solid var(--border);
-        color: var(--blue);
-        font-family: monospace;
-        font-size: 12px;
-        padding: 5px 9px;
-        border-radius: 4px;
-    }
-
-
-    /* =========================================
-       EVIDENCIAS
-    ========================================= */
-
-    .evidence {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 24px;
-        margin-top: 25px;
-    }
-
-    .evidence-header {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 15px;
-    }
-
-    .evidence-number {
-        color: var(--green);
-        font-family: monospace;
-        font-size: 13px;
-    }
-
-    .evidence h3 {
-        font-size: 19px;
-    }
-
-    .evidence-description {
-        color: var(--muted);
-        font-size: 14px;
-        margin-bottom: 20px;
-    }
-
-    .evidence-image {
-        width: 100%;
-        display: block;
-        border: 1px solid var(--border);
-        border-radius: 6px;
-        background: #0d1117;
-    }
-
-    .image-placeholder {
-        min-height: 300px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px dashed var(--border);
-        border-radius: 6px;
-        color: var(--muted);
-        text-align: center;
-        padding: 30px;
-        font-family: monospace;
-        font-size: 13px;
-    }
-
-    .technical-note {
-        margin-top: 18px;
-        padding: 15px;
-        border-left: 3px solid var(--blue);
-        background: #11161d;
-        color: var(--muted);
-        font-size: 13px;
-    }
-
-    .technical-note strong {
-        color: var(--text);
-    }
-
-
-    /* =========================================
-       RESULTADO
-    ========================================= */
-
-    .results {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        margin-top: 25px;
-    }
-
-    .result {
-        background: var(--card);
-        border: 1px solid var(--border);
-        padding: 15px;
-        border-radius: 6px;
-        color: var(--muted);
-        font-size: 14px;
-    }
-
-    .result i {
-        color: var(--green);
-        margin-right: 8px;
-    }
-
-
-    /* =========================================
-       FOOTER
-    ========================================= */
-
-    footer {
-        border-top: 1px solid var(--border);
-        max-width: 1000px;
-        margin: auto;
-        padding: 24px 20px;
-        display: flex;
-        justify-content: space-between;
-        color: var(--muted);
-        font-size: 12px;
-    }
-
-
-    /* =========================================
-       RESPONSIVE
-    ========================================= */
-
-    @media (max-width: 850px) {
-
-        .info-grid {
-            grid-template-columns: repeat(2, 1fr);
+    <title>Proyecto 03 | Windows Server Directory Services | Orlandy Vilorio</title>
+
+    <meta
+        name="description"
+        content="Laboratorio práctico de Windows Server 2025, Active Directory, DNS, DHCP y Group Policy desarrollado por Orlandy Vilorio."
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-    }
-
-    @media (max-width: 650px) {
-
-        .back-link {
-            font-size: 12px;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .project-hero {
-            padding: 45px 20px 35px;
+        body {
+            background: #0d1117;
+            color: #e6edf3;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+            line-height: 1.7;
+        }
+
+        :root {
+            --background: #0d1117;
+            --card: #161b22;
+            --card-hover: #1c2128;
+            --border: #30363d;
+            --text: #e6edf3;
+            --muted: #8b949e;
+            --green: #3fb950;
+            --blue: #58a6ff;
+            --purple: #bc8cff;
+            --orange: #f0883e;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            max-width: 1100px;
+            margin: auto;
+
+            padding: 15px 20px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--green);
+            text-decoration: none;
+
+            font-family: monospace;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+
+            font-size: 13px;
+
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
         }
 
         .section {
-            padding: 40px 20px;
+            padding: 80px 0;
+
+            border-bottom: 1px solid
+                rgba(48, 54, 61, 0.45);
         }
 
-        .info-grid,
-        .results {
-            grid-template-columns: 1fr;
+        .section-number {
+            color: var(--green);
+
+            font-family: monospace;
+            font-size: 12px;
+
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            line-height: 1.2;
+
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            max-width: 800px;
+
+            color: var(--muted);
+            font-size: 15px;
+
+            margin-bottom: 30px;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            padding: 90px 0 70px;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+
+            padding: 7px 13px;
+
+            border: 1px solid var(--border);
+            border-radius: 20px;
+
+            background: var(--card);
+
+            color: var(--muted);
+
+            font-family: monospace;
+            font-size: 12px;
+
+            margin-bottom: 20px;
+        }
+
+        .hero-dot {
+            width: 8px;
+            height: 8px;
+
+            background: var(--green);
+
+            border-radius: 50%;
+
+            margin-right: 9px;
+
+            box-shadow: 0 0 10px var(--green);
+        }
+
+        .hero h1 {
+            max-width: 900px;
+
+            font-size: clamp(32px, 6vw, 58px);
+
+            line-height: 1.08;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: var(--blue);
+        }
+
+        .hero-subtitle {
+            color: var(--green);
+
+            font-family: monospace;
+
+            font-size: 16px;
+
+            margin-bottom: 20px;
+        }
+
+        .hero-text {
+            max-width: 800px;
+
+            color: var(--muted);
+
+            font-size: 16px;
+
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+            gap: 8px;
+
+            padding: 11px 18px;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--green);
+
+            color: #0d1117;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: #56d364;
+        }
+
+        .btn-secondary {
+            background: var(--card);
+
+            color: var(--text);
+
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            color: var(--blue);
+
+            border-color: var(--blue);
+        }
+
+        /* =========================
+           PROJECT INFO
+        ========================= */
+
+        .info-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 8px;
+
+            padding: 18px;
+        }
+
+        .info-card i {
+            color: var(--green);
+
+            font-size: 18px;
+
+            margin-bottom: 10px;
+        }
+
+        .info-card h3 {
+            font-size: 14px;
+
+            margin-bottom: 4px;
+        }
+
+        .info-card p {
+            color: var(--muted);
+
+            font-family: monospace;
+
+            font-size: 12px;
+        }
+
+        /* =========================
+           ARCHITECTURE
+        ========================= */
+
+        .architecture {
+            background: #010409;
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            padding: 30px;
+
+            overflow-x: auto;
+
+            margin-top: 30px;
+        }
+
+        .architecture pre {
+            color: #79c0ff;
+
+            font-family: monospace;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+        /* =========================
+           TECHNOLOGIES
+        ========================= */
+
+        .tech-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+            margin-top: 25px;
+        }
+
+        .tech {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 7px;
+
+            padding: 14px;
+
+            color: var(--blue);
+
+            font-family: monospace;
+
+            font-size: 12px;
+        }
+
+        /* =========================
+           EVIDENCE
+        ========================= */
+
+        .evidence-list {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 45px;
+
+            margin-top: 40px;
         }
 
         .evidence {
-            padding: 17px;
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            transition: 0.2s;
         }
+
+        .evidence:hover {
+            border-color: var(--green);
+        }
+
+        .evidence-header {
+            padding: 22px 24px 15px;
+        }
+
+        .evidence-number {
+            color: var(--green);
+
+            font-family: monospace;
+
+            font-size: 12px;
+
+            margin-bottom: 5px;
+        }
+
+        .evidence h3 {
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+        .evidence-description {
+            color: var(--muted);
+
+            font-size: 14px;
+
+            max-width: 850px;
+        }
+
+        .evidence-image {
+            background: #010409;
+
+            border-top: 1px solid var(--border);
+
+            padding: 20px;
+        }
+
+        .evidence-image img {
+            display: block;
+
+            width: 100%;
+
+            max-width: 950px;
+
+            height: auto;
+
+            margin: auto;
+
+            border-radius: 6px;
+
+            border: 1px solid var(--border);
+
+            box-shadow:
+                0 10px 35px rgba(0,0,0,0.35);
+        }
+
+        .evidence-footer {
+            padding: 15px 24px 22px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+        .evidence-tag {
+            color: var(--blue);
+
+            font-family: monospace;
+
+            font-size: 11px;
+        }
+
+        /* =========================
+           COMMANDS
+        ========================= */
+
+        .commands {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+
+            margin-top: 30px;
+        }
+
+        .command-box {
+            background: #010409;
+
+            border: 1px solid var(--border);
+
+            border-radius: 7px;
+
+            padding: 18px;
+        }
+
+        .command-box span {
+            display: block;
+
+            color: var(--green);
+
+            font-family: monospace;
+
+            font-size: 12px;
+
+            margin-bottom: 8px;
+        }
+
+        .command-box code {
+            color: #e6edf3;
+
+            font-family: monospace;
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           RESULT
+        ========================= */
+
+        .result-box {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(63,185,80,0.08),
+                    rgba(88,166,255,0.05)
+                );
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            padding: 30px;
+
+            margin-top: 30px;
+        }
+
+        .result-box h3 {
+            color: var(--green);
+
+            font-size: 20px;
+
+            margin-bottom: 12px;
+        }
+
+        .result-box p {
+            color: var(--muted);
+
+            font-size: 14px;
+
+            margin-bottom: 12px;
+        }
+
+        .check-list {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+        .check {
+            color: var(--text);
+
+            font-size: 13px;
+        }
+
+        .check i {
+            color: var(--green);
+
+            margin-right: 8px;
+        }
+
+        /* =========================
+           REPOSITORY
+        ========================= */
+
+        .repo {
+            text-align: center;
+
+            padding: 80px 20px;
+        }
+
+        .repo h2 {
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+        .repo p {
+            color: var(--muted);
+
+            max-width: 650px;
+
+            margin: 0 auto 25px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
-            flex-direction: column;
-            gap: 8px;
-            text-align: center;
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 25px 20px;
+
+            border-top: 1px solid var(--border);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            color: var(--muted);
+
+            font-size: 12px;
         }
 
-    }
+        /* =========================
+           RESPONSIVE
+        ========================= */
 
-</style>
-```
+        @media (max-width: 850px) {
 
+            .info-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .tech-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .commands {
+                grid-template-columns: 1fr;
+            }
+
+            .check-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 55px 0 50px;
+            }
+
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .section {
+                padding: 55px 0;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+
+            .info-grid,
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .architecture {
+                padding: 20px;
+            }
+
+            .architecture pre {
+                font-size: 11px;
+            }
+
+            .evidence-header {
+                padding: 18px;
+            }
+
+            .evidence-image {
+                padding: 10px;
+            }
+
+            .evidence-footer {
+                padding: 12px 18px 18px;
+            }
+
+            footer {
+                flex-direction: column;
+
+                gap: 8px;
+
+                text-align: center;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
 
 <header>
 
-```
-<nav class="navbar">
+    <nav class="navbar">
 
-    <a href="../../index.html" class="logo">
-        OV<span>_</span>
-    </a>
+        <a href="../index.html" class="logo">
+            OV<span>_</span>
+        </a>
 
-    <a href="../../index.html" class="back-link">
-        ← Back to Portfolio
-    </a>
+        <div class="nav-links">
 
-</nav>
-```
+            <a href="#overview">Overview</a>
+
+            <a href="#architecture">Architecture</a>
+
+            <a href="#evidence">Evidence</a>
+
+            <a href="#results">Results</a>
+
+        </div>
+
+    </nav>
 
 </header>
 
+
 <main>
 
-```
-<!-- =========================================
-     HERO
-========================================== -->
+    <!-- =========================
+         HERO
+    ========================== -->
 
-<section class="project-hero">
+    <section class="hero">
 
-    <div class="terminal-label">
+        <div class="container">
 
-        <span class="dot"></span>
+            <div class="hero-label">
 
-        PROJECT 03 · INFRASTRUCTURE LAB
+                <span class="hero-dot"></span>
 
-    </div>
+                PROJECT 03 / INFRASTRUCTURE LAB
 
+            </div>
 
-    <h1>
-        Windows Server<br>
-        Directory Services
-    </h1>
+            <h1>
+                Windows Server
+                <span>Directory Services</span>
+            </h1>
 
-
-    <h2>
-        Active Directory · DNS · Windows Server 2025
-    </h2>
-
-
-    <p class="project-description">
-
-        Laboratorio práctico de infraestructura Windows realizado
-        utilizando VMware Workstation. El proyecto comprende la
-        preparación de un entorno de red aislado, configuración de
-        Windows Server, servicios de directorio, DNS y posterior
-        integración de un equipo cliente Windows.
-
-    </p>
-
-
-    <div class="buttons">
-
-        <a
-            href="https://github.com/orlandyvalvarez/windows-server-directory-services"
-            target="_blank"
-            class="btn primary"
-        >
-            <i class="fab fa-github"></i>
-            Ver repositorio
-        </a>
-
-
-        <a
-            href="../../index.html"
-            class="btn secondary"
-        >
-            ← Portafolio
-        </a>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================
-     01 / OVERVIEW
-========================================== -->
-
-<section class="section">
-
-    <p class="section-number">
-        01 / OVERVIEW
-    </p>
-
-    <h2>
-        Descripción del laboratorio
-    </h2>
-
-    <p class="section-intro">
-
-        El objetivo de este laboratorio es construir desde cero
-        un entorno básico de infraestructura empresarial basado
-        en Windows Server y Active Directory, documentando cada
-        etapa mediante evidencias visuales.
-
-    </p>
-
-
-    <div class="info-grid">
-
-
-        <div class="info-card">
-
-            <span>🖥️</span>
-
-            <h3>
-                Servidor
-            </h3>
-
-            <p>
-                Windows Server 2025 utilizado como servidor
-                principal del laboratorio.
+            <p class="hero-subtitle">
+                Active Directory · DNS · DHCP · Group Policy
             </p>
+
+            <p class="hero-text">
+
+                Laboratorio práctico de infraestructura Windows desarrollado
+                utilizando VMware Workstation, Windows Server 2025 y
+                Windows 10 Pro.
+
+                El objetivo fue construir un entorno de dominio funcional,
+                implementar servicios de infraestructura y validar su
+                funcionamiento mediante pruebas reales.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="https://github.com/orlandyvalvarez/windows-server-directory-services"
+                    target="_blank"
+                    class="btn btn-primary"
+                >
+                    <i class="fab fa-github"></i>
+
+                    Ver repositorio
+                </a>
+
+                <a
+                    href="../index.html"
+                    class="btn btn-secondary"
+                >
+                    <i class="fas fa-arrow-left"></i>
+
+                    Volver al portafolio
+                </a>
+
+            </div>
 
         </div>
 
+    </section>
 
-        <div class="info-card">
 
-            <span>💻</span>
+    <!-- =========================
+         OVERVIEW
+    ========================== -->
 
-            <h3>
-                Cliente
-            </h3>
+    <section id="overview" class="section">
 
-            <p>
-                Windows 10 utilizado para validar la integración
-                del equipo al dominio.
+        <div class="container">
+
+            <p class="section-number">
+                01 / OVERVIEW
             </p>
+
+            <h2 class="section-title">
+                Entorno del laboratorio
+            </h2>
+
+            <p class="section-description">
+
+                El laboratorio fue construido sobre una red virtual aislada
+                utilizando VMware VMnet1 Host-Only. Esto permitió realizar
+                las pruebas de infraestructura sin depender de la red física.
+
+            </p>
+
+
+            <div class="info-grid">
+
+                <div class="info-card">
+
+                    <i class="fas fa-server"></i>
+
+                    <h3>Servidor</h3>
+
+                    <p>Windows Server 2025</p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <i class="fab fa-windows"></i>
+
+                    <h3>Cliente</h3>
+
+                    <p>Windows 10 Pro</p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <i class="fas fa-network-wired"></i>
+
+                    <h3>Network</h3>
+
+                    <p>192.168.78.0/24</p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <i class="fas fa-globe"></i>
+
+                    <h3>Domain</h3>
+
+                    <p>alvarez.local</p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <i class="fas fa-desktop"></i>
+
+                    <h3>Domain Controller</h3>
+
+                    <p>DC01-LAB-WS</p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <i class="fas fa-network-wired"></i>
+
+                    <h3>Server IP</h3>
+
+                    <p>192.168.78.10</p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <i class="fas fa-dhcp"></i>
+
+                    <h3>DHCP Scope</h3>
+
+                    <p>192.168.78.100 - 200</p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <i class="fas fa-shield-halved"></i>
+
+                    <h3>Group Policy</h3>
+
+                    <p>GPO-IT-Restriccion-Panel</p>
+
+                </div>
+
+            </div>
 
         </div>
 
+    </section>
 
-        <div class="info-card">
 
-            <span>🧪</span>
+    <!-- =========================
+         ARCHITECTURE
+    ========================== -->
 
-            <h3>
-                Virtualización
-            </h3>
+    <section id="architecture" class="section">
 
-            <p>
-                VMware Workstation con una red virtual aislada
-                para realizar las pruebas.
+        <div class="container">
+
+            <p class="section-number">
+                02 / ARCHITECTURE
             </p>
 
-        </div>
+            <h2 class="section-title">
+                Arquitectura de la infraestructura
+            </h2>
+
+            <p class="section-description">
+
+                El controlador de dominio proporciona Active Directory,
+                DNS, DHCP y Group Policy al cliente Windows 10.
+
+            </p>
 
 
-    </div>
-
-</section>
-
-
-
-<!-- =========================================
-     02 / ARCHITECTURE
-========================================== -->
-
-<section class="section">
-
-    <p class="section-number">
-        02 / LAB ARCHITECTURE
-    </p>
-
-    <h2>
-        Arquitectura del laboratorio
-    </h2>
-
-    <p class="section-intro">
-
-        El entorno se mantiene aislado de la red física mediante
-        una red virtual de laboratorio. Esto permite realizar
-        configuraciones y pruebas sin afectar otros dispositivos.
-
-    </p>
-
-
-    <div class="architecture">
-```
+            <div class="architecture">
 
 <pre>
-┌──────────────────────────────────────┐
-│        VMware Workstation            │
-│                                      │
-│            VMnet1                    │
-│         Host-Only Network            │
-│                 │                    │
-│        ┌────────┴────────┐           │
-│        │                 │           │
-│        ▼                 ▼           │
-│  Windows Server      Windows 10     │
-│      2025               Client       │
-│                                      │
-│  Active Directory                    │
-│  DNS                                  │
-│  Domain Services                      │
-│                                      │
-└──────────────────────────────────────┘
+                         VMware VMnet1
+                         192.168.78.0/24
+                                |
+                    +-----------+-----------+
+                    |                       |
+                    |                       |
+             DC01-LAB-WS              WIN10-CLIENTE01
+           Windows Server 2025          Windows 10 Pro
+             192.168.78.10              192.168.78.101
+                    |                       |
+                    |                       |
+          +---------+---------+             |
+          |         |         |             |
+         AD DS     DNS       DHCP           |
+          |         |         |             |
+          +---------+---------+             |
+                    |                       |
+                    +---------+-------------+
+                              |
+                       alvarez.local
+                              |
+                       ALVAREZ\orlandy
+                              |
+                     Group Policy / GPO
+                              |
+                GPO-IT-Restriccion-Panel
 </pre>
 
-```
-    </div>
-
-</section>
-
-
-
-<!-- =========================================
-     03 / TECHNOLOGIES
-========================================== -->
-
-<section class="section">
-
-    <p class="section-number">
-        03 / TECHNOLOGIES
-    </p>
-
-    <h2>
-        Tecnologías utilizadas
-    </h2>
-
-    <div class="tags">
-
-        <span>Windows Server 2025</span>
-        <span>Windows 10</span>
-        <span>Active Directory</span>
-        <span>DNS</span>
-        <span>VMware Workstation</span>
-        <span>VMnet1</span>
-        <span>PowerShell</span>
-        <span>Networking</span>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================
-     04 / EVIDENCE
-========================================== -->
-
-<section class="section">
-
-    <p class="section-number">
-        04 / STEP-BY-STEP EVIDENCE
-    </p>
-
-    <h2>
-        Evidencias del laboratorio
-    </h2>
-
-    <p class="section-intro">
-
-        Cada evidencia documenta una etapa concreta de la
-        implementación. Las capturas muestran el proceso
-        realizado directamente en las máquinas virtuales.
-
-    </p>
-
-
-
-    <!-- EVIDENCIA 01 -->
-
-    <article class="evidence">
-
-        <div class="evidence-header">
-
-            <span class="evidence-number">
-                01
-            </span>
-
-            <h3>
-                Preparación del entorno virtual
-            </h3>
+            </div>
 
         </div>
 
-
-        <p class="evidence-description">
-
-            Creación de las máquinas virtuales necesarias para
-            construir el laboratorio de Windows Server y Windows 10.
-
-        </p>
+    </section>
 
 
-        <div class="image-placeholder">
+    <!-- =========================
+         TECHNOLOGIES
+    ========================== -->
 
-            CAPTURA 01<br><br>
+    <section class="section">
 
-            Aquí colocaremos la evidencia de VMware
-            mostrando las máquinas virtuales.
+        <div class="container">
 
-        </div>
+            <p class="section-number">
+                03 / TECHNOLOGIES
+            </p>
 
+            <h2 class="section-title">
+                Tecnologías utilizadas
+            </h2>
 
-        <div class="technical-note">
+            <div class="tech-grid">
 
-            <strong>Qué demuestra:</strong>
+                <div class="tech">
+                    Windows Server 2025
+                </div>
 
-            Preparación inicial de la infraestructura virtual
-            utilizada para el laboratorio.
+                <div class="tech">
+                    Windows 10 Pro
+                </div>
 
-        </div>
+                <div class="tech">
+                    Active Directory
+                </div>
 
-    </article>
+                <div class="tech">
+                    DNS
+                </div>
 
+                <div class="tech">
+                    DHCP
+                </div>
 
+                <div class="tech">
+                    Group Policy
+                </div>
 
-    <!-- EVIDENCIA 02 -->
+                <div class="tech">
+                    VMware Workstation
+                </div>
 
-    <article class="evidence">
+                <div class="tech">
+                    VMware VMnet1
+                </div>
 
-        <div class="evidence-header">
+                <div class="tech">
+                    IPv4
+                </div>
 
-            <span class="evidence-number">
-                02
-            </span>
+                <div class="tech">
+                    PowerShell
+                </div>
 
-            <h3>
-                Configuración de red
-            </h3>
+                <div class="tech">
+                    CMD
+                </div>
 
-        </div>
+                <div class="tech">
+                    Network Administration
+                </div>
 
-
-        <p class="evidence-description">
-
-            Configuración de la red virtual utilizada para
-            establecer comunicación entre el servidor y el cliente.
-
-        </p>
-
-
-        <div class="image-placeholder">
-
-            CAPTURA 02<br><br>
-
-            Aquí colocaremos la captura de la configuración
-            de red y las direcciones IP.
-
-        </div>
-
-
-        <div class="technical-note">
-
-            <strong>Qué demuestra:</strong>
-
-            Comunicación entre las máquinas virtuales dentro
-            de la red aislada del laboratorio.
+            </div>
 
         </div>
 
-    </article>
+    </section>
 
 
+    <!-- =========================
+         EVIDENCE
+    ========================== -->
 
-    <!-- EVIDENCIA 03 -->
+    <section id="evidence" class="section">
 
-    <article class="evidence">
+        <div class="container">
 
-        <div class="evidence-header">
+            <p class="section-number">
+                04 / VISUAL EVIDENCE
+            </p>
 
-            <span class="evidence-number">
-                03
-            </span>
+            <h2 class="section-title">
+                Implementación paso a paso
+            </h2>
 
-            <h3>
-                Instalación de Active Directory
-            </h3>
+            <p class="section-description">
+
+                Las siguientes evidencias documentan las principales etapas
+                de construcción, configuración y validación del laboratorio.
+
+            </p>
+
+
+            <div class="evidence-list">
+
+
+                <!-- 01 -->
+
+                <article class="evidence">
+
+                    <div class="evidence-header">
+
+                        <p class="evidence-number">
+                            EVIDENCE 01
+                        </p>
+
+                        <h3>
+                            VMware VMnet1 — Red aislada
+                        </h3>
+
+                        <p class="evidence-description">
+
+                            Configuración del entorno virtual utilizando
+                            VMware VMnet1 en modo Host-Only. Las máquinas
+                            virtuales utilizan esta red para comunicarse
+                            entre sí sin depender de la red física.
+
+                        </p>
+
+                    </div>
+
+                    <div class="evidence-image">
+
+                        <img
+                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/01-vmware-vmnet1.png"
+                            alt="Configuración VMware VMnet1"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="evidence-footer">
+
+                        <span class="evidence-tag">
+                            VMware / VMnet1
+                        </span>
+
+                        <span class="evidence-tag">
+                            192.168.78.0/24
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 02 -->
+
+                <article class="evidence">
+
+                    <div class="evidence-header">
+
+                        <p class="evidence-number">
+                            EVIDENCE 02
+                        </p>
+
+                        <h3>
+                            Configuración IP del servidor
+                        </h3>
+
+                        <p class="evidence-description">
+
+                            Se configuró el servidor Windows Server 2025
+                            con una dirección IPv4 estática para mantener
+                            una dirección conocida dentro de la infraestructura
+                            del dominio.
+
+                        </p>
+
+                    </div>
+
+                    <div class="evidence-image">
+
+                        <img
+                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/02-server-ip.png"
+                            alt="Configuración IP Windows Server"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="evidence-footer">
+
+                        <span class="evidence-tag">
+                            DC01-LAB-WS
+                        </span>
+
+                        <span class="evidence-tag">
+                            192.168.78.10
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 03 -->
+
+                <article class="evidence">
+
+                    <div class="evidence-header">
+
+                        <p class="evidence-number">
+                            EVIDENCE 03
+                        </p>
+
+                        <h3>
+                            Active Directory Domain Services
+                        </h3>
+
+                        <p class="evidence-description">
+
+                            Implementación del dominio Active Directory
+                            <strong>alvarez.local</strong> y estructura
+                            organizativa con las unidades IT, HR y Ventas.
+
+                            También se configuraron grupos de seguridad
+                            y usuarios de dominio.
+
+                        </p>
+
+                    </div>
+
+                    <div class="evidence-image">
+
+                        <img
+                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/03-active-directory.png"
+                            alt="Active Directory"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="evidence-footer">
+
+                        <span class="evidence-tag">
+                            Active Directory
+                        </span>
+
+                        <span class="evidence-tag">
+                            alvarez.local
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 04 -->
+
+                <article class="evidence">
+
+                    <div class="evidence-header">
+
+                        <p class="evidence-number">
+                            EVIDENCE 04
+                        </p>
+
+                        <h3>
+                            Configuración DNS
+                        </h3>
+
+                        <p class="evidence-description">
+
+                            DNS fue implementado como parte de la
+                            infraestructura del controlador de dominio.
+
+                            El cliente utiliza el servidor
+                            <strong>192.168.78.10</strong> como DNS
+                            para resolver el dominio y el nombre del
+                            controlador de dominio.
+
+                        </p>
+
+                    </div>
+
+                    <div class="evidence-image">
+
+                        <img
+                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/04-dns.png"
+                            alt="Configuración DNS"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="evidence-footer">
+
+                        <span class="evidence-tag">
+                            DNS
+                        </span>
+
+                        <span class="evidence-tag">
+                            alvarez.local
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 05 -->
+
+                <article class="evidence">
+
+                    <div class="evidence-header">
+
+                        <p class="evidence-number">
+                            EVIDENCE 05
+                        </p>
+
+                        <h3>
+                            Servidor DHCP
+                        </h3>
+
+                        <p class="evidence-description">
+
+                            Se instaló y configuró DHCP en Windows Server
+                            mediante el ámbito <strong>DHCP-LAB</strong>.
+
+                            El rango disponible es
+                            <strong>192.168.78.100 - 192.168.78.200</strong>.
+
+                            El servidor también entrega la configuración
+                            DNS correspondiente al dominio.
+
+                        </p>
+
+                    </div>
+
+                    <div class="evidence-image">
+
+                        <img
+                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/05-dhcp.png"
+                            alt="Configuración DHCP Windows Server"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="evidence-footer">
+
+                        <span class="evidence-tag">
+                            DHCP-LAB
+                        </span>
+
+                        <span class="evidence-tag">
+                            192.168.78.100 - 200
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 06 -->
+
+                <article class="evidence">
+
+                    <div class="evidence-header">
+
+                        <p class="evidence-number">
+                            EVIDENCE 06
+                        </p>
+
+                        <h3>
+                            Windows 10 unido al dominio
+                        </h3>
+
+                        <p class="evidence-description">
+
+                            El equipo Windows 10 Pro fue integrado al dominio
+                            <strong>alvarez.local</strong> y configurado como
+                            <strong>WIN10-CLIENTE01</strong>.
+
+                            Posteriormente se comprobó el inicio de sesión
+                            utilizando una cuenta de dominio.
+
+                        </p>
+
+                    </div>
+
+                    <div class="evidence-image">
+
+                        <img
+                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/06-cliente-dominio.png"
+                            alt="Windows 10 unido al dominio"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="evidence-footer">
+
+                        <span class="evidence-tag">
+                            Windows 10 Pro
+                        </span>
+
+                        <span class="evidence-tag">
+                            ALVAREZ\orlandy
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 07 -->
+
+                <article class="evidence">
+
+                    <div class="evidence-header">
+
+                        <p class="evidence-number">
+                            EVIDENCE 07
+                        </p>
+
+                        <h3>
+                            Cliente obteniendo IP mediante DHCP
+                        </h3>
+
+                        <p class="evidence-description">
+
+                            El cliente fue configurado para obtener
+                            automáticamente su configuración de red.
+
+                            La asignación fue comprobada mediante
+                            <strong>ipconfig /all</strong>.
+
+                            El cliente recibió la dirección
+                            <strong>192.168.78.101</strong>.
+
+                        </p>
+
+                    </div>
+
+                    <div class="evidence-image">
+
+                        <img
+                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/07-dhcp-client.png"
+                            alt="Cliente Windows obteniendo IP por DHCP"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="evidence-footer">
+
+                        <span class="evidence-tag">
+                            DHCP Client
+                        </span>
+
+                        <span class="evidence-tag">
+                            192.168.78.101
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 08 -->
+
+                <article class="evidence">
+
+                    <div class="evidence-header">
+
+                        <p class="evidence-number">
+                            EVIDENCE 08
+                        </p>
+
+                        <h3>
+                            Creación de Group Policy
+                        </h3>
+
+                        <p class="evidence-description">
+
+                            Se creó la política
+                            <strong>GPO-IT-Restriccion-Panel</strong>
+                            mediante Group Policy Management y se vinculó
+                            a la OU <strong>IT</strong>.
+
+                            La configuración corresponde a las políticas
+                            administrativas del Panel de control.
+
+                        </p>
+
+                    </div>
+
+                    <div class="evidence-image">
+
+                        <img
+                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/08-gpo-creada.png"
+                            alt="Creación de GPO"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="evidence-footer">
+
+                        <span class="evidence-tag">
+                            Group Policy
+                        </span>
+
+                        <span class="evidence-tag">
+                            OU: IT
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 09 -->
+
+                <article class="evidence">
+
+                    <div class="evidence-header">
+
+                        <p class="evidence-number">
+                            EVIDENCE 09
+                        </p>
+
+                        <h3>
+                            Actualización de políticas
+                        </h3>
+
+                        <p class="evidence-description">
+
+                            Después de configurar la GPO se ejecutó
+                            <strong>gpupdate /force</strong> en el cliente
+                            Windows 10 para forzar la actualización de
+                            las directivas.
+
+                        </p>
+
+                    </div>
+
+                    <div class="evidence-image">
+
+                        <img
+                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/09-gpupdate.png"
+                            alt="GPUpdate Force"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="evidence-footer">
+
+                        <span class="evidence-tag">
+                            gpupdate /force
+                        </span>
+
+                        <span class="evidence-tag">
+                            Policy Refresh
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 10 -->
+
+                <article class="evidence">
+
+                    <div class="evidence-header">
+
+                        <p class="evidence-number">
+                            EVIDENCE 10
+                        </p>
+
+                        <h3>
+                            Validación de la GPO aplicada
+                        </h3>
+
+                        <p class="evidence-description">
+
+                            Finalmente se utilizó
+                            <strong>gpresult /r</strong> para comprobar
+                            que la política
+                            <strong>GPO-IT-Restriccion-Panel</strong>
+                            fue aplicada correctamente al usuario
+                            del dominio.
+
+                            La política implementada bloquea el acceso
+                            al Panel de control y a Configuración del PC.
+
+                        </p>
+
+                    </div>
+
+                    <div class="evidence-image">
+
+                        <img
+                            src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/10-gpo-aplicada.png"
+                            alt="GPO aplicada mediante Group Policy"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="evidence-footer">
+
+                        <span class="evidence-tag">
+                            gpresult /r
+                        </span>
+
+                        <span class="evidence-tag">
+                            GPO Applied
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+            </div>
 
         </div>
 
-
-        <p class="evidence-description">
-
-            Instalación del rol necesario para convertir
-            Windows Server en controlador de dominio.
-
-        </p>
+    </section>
 
 
-        <div class="image-placeholder">
+    <!-- =========================
+         VALIDATION
+    ========================== -->
 
-            CAPTURA 03<br><br>
+    <section class="section">
 
-            Aquí colocaremos la captura de la instalación
-            del rol Active Directory Domain Services.
+        <div class="container">
+
+            <p class="section-number">
+                05 / VALIDATION
+            </p>
+
+            <h2 class="section-title">
+                Pruebas realizadas
+            </h2>
+
+            <p class="section-description">
+
+                Además de las configuraciones visuales, el laboratorio
+                fue validado mediante comandos de Windows para comprobar
+                conectividad, DNS, autenticación, DHCP y aplicación de
+                políticas.
+
+            </p>
+
+
+            <div class="commands">
+
+                <div class="command-box">
+
+                    <span>
+                        Conectividad
+                    </span>
+
+                    <code>
+                        ping 192.168.78.10
+                    </code>
+
+                </div>
+
+
+                <div class="command-box">
+
+                    <span>
+                        DNS
+                    </span>
+
+                    <code>
+                        nslookup alvarez.local
+                    </code>
+
+                </div>
+
+
+                <div class="command-box">
+
+                    <span>
+                        DNS Controller
+                    </span>
+
+                    <code>
+                        nslookup dc01-lab-ws.alvarez.local
+                    </code>
+
+                </div>
+
+
+                <div class="command-box">
+
+                    <span>
+                        Authentication
+                    </span>
+
+                    <code>
+                        whoami
+                    </code>
+
+                </div>
+
+
+                <div class="command-box">
+
+                    <span>
+                        Computer Name
+                    </span>
+
+                    <code>
+                        hostname
+                    </code>
+
+                </div>
+
+
+                <div class="command-box">
+
+                    <span>
+                        DHCP
+                    </span>
+
+                    <code>
+                        ipconfig /all
+                    </code>
+
+                </div>
+
+
+                <div class="command-box">
+
+                    <span>
+                        Renew DHCP
+                    </span>
+
+                    <code>
+                        ipconfig /release<br>
+                        ipconfig /renew
+                    </code>
+
+                </div>
+
+
+                <div class="command-box">
+
+                    <span>
+                        Group Policy
+                    </span>
+
+                    <code>
+                        gpupdate /force<br>
+                        gpresult /r
+                    </code>
+
+                </div>
+
+            </div>
 
         </div>
 
-
-        <div class="technical-note">
-
-            <strong>Qué demuestra:</strong>
-
-            Implementación del servicio de directorio
-            dentro del servidor Windows.
-
-        </div>
-
-    </article>
+    </section>
 
 
+    <!-- =========================
+         RESULTS
+    ========================== -->
 
-    <!-- EVIDENCIA 04 -->
+    <section id="results" class="section">
 
-    <article class="evidence">
+        <div class="container">
 
-        <div class="evidence-header">
+            <p class="section-number">
+                06 / FINAL RESULT
+            </p>
 
-            <span class="evidence-number">
-                04
-            </span>
+            <h2 class="section-title">
+                Resultado del laboratorio
+            </h2>
 
-            <h3>
-                Configuración del dominio
-            </h3>
+            <div class="result-box">
 
-        </div>
+                <h3>
+                    <i class="fas fa-circle-check"></i>
+                    Infraestructura Windows funcional
+                </h3>
 
+                <p>
 
-        <p class="evidence-description">
+                    El laboratorio quedó funcionando como un entorno
+                    de infraestructura Windows basado en dominio.
 
-            Configuración del dominio utilizado por el entorno
-            de laboratorio.
+                    Windows Server 2025 opera como controlador de dominio
+                    y proporciona los servicios de Active Directory,
+                    DNS y DHCP.
 
-        </p>
+                </p>
 
+                <p>
 
-        <div class="image-placeholder">
+                    El equipo Windows 10 Pro fue integrado correctamente
+                    al dominio <strong>alvarez.local</strong>, obtiene
+                    su configuración de red mediante DHCP y utiliza
+                    el controlador de dominio como servidor DNS.
 
-            CAPTURA 04<br><br>
+                </p>
 
-            Aquí colocaremos la evidencia del dominio
-            configurado.
+                <p>
 
-        </div>
+                    También se implementó una política de grupo vinculada
+                    a la OU <strong>IT</strong> y se comprobó mediante
+                    <strong>gpresult</strong> que la política fue recibida
+                    correctamente por el usuario de prueba.
 
-
-        <div class="technical-note">
-
-            <strong>Qué demuestra:</strong>
-
-            Configuración del dominio que permitirá administrar
-            centralizadamente los equipos del laboratorio.
-
-        </div>
-
-    </article>
-
-
-
-    <!-- EVIDENCIA 05 -->
-
-    <article class="evidence">
-
-        <div class="evidence-header">
-
-            <span class="evidence-number">
-                05
-            </span>
-
-            <h3>
-                DNS
-            </h3>
-
-        </div>
+                </p>
 
 
-        <p class="evidence-description">
+                <div class="check-list">
 
-            Validación del servicio DNS utilizado por
-            Active Directory.
+                    <div class="check">
+                        <i class="fas fa-check"></i>
+                        Active Directory implementado
+                    </div>
 
-        </p>
+                    <div class="check">
+                        <i class="fas fa-check"></i>
+                        Dominio alvarez.local
+                    </div>
 
+                    <div class="check">
+                        <i class="fas fa-check"></i>
+                        DNS funcional
+                    </div>
 
-        <div class="image-placeholder">
+                    <div class="check">
+                        <i class="fas fa-check"></i>
+                        DHCP funcional
+                    </div>
 
-            CAPTURA 05<br><br>
+                    <div class="check">
+                        <i class="fas fa-check"></i>
+                        Windows 10 unido al dominio
+                    </div>
 
-            Aquí colocaremos la evidencia de DNS.
+                    <div class="check">
+                        <i class="fas fa-check"></i>
+                        Usuario de dominio validado
+                    </div>
 
-        </div>
+                    <div class="check">
+                        <i class="fas fa-check"></i>
+                        Group Policy implementada
+                    </div>
 
+                    <div class="check">
+                        <i class="fas fa-check"></i>
+                        GPO validada con gpresult
+                    </div>
 
-        <div class="technical-note">
+                    <div class="check">
+                        <i class="fas fa-check"></i>
+                        Red virtual aislada
+                    </div>
 
-            <strong>Qué demuestra:</strong>
+                    <div class="check">
+                        <i class="fas fa-check"></i>
+                        Pruebas de conectividad realizadas
+                    </div>
 
-            Funcionamiento del servicio DNS necesario para
-            la resolución de nombres dentro del dominio.
+                </div>
 
-        </div>
-
-    </article>
-
-
-
-    <!-- EVIDENCIA 06 -->
-
-    <article class="evidence">
-
-        <div class="evidence-header">
-
-            <span class="evidence-number">
-                06
-            </span>
-
-            <h3>
-                Unión del cliente al dominio
-            </h3>
+            </div>
 
         </div>
 
-
-        <p class="evidence-description">
-
-            Integración del equipo Windows 10 al dominio
-            administrado por Windows Server.
-
-        </p>
+    </section>
 
 
-        <div class="image-placeholder">
+    <!-- =========================
+         REPOSITORY
+    ========================== -->
 
-            CAPTURA 06<br><br>
+    <section class="repo">
 
-            Aquí colocaremos la evidencia del equipo
-            Windows 10 unido al dominio.
+        <div class="container">
 
-        </div>
+            <p class="section-number">
+                07 / SOURCE CODE & DOCUMENTATION
+            </p>
 
+            <h2>
+                Documentación completa
+            </h2>
 
-        <div class="technical-note">
+            <p>
 
-            <strong>Qué demuestra:</strong>
+                El repositorio contiene el README técnico y las evidencias
+                originales utilizadas para documentar el laboratorio.
 
-            Integración del cliente con Active Directory
-            y comunicación correcta con el controlador de dominio.
+            </p>
 
-        </div>
+            <div class="hero-buttons"
+                 style="justify-content:center;">
 
-    </article>
+                <a
+                    href="https://github.com/orlandyvalvarez/windows-server-directory-services"
+                    target="_blank"
+                    class="btn btn-primary"
+                >
 
+                    <i class="fab fa-github"></i>
 
+                    GitHub Repository
 
-</section>
-
-
-
-<!-- =========================================
-     05 / RESULTS
-========================================== -->
-
-<section class="section">
-
-    <p class="section-number">
-        05 / RESULTS
-    </p>
-
-    <h2>
-        Resultado del laboratorio
-    </h2>
-
-    <p class="section-intro">
-
-        El laboratorio documenta la construcción de un entorno
-        básico de servicios de directorio utilizando tecnologías
-        de Microsoft y virtualización.
-
-    </p>
+                </a>
 
 
-    <div class="results">
+                <a
+                    href="../index.html"
+                    class="btn btn-secondary"
+                >
 
-        <div class="result">
+                    <i class="fas fa-arrow-left"></i>
 
-            <i class="fas fa-check"></i>
+                    Volver al portafolio
 
-            Entorno virtual configurado
+                </a>
+
+            </div>
 
         </div>
 
-
-        <div class="result">
-
-            <i class="fas fa-check"></i>
-
-            Windows Server configurado
-
-        </div>
-
-
-        <div class="result">
-
-            <i class="fas fa-check"></i>
-
-            Active Directory implementado
-
-        </div>
-
-
-        <div class="result">
-
-            <i class="fas fa-check"></i>
-
-            DNS configurado
-
-        </div>
-
-
-        <div class="result">
-
-            <i class="fas fa-check"></i>
-
-            Cliente Windows integrado
-
-        </div>
-
-
-        <div class="result">
-
-            <i class="fas fa-check"></i>
-
-            Laboratorio documentado
-
-        </div>
-
-    </div>
-
-</section>
-```
+    </section>
 
 </main>
 
+
 <footer>
 
-```
-<p>
-    © 2026 Orlandy Vilorio
-</p>
+    <span>
+        © 2026 Orlandy Vilorio
+    </span>
 
-<p>
-    Windows Server · Active Directory · Infrastructure
-</p>
-```
+    <span>
+        Cloud & Infrastructure Portfolio
+    </span>
 
 </footer>
 
+
 </body>
 </html>
-

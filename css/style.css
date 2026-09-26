@@ -81,6 +81,36 @@ header {
 }
 
 /* =========================================
+   LANGUAGE SWITCHER
+========================================= */
+
+.language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 20px;
+    flex-shrink: 0;
+}
+
+.language-switcher button {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.language-switcher button:hover {
+    color: var(--green);
+}
+
+.language-switcher span {
+    color: var(--muted);
+}
+
+/* =========================================
    HERO (Foto cuadrada a la izquierda)
 ========================================= */
 
@@ -116,7 +146,7 @@ header {
 .profile-img {
     width: 250px;
     height: 250px;
-    border-radius: 12px; /* Esquinas ligeramente redondeadas tipo tarjeta */
+    border-radius: 12px;
     object-fit: cover;
     border: 3px solid var(--green);
     box-shadow: 0 0 25px rgba(63, 185, 80, 0.2);
@@ -247,14 +277,14 @@ header {
 }
 
 /* =========================================
-   SECTIONS (Distribución equilibrada)
+   SECTIONS
 ========================================= */
 
 .section {
     max-width: 1000px;
     margin: auto;
     padding: 60px 20px;
-    border-top: 1px solid rgba(48, 54, 61, 0.4); /* Línea divisoria sutil opcional para separar secciones */
+    border-top: 1px solid rgba(48, 54, 61, 0.4);
 }
 
 .section-number {
@@ -433,7 +463,7 @@ footer {
 }
 
 /* =========================================
-   RESPONSIVE (Adaptable a tablets y móviles)
+   RESPONSIVE
 ========================================= */
 
 @media (max-width: 850px) {
@@ -452,16 +482,14 @@ footer {
         padding: 30px 20px;
     }
 
-    /* Forzamos que la foto quede arriba y el texto abajo perfectamente ordenados */
     .hero {
         flex-direction: column;
         text-align: center;
         gap: 20px;
     }
 
-    /* Aseguramos que la foto aparezca primero arriba en celulares */
     .hero-image-container {
-        order: -1; 
+        order: -1;
         margin-bottom: 5px;
     }
 
@@ -492,7 +520,7 @@ footer {
     }
 
     .profile-img {
-        width: 180px; /* Tamaño ideal para que se luzca en celulares */
+        width: 180px;
         height: 180px;
     }
 
@@ -514,29 +542,8 @@ footer {
         gap: 8px;
         text-align: center;
     }
-}
 
-.language-switcher {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-left: 20px;
-}
-
-.language-switcher button {
-    background: none;
-    border: none;
-    color: inherit;
-    font-family: inherit;
-    font-size: 14px;
-    cursor: pointer;
-    padding: 4px;
-}
-
-.language-switcher button:hover {
-    color: #00ff88;
-}
-
-.language-switcher span {
-    opacity: 0.5;
+    .language-switcher {
+        margin-left: 10px;
+    }
 }

@@ -112,6 +112,79 @@
             color: var(--green);
         }
 
+
+        /* =========================
+           LANGUAGE SWITCHER
+        ========================= */
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: 18px;
+        }
+
+        .language-switcher button {
+            background: none;
+            border: none;
+            padding: 0;
+
+            color: var(--muted);
+
+            font-family: inherit;
+            font-size: 13px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .language-switcher button:hover {
+            color: var(--green);
+        }
+
+        .language-switcher span {
+            color: var(--border);
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           GOOGLE TRANSLATE
+        ========================= */
+
+        #google_translate_element {
+            position: absolute !important;
+
+            width: 1px !important;
+            height: 1px !important;
+
+            overflow: hidden !important;
+
+            opacity: 0 !important;
+
+            pointer-events: none !important;
+        }
+
+        .goog-te-gadget {
+            font-size: 0 !important;
+        }
+
+        .goog-te-combo {
+            display: none !important;
+        }
+
+        .goog-te-banner-frame,
+        .goog-te-menu-frame,
+        iframe.goog-te-banner-frame {
+            display: none !important;
+        }
+
+        body {
+            top: 0 !important;
+        }
+
+
         /* =========================
            GENERAL
         ========================= */
@@ -1022,7 +1095,7 @@
             <a href="#results">Results</a>
 
         </div>
-        
+
         <div class="language-switcher">
             <button type="button" onclick="translatePage('es')">ES</button>
             <span>|</span>
@@ -1035,11 +1108,6 @@
 
 
 <main>
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
 
 <section class="hero">
 
@@ -1105,10 +1173,6 @@
 
 </section>
 
-
-<!-- =====================================================
-     OVERVIEW
-===================================================== -->
 
 <section id="overview" class="section">
 
@@ -1188,10 +1252,6 @@
 </section>
 
 
-<!-- =====================================================
-     ARCHITECTURE
-===================================================== -->
-
 <section id="architecture" class="section">
 
     <div class="container">
@@ -1213,9 +1273,6 @@
 
 
         <div class="architecture">
-
-
-            <!-- NETWORK -->
 
             <div class="architecture-network">
 
@@ -1249,10 +1306,7 @@
             <div class="architecture-line"></div>
 
 
-            <!-- SERVERS -->
-
             <div class="architecture-grid">
-
 
                 <div class="architecture-card">
 
@@ -1327,17 +1381,13 @@
 
                 </div>
 
-
             </div>
 
 
             <div class="architecture-line"></div>
 
 
-            <!-- SERVICES -->
-
             <div class="architecture-services">
-
 
                 <div class="architecture-service">
 
@@ -1413,14 +1463,11 @@
 
                 </div>
 
-
             </div>
 
 
             <div class="architecture-line"></div>
 
-
-            <!-- DOMAIN -->
 
             <div class="architecture-node">
 
@@ -1450,8 +1497,6 @@
             <div class="architecture-line"></div>
 
 
-            <!-- USER -->
-
             <div class="architecture-node">
 
                 <div class="architecture-icon">
@@ -1480,8 +1525,6 @@
             <div class="architecture-line"></div>
 
 
-            <!-- GROUP POLICY -->
-
             <div class="architecture-node">
 
                 <div class="architecture-icon">
@@ -1506,17 +1549,12 @@
 
             </div>
 
-
         </div>
 
     </div>
 
 </section>
 
-
-<!-- =====================================================
-     TECHNOLOGIES
-===================================================== -->
 
 <section class="section">
 
@@ -1552,10 +1590,6 @@
 </section>
 
 
-<!-- =====================================================
-     EVIDENCIAS
-===================================================== -->
-
 <section id="evidence" class="section">
 
     <div class="container">
@@ -1577,9 +1611,6 @@
 
 
         <div class="evidence-list">
-
-
-            <!-- 01 -->
 
             <article class="evidence">
 
@@ -1628,8 +1659,6 @@
             </article>
 
 
-            <!-- 02 -->
-
             <article class="evidence">
 
                 <div class="evidence-header">
@@ -1676,8 +1705,6 @@
 
             </article>
 
-
-            <!-- 03 -->
 
             <article class="evidence">
 
@@ -1726,8 +1753,6 @@
             </article>
 
 
-            <!-- 04 -->
-
             <article class="evidence">
 
                 <div class="evidence-header">
@@ -1774,8 +1799,6 @@
 
             </article>
 
-
-            <!-- 05 -->
 
             <article class="evidence">
 
@@ -1824,8 +1847,6 @@
             </article>
 
 
-            <!-- 06 -->
-
             <article class="evidence">
 
                 <div class="evidence-header">
@@ -1871,8 +1892,6 @@
 
             </article>
 
-
-            <!-- 07 -->
 
             <article class="evidence">
 
@@ -1921,8 +1940,6 @@
             </article>
 
 
-            <!-- 08 -->
-
             <article class="evidence">
 
                 <div class="evidence-header">
@@ -1970,8 +1987,6 @@
             </article>
 
 
-            <!-- 09 -->
-
             <article class="evidence">
 
                 <div class="evidence-header">
@@ -2018,8 +2033,6 @@
             </article>
 
 
-            <!-- 10 -->
-
             <article class="evidence">
 
                 <div class="evidence-header">
@@ -2065,8 +2078,6 @@
 
             </article>
 
-
-            <!-- 11 -->
 
             <article class="evidence">
 
@@ -2115,8 +2126,6 @@
             </article>
 
 
-            <!-- 12 -->
-
             <article class="evidence">
 
                 <div class="evidence-header">
@@ -2164,8 +2173,6 @@
             </article>
 
 
-            <!-- 13 -->
-
             <article class="evidence">
 
                 <div class="evidence-header">
@@ -2211,8 +2218,6 @@
 
             </article>
 
-
-            <!-- 14 -->
 
             <article class="evidence">
 
@@ -2260,8 +2265,6 @@
             </article>
 
 
-            <!-- 15 -->
-
             <article class="evidence">
 
                 <div class="evidence-header">
@@ -2307,8 +2310,6 @@
 
             </article>
 
-
-            <!-- 16 -->
 
             <article class="evidence">
 
@@ -2358,8 +2359,6 @@
             </article>
 
 
-            <!-- 17 -->
-
             <article class="evidence">
 
                 <div class="evidence-header">
@@ -2406,8 +2405,6 @@
 
             </article>
 
-
-            <!-- 18 -->
 
             <article class="evidence">
 
@@ -2456,8 +2453,6 @@
             </article>
 
 
-            <!-- 19 -->
-
             <article class="evidence">
 
                 <div class="evidence-header">
@@ -2503,8 +2498,6 @@
 
             </article>
 
-
-            <!-- 20 -->
 
             <article class="evidence">
 
@@ -2553,8 +2546,6 @@
             </article>
 
 
-            <!-- 21 -->
-
             <article class="evidence">
 
                 <div class="evidence-header">
@@ -2600,8 +2591,6 @@
 
             </article>
 
-
-            <!-- 22 -->
 
             <article class="evidence">
 
@@ -2650,8 +2639,6 @@
             </article>
 
 
-            <!-- 23 -->
-
             <article class="evidence">
 
                 <div class="evidence-header">
@@ -2698,17 +2685,12 @@
 
             </article>
 
-
         </div>
 
     </div>
 
 </section>
 
-
-<!-- =====================================================
-     VALIDATION
-===================================================== -->
 
 <section class="section">
 
@@ -2844,10 +2826,6 @@
 </section>
 
 
-<!-- =====================================================
-     RESULTS
-===================================================== -->
-
 <section id="results" class="section">
 
     <div class="container">
@@ -2959,10 +2937,6 @@
 </section>
 
 
-<!-- =====================================================
-     REPOSITORY
-===================================================== -->
-
 <section class="repo">
 
     <div class="container">
@@ -3035,6 +3009,58 @@
 </footer>
 
 
+<!-- =========================
+     GOOGLE TRANSLATE
+========================= -->
+
+<div id="google_translate_element" aria-hidden="true"></div>
+
+<script>
+function googleTranslateElementInit() {
+
+    new google.translate.TranslateElement({
+        pageLanguage: 'es',
+        includedLanguages: 'es,en',
+        autoDisplay: false
+    }, 'google_translate_element');
+
+}
+
+
+function translatePage(lang, attempts = 0) {
+
+    const select = document.querySelector('.goog-te-combo');
+
+    if (select) {
+
+        select.value = lang;
+
+        select.dispatchEvent(
+            new Event('change')
+        );
+
+        return;
+    }
+
+    if (attempts < 15) {
+
+        setTimeout(function () {
+
+            translatePage(
+                lang,
+                attempts + 1
+            );
+
+        }, 300);
+
+    }
+}
+</script>
+
+<script
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+
+
 </body>
 </html>
-

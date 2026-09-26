@@ -87,19 +87,22 @@ header {
 .language-switcher {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     margin-left: 20px;
     flex-shrink: 0;
+    font-family: monospace;
+    font-size: 12px;
 }
 
 .language-switcher button {
-    background: transparent;
     border: none;
+    background: transparent;
     color: var(--muted);
-    font-family: inherit;
-    font-size: 14px;
+    padding: 0;
+    margin: 0;
+    font: inherit;
     cursor: pointer;
-    padding: 4px;
+    transition: color 0.2s;
 }
 
 .language-switcher button:hover {
@@ -107,11 +110,53 @@ header {
 }
 
 .language-switcher span {
-    color: var(--muted);
+    color: var(--border);
 }
 
 /* =========================================
-   HERO (Foto cuadrada a la izquierda)
+   GOOGLE TRANSLATE
+   OCULTAR INTERFAZ ORIGINAL
+========================================= */
+
+#google_translate_element {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.goog-te-combo {
+    display: none !important;
+}
+
+.goog-te-banner-frame,
+.goog-te-menu-frame,
+iframe.goog-te-banner-frame {
+    display: none !important;
+}
+
+body {
+    top: 0 !important;
+}
+
+/* Evita que Google agregue espacios o elementos visibles */
+
+.goog-te-gadget {
+    font-size: 0 !important;
+}
+
+.goog-te-gadget span {
+    display: none !important;
+}
+
+.goog-logo-link {
+    display: none !important;
+}
+
+/* =========================================
+   HERO
 ========================================= */
 
 .hero-container {
@@ -143,6 +188,7 @@ header {
 }
 
 /* FOTO CUADRADA */
+
 .profile-img {
     width: 250px;
     height: 250px;
@@ -467,6 +513,7 @@ footer {
 ========================================= */
 
 @media (max-width: 850px) {
+
     .skills-grid,
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -474,6 +521,7 @@ footer {
 }
 
 @media (max-width: 650px) {
+
     .nav-links {
         display: none;
     }

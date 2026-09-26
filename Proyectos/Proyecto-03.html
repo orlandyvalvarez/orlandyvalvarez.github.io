@@ -339,21 +339,283 @@
 
             border-radius: 10px;
 
-            padding: 30px;
-
-            overflow-x: auto;
+            padding: 35px;
 
             margin-top: 30px;
+
+            overflow: hidden;
         }
 
-        .architecture pre {
-            color: #79c0ff;
+        .architecture-network {
+            display: flex;
+
+            justify-content: center;
+        }
+
+        .architecture-node {
+            width: 100%;
+
+            max-width: 620px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            padding: 22px 24px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            transition: 0.2s;
+        }
+
+        .architecture-node:hover {
+            border-color: var(--blue);
+        }
+
+        .architecture-node span,
+        .architecture-card span,
+        .architecture-service span {
+
+            display: block;
+
+            color: var(--muted);
 
             font-family: monospace;
 
-            font-size: 13px;
+            font-size: 10px;
 
-            line-height: 1.7;
+            letter-spacing: 1px;
+
+            margin-bottom: 5px;
+        }
+
+        .architecture-node h3,
+        .architecture-card h3,
+        .architecture-service h3 {
+
+            color: var(--text);
+
+            font-size: 17px;
+
+            margin: 0;
+        }
+
+        .architecture-node p,
+        .architecture-card p,
+        .architecture-service p {
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            margin-top: 5px;
+        }
+
+        .architecture-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #0d1117;
+
+            border: 1px solid var(--border);
+
+            border-radius: 8px;
+
+            color: var(--blue);
+
+            font-size: 15px;
+        }
+
+        .architecture-line {
+
+            width: 1px;
+
+            height: 35px;
+
+            margin: auto;
+
+            background: var(--border);
+        }
+
+        .architecture-grid {
+
+            max-width: 850px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+        .architecture-card {
+
+            display: flex;
+
+            gap: 15px;
+
+            padding: 22px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            transition: 0.2s;
+        }
+
+        .architecture-card:hover {
+            border-color: var(--blue);
+        }
+
+        .architecture-card-number {
+
+            width: 35px;
+
+            height: 35px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #0d1117;
+
+            border: 1px solid var(--border);
+
+            border-radius: 7px;
+
+            color: var(--blue);
+
+            font-family: monospace;
+
+            font-size: 11px;
+        }
+
+        .architecture-detail {
+
+            display: inline-flex;
+
+            flex-direction: column;
+
+            gap: 2px;
+
+            margin-top: 12px;
+
+            padding: 7px 9px;
+
+            background: #0d1117;
+
+            border: 1px solid var(--border);
+
+            border-radius: 6px;
+        }
+
+        .architecture-detail small {
+
+            color: var(--muted);
+
+            font-family: monospace;
+
+            font-size: 8px;
+        }
+
+        .architecture-detail strong {
+
+            color: var(--text);
+
+            font-family: monospace;
+
+            font-size: 10px;
+        }
+
+        .architecture-services {
+
+            max-width: 850px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+        .architecture-service {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            padding: 18px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 9px;
+
+            transition: 0.2s;
+        }
+
+        .architecture-service:hover {
+            border-color: var(--blue);
+        }
+
+        .service-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #0d1117;
+
+            border: 1px solid var(--border);
+
+            border-radius: 7px;
+
+            color: var(--blue);
+
+            font-family: monospace;
+
+            font-size: 9px;
+
+            font-weight: 700;
         }
 
         /* =========================
@@ -666,6 +928,15 @@
             .check-list {
                 grid-template-columns: 1fr;
             }
+
+            .architecture-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .architecture-services {
+                grid-template-columns: 1fr;
+            }
+
         }
 
         @media (max-width: 650px) {
@@ -699,8 +970,13 @@
                 padding: 20px;
             }
 
-            .architecture pre {
-                font-size: 11px;
+            .architecture-node {
+                padding: 18px;
+            }
+
+            .architecture-grid,
+            .architecture-services {
+                grid-template-columns: 1fr;
             }
 
             .evidence-header {
@@ -722,6 +998,7 @@
 
                 text-align: center;
             }
+
         }
 
     </style>
@@ -922,33 +1199,54 @@
         </h2>
 
         <p class="section-description">
+
             El controlador de dominio proporciona Active Directory,
             DNS, DHCP y Group Policy al cliente Windows 10.
+
         </p>
+
 
         <div class="architecture">
 
+
+            <!-- NETWORK -->
+
             <div class="architecture-network">
 
-                <div class="architecture-node network-node">
+                <div class="architecture-node">
 
                     <div class="architecture-icon">
                         <i class="fas fa-network-wired"></i>
                     </div>
 
                     <div>
-                        <span>NETWORK</span>
-                        <h3>VMware VMnet1</h3>
-                        <p>192.168.78.0/24</p>
+
+                        <span>
+                            NETWORK
+                        </span>
+
+                        <h3>
+                            VMware VMnet1
+                        </h3>
+
+                        <p>
+                            192.168.78.0/24
+                        </p>
+
                     </div>
 
                 </div>
 
             </div>
 
+
             <div class="architecture-line"></div>
 
+
+            <!-- SERVERS -->
+
             <div class="architecture-grid">
+
 
                 <div class="architecture-card">
 
@@ -957,14 +1255,31 @@
                     </div>
 
                     <div>
-                        <span>DOMAIN CONTROLLER</span>
-                        <h3>DC01-LAB-WS</h3>
-                        <p>Windows Server 2025</p>
+
+                        <span>
+                            DOMAIN CONTROLLER
+                        </span>
+
+                        <h3>
+                            DC01-LAB-WS
+                        </h3>
+
+                        <p>
+                            Windows Server 2025
+                        </p>
 
                         <div class="architecture-detail">
-                            <small>IP ADDRESS</small>
-                            <strong>192.168.78.10</strong>
+
+                            <small>
+                                IP ADDRESS
+                            </small>
+
+                            <strong>
+                                192.168.78.10
+                            </strong>
+
                         </div>
+
                     </div>
 
                 </div>
@@ -977,23 +1292,46 @@
                     </div>
 
                     <div>
-                        <span>WINDOWS CLIENT</span>
-                        <h3>WIN10-CLIENTE01</h3>
-                        <p>Windows 10 Pro</p>
+
+                        <span>
+                            WINDOWS CLIENT
+                        </span>
+
+                        <h3>
+                            WIN10-CLIENTE01
+                        </h3>
+
+                        <p>
+                            Windows 10 Pro
+                        </p>
 
                         <div class="architecture-detail">
-                            <small>ADDRESSING</small>
-                            <strong>DHCP</strong>
+
+                            <small>
+                                ADDRESSING
+                            </small>
+
+                            <strong>
+                                DHCP
+                            </strong>
+
                         </div>
+
                     </div>
 
                 </div>
 
+
             </div>
+
 
             <div class="architecture-line"></div>
 
+
+            <!-- SERVICES -->
+
             <div class="architecture-services">
+
 
                 <div class="architecture-service">
 
@@ -1002,9 +1340,19 @@
                     </div>
 
                     <div>
-                        <span>DIRECTORY</span>
-                        <h3>Active Directory</h3>
-                        <p>AD DS</p>
+
+                        <span>
+                            DIRECTORY
+                        </span>
+
+                        <h3>
+                            Active Directory
+                        </h3>
+
+                        <p>
+                            AD DS
+                        </p>
+
                     </div>
 
                 </div>
@@ -1017,9 +1365,19 @@
                     </div>
 
                     <div>
-                        <span>NAME SERVICE</span>
-                        <h3>DNS</h3>
-                        <p>Resolución de nombres</p>
+
+                        <span>
+                            NAME SERVICE
+                        </span>
+
+                        <h3>
+                            DNS
+                        </h3>
+
+                        <p>
+                            Resolución de nombres
+                        </p>
+
                     </div>
 
                 </div>
@@ -1032,17 +1390,31 @@
                     </div>
 
                     <div>
-                        <span>NETWORK SERVICE</span>
-                        <h3>DHCP</h3>
-                        <p>Asignación automática de IP</p>
+
+                        <span>
+                            NETWORK SERVICE
+                        </span>
+
+                        <h3>
+                            DHCP
+                        </h3>
+
+                        <p>
+                            Asignación automática de IP
+                        </p>
+
                     </div>
 
                 </div>
 
+
             </div>
+
 
             <div class="architecture-line"></div>
 
+
+            <!-- DOMAIN -->
 
             <div class="architecture-node">
 
@@ -1051,15 +1423,28 @@
                 </div>
 
                 <div>
-                    <span>ACTIVE DIRECTORY DOMAIN</span>
-                    <h3>alvarez.local</h3>
-                    <p>Dominio del laboratorio</p>
+
+                    <span>
+                        ACTIVE DIRECTORY DOMAIN
+                    </span>
+
+                    <h3>
+                        alvarez.local
+                    </h3>
+
+                    <p>
+                        Dominio del laboratorio
+                    </p>
+
                 </div>
 
             </div>
 
+
             <div class="architecture-line"></div>
 
+
+            <!-- USER -->
 
             <div class="architecture-node">
 
@@ -1068,15 +1453,28 @@
                 </div>
 
                 <div>
-                    <span>DOMAIN USER</span>
-                    <h3>ALVAREZ\orlandy</h3>
-                    <p>Usuario utilizado para validar el dominio</p>
+
+                    <span>
+                        DOMAIN USER
+                    </span>
+
+                    <h3>
+                        ALVAREZ\orlandy
+                    </h3>
+
+                    <p>
+                        Usuario utilizado para validar el dominio
+                    </p>
+
                 </div>
 
             </div>
 
+
             <div class="architecture-line"></div>
 
+
+            <!-- GROUP POLICY -->
 
             <div class="architecture-node">
 
@@ -1085,12 +1483,23 @@
                 </div>
 
                 <div>
-                    <span>GROUP POLICY</span>
-                    <h3>GPO-IT-Restriccion-Panel</h3>
-                    <p>Política aplicada al usuario del laboratorio</p>
+
+                    <span>
+                        GROUP POLICY
+                    </span>
+
+                    <h3>
+                        GPO-IT-Restriccion-Panel
+                    </h3>
+
+                    <p>
+                        Política aplicada al usuario del laboratorio
+                    </p>
+
                 </div>
 
             </div>
+
 
         </div>
 
@@ -1164,9 +1573,7 @@
         <div class="evidence-list">
 
 
-            <!-- =================================================
-                 01 - CAMBIO DE NOMBRE
-            ================================================== -->
+            <!-- 01 -->
 
             <article class="evidence">
 
@@ -1215,9 +1622,7 @@
             </article>
 
 
-            <!-- =================================================
-                 02 - ROLES
-            ================================================== -->
+            <!-- 02 -->
 
             <article class="evidence">
 
@@ -1266,9 +1671,7 @@
             </article>
 
 
-            <!-- =================================================
-                 03 - ACTIVE DIRECTORY
-            ================================================== -->
+            <!-- 03 -->
 
             <article class="evidence">
 
@@ -1317,9 +1720,7 @@
             </article>
 
 
-            <!-- =================================================
-                 04 - USUARIOS Y GRUPOS
-            ================================================== -->
+            <!-- 04 -->
 
             <article class="evidence">
 
@@ -1368,9 +1769,7 @@
             </article>
 
 
-            <!-- =================================================
-                 05 - CREACION USUARIO
-            ================================================== -->
+            <!-- 05 -->
 
             <article class="evidence">
 
@@ -1419,9 +1818,7 @@
             </article>
 
 
-            <!-- =================================================
-                 06 - CONTRASEÑA
-            ================================================== -->
+            <!-- 06 -->
 
             <article class="evidence">
 
@@ -1469,9 +1866,7 @@
             </article>
 
 
-            <!-- =================================================
-                 07 - CAMBIO CONTRASEÑA
-            ================================================== -->
+            <!-- 07 -->
 
             <article class="evidence">
 
@@ -1520,9 +1915,7 @@
             </article>
 
 
-            <!-- =================================================
-                 08 - CLIENTE CONFIG RED
-            ================================================== -->
+            <!-- 08 -->
 
             <article class="evidence">
 
@@ -1571,9 +1964,7 @@
             </article>
 
 
-            <!-- =================================================
-                 09 - UNIENDO CLIENTE
-            ================================================== -->
+            <!-- 09 -->
 
             <article class="evidence">
 
@@ -1621,9 +2012,7 @@
             </article>
 
 
-            <!-- =================================================
-                 10 - CLIENTE UNIDO
-            ================================================== -->
+            <!-- 10 -->
 
             <article class="evidence">
 
@@ -1671,9 +2060,7 @@
             </article>
 
 
-            <!-- =================================================
-                 11 - DHCP ROLE
-            ================================================== -->
+            <!-- 11 -->
 
             <article class="evidence">
 
@@ -1722,9 +2109,7 @@
             </article>
 
 
-            <!-- =================================================
-                 12 - CONFIG DHCP
-            ================================================== -->
+            <!-- 12 -->
 
             <article class="evidence">
 
@@ -1773,9 +2158,7 @@
             </article>
 
 
-            <!-- =================================================
-                 13 - DHCP
-            ================================================== -->
+            <!-- 13 -->
 
             <article class="evidence">
 
@@ -1823,9 +2206,7 @@
             </article>
 
 
-            <!-- =================================================
-                 14 - RANGO IP
-            ================================================== -->
+            <!-- 14 -->
 
             <article class="evidence">
 
@@ -1873,9 +2254,7 @@
             </article>
 
 
-            <!-- =================================================
-                 15 - DHCP COMPLETO
-            ================================================== -->
+            <!-- 15 -->
 
             <article class="evidence">
 
@@ -1923,9 +2302,7 @@
             </article>
 
 
-            <!-- =================================================
-                 16 - GPO CREADA
-            ================================================== -->
+            <!-- 16 -->
 
             <article class="evidence">
 
@@ -1975,9 +2352,7 @@
             </article>
 
 
-            <!-- =================================================
-                 17 - CREAR GPO
-            ================================================== -->
+            <!-- 17 -->
 
             <article class="evidence">
 
@@ -2026,9 +2401,7 @@
             </article>
 
 
-            <!-- =================================================
-                 18 - APLICANDO POLITICAS
-            ================================================== -->
+            <!-- 18 -->
 
             <article class="evidence">
 
@@ -2077,9 +2450,7 @@
             </article>
 
 
-            <!-- =================================================
-                 19 - DIRECTIVA ACTUALIZADA
-            ================================================== -->
+            <!-- 19 -->
 
             <article class="evidence">
 
@@ -2127,9 +2498,7 @@
             </article>
 
 
-            <!-- =================================================
-                 20 - GPRESULT
-            ================================================== -->
+            <!-- 20 -->
 
             <article class="evidence">
 
@@ -2178,9 +2547,7 @@
             </article>
 
 
-            <!-- =================================================
-                 21 - PING
-            ================================================== -->
+            <!-- 21 -->
 
             <article class="evidence">
 
@@ -2228,9 +2595,7 @@
             </article>
 
 
-            <!-- =================================================
-                 22 - WHOAMI
-            ================================================== -->
+            <!-- 22 -->
 
             <article class="evidence">
 
@@ -2279,9 +2644,7 @@
             </article>
 
 
-            <!-- =================================================
-                 23 - FIREWALL
-            ================================================== -->
+            <!-- 23 -->
 
             <article class="evidence">
 
@@ -2668,3 +3031,4 @@
 
 </body>
 </html>
+

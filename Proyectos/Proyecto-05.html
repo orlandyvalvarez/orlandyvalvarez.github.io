@@ -36,6 +36,7 @@
             color: #8b949e;
             font-size: 18px;
             max-width: 750px;
+            line-height: 1.7;
         }
 
         .section {
@@ -82,16 +83,16 @@
             border: 1px solid #30363d;
             border-radius: 10px;
             padding: 22px;
-            text-align: center;
         }
 
         .architecture-card h3 {
-            margin-bottom: 8px;
+            margin: 0 0 8px;
         }
 
         .architecture-card p {
             color: #8b949e;
             font-size: 14px;
+            line-height: 1.6;
             margin: 0;
         }
 
@@ -112,7 +113,7 @@
 
         .evidence-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
         }
 
@@ -125,6 +126,7 @@
 
         .evidence-card img {
             width: 100%;
+            height: auto;
             display: block;
             background: #0d1117;
         }
@@ -134,8 +136,7 @@
         }
 
         .evidence-content h3 {
-            margin-top: 0;
-            margin-bottom: 10px;
+            margin: 0 0 10px;
         }
 
         .evidence-content p {
@@ -164,17 +165,20 @@
             padding: 30px;
         }
 
-        .repo-box a {
+        .repo-box p {
+            color: #8b949e;
+            line-height: 1.7;
+        }
+
+        .repo-box a,
+        .back-link {
             color: #58a6ff;
             text-decoration: none;
-            font-weight: 600;
         }
 
         .back-link {
             display: inline-block;
-            margin-top: 35px;
-            color: #58a6ff;
-            text-decoration: none;
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -201,7 +205,7 @@
     </header>
 
 
-    <!-- OVERVIEW -->
+    <!-- RESUMEN -->
     <section class="section">
 
         <h2>Resumen del laboratorio</h2>
@@ -245,7 +249,7 @@
 
             <div class="info-card">
                 <strong>Flujo probado</strong>
-                <span>Solicitud → Solución → Cierre</span>
+                <span>Solicitud → Seguimiento → Solución → Cierre</span>
             </div>
 
         </div>
@@ -253,36 +257,51 @@
     </section>
 
 
-    <!-- ARCHITECTURE -->
+    <!-- ARQUITECTURA -->
     <section class="section">
 
-        <h2>Arquitectura</h2>
+        <h2>Componentes del laboratorio</h2>
 
         <div class="architecture">
 
             <div class="architecture-card">
                 <h3>Linux Mint</h3>
-                <p>Sistema operativo utilizado para el laboratorio.</p>
+                <p>
+                    Sistema operativo utilizado como entorno principal
+                    para realizar el laboratorio.
+                </p>
             </div>
 
             <div class="architecture-card">
                 <h3>Apache2</h3>
-                <p>Servidor web encargado de publicar GLPI.</p>
+                <p>
+                    Servidor web utilizado para publicar y ejecutar
+                    la plataforma GLPI.
+                </p>
             </div>
 
             <div class="architecture-card">
                 <h3>PHP</h3>
-                <p>Entorno requerido para ejecutar GLPI.</p>
+                <p>
+                    Entorno necesario para ejecutar GLPI y sus
+                    componentes web.
+                </p>
             </div>
 
             <div class="architecture-card">
                 <h3>GLPI 11</h3>
-                <p>Plataforma utilizada para gestionar el Service Desk.</p>
+                <p>
+                    Plataforma utilizada para administrar solicitudes
+                    y operaciones del Service Desk.
+                </p>
             </div>
 
             <div class="architecture-card">
                 <h3>MariaDB</h3>
-                <p>Base de datos utilizada por GLPI.</p>
+                <p>
+                    Sistema de base de datos utilizado para almacenar
+                    la información de GLPI.
+                </p>
             </div>
 
         </div>
@@ -290,7 +309,7 @@
     </section>
 
 
-    <!-- TECHNOLOGIES -->
+    <!-- TECNOLOGÍAS -->
     <section class="section">
 
         <h2>Tecnologías utilizadas</h2>
@@ -302,7 +321,6 @@
             <span class="tech">Apache2</span>
             <span class="tech">PHP</span>
             <span class="tech">MariaDB</span>
-            <span class="tech">MySQL</span>
             <span class="tech">ITIL</span>
             <span class="tech">Service Desk</span>
             <span class="tech">Ticketing</span>
@@ -314,17 +332,16 @@
     </section>
 
 
-    <!-- EVIDENCES -->
+    <!-- EVIDENCIAS -->
     <section class="section">
 
         <h2>Evidencias del laboratorio</h2>
 
-        <p style="color:#8b949e; max-width:750px; margin-bottom:30px;">
-            Las siguientes capturas documentan las principales etapas de
-            instalación, configuración y validación del laboratorio.
-            Algunas evidencias muestran comandos porque fueron utilizados
-            para instalar, configurar o verificar los componentes desde
-            la terminal de Linux.
+        <p style="color:#8b949e; max-width:780px; line-height:1.7; margin-bottom:30px;">
+            Las capturas documentan las principales etapas de instalación,
+            configuración y validación del laboratorio. Algunas muestran
+            comandos de terminal porque fueron utilizados para instalar,
+            configurar o comprobar los servicios desde Linux.
         </p>
 
 
@@ -335,7 +352,7 @@
             <article class="evidence-card">
 
                 <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/evidencias/01-Apache-Funcionando.png"
+                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/01-Runnig%20Apache.png"
                     alt="Apache funcionando"
                     loading="lazy"
                 >
@@ -345,9 +362,8 @@
                     <h3>Apache funcionando</h3>
 
                     <p>
-                        Verificación del servidor web Apache2 después de su
-                        instalación en Linux Mint. Esta comprobación confirma
-                        que el servicio web está operativo.
+                        Verificación del servidor web Apache2 después
+                        de su instalación en Linux Mint.
                     </p>
 
                 </div>
@@ -359,7 +375,7 @@
             <article class="evidence-card">
 
                 <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/evidencias/02-PHP-Funcionando.png"
+                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/02-Running%20PHP.png"
                     alt="PHP funcionando"
                     loading="lazy"
                 >
@@ -369,8 +385,8 @@
                     <h3>PHP funcionando</h3>
 
                     <p>
-                        Comprobación de PHP y de los componentes necesarios
-                        para ejecutar correctamente la aplicación GLPI.
+                        Comprobación de PHP y de los componentes
+                        necesarios para ejecutar GLPI.
                     </p>
 
                 </div>
@@ -382,7 +398,7 @@
             <article class="evidence-card">
 
                 <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/evidencias/03-MariaDB-Funcionando.png"
+                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/03-MariaDB-Funcionando.png"
                     alt="MariaDB funcionando"
                     loading="lazy"
                 >
@@ -392,8 +408,31 @@
                     <h3>MariaDB funcionando</h3>
 
                     <p>
-                        Verificación del servicio MariaDB utilizado como
-                        motor de base de datos para GLPI.
+                        Verificación del servicio MariaDB utilizado
+                        como base de datos de GLPI.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 04 -->
+            <article class="evidence-card">
+
+                <img
+                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/04-MariaDB-Seguridad-Configurada.png"
+                    alt="Seguridad de MariaDB configurada"
+                    loading="lazy"
+                >
+
+                <div class="evidence-content">
+
+                    <h3>Seguridad de MariaDB</h3>
+
+                    <p>
+                        Configuración inicial de seguridad de MariaDB
+                        mediante la herramienta de instalación segura.
                     </p>
 
                 </div>
@@ -405,19 +444,64 @@
             <article class="evidence-card">
 
                 <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/evidencias/05-BaseDatos-GLPI-Creada.png"
-                    alt="Base de datos GLPI"
+                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/05-BaseDatos-GLPI-Creada.png"
+                    alt="Base de datos GLPI creada"
                     loading="lazy"
                 >
 
                 <div class="evidence-content">
 
-                    <h3>Base de datos de GLPI</h3>
+                    <h3>Base de datos GLPI</h3>
 
                     <p>
-                        Creación de la base de datos dedicada a GLPI y
-                        preparación del usuario utilizado para la conexión
-                        con MariaDB.
+                        Creación de la base de datos dedicada para
+                        almacenar la información de GLPI.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 06 -->
+            <article class="evidence-card">
+
+                <img
+                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/06-Usuario-GLPI-Creado.png"
+                    alt="Usuario de GLPI creado"
+                    loading="lazy"
+                >
+
+                <div class="evidence-content">
+
+                    <h3>Usuario de base de datos</h3>
+
+                    <p>
+                        Creación del usuario utilizado por GLPI para
+                        conectarse con MariaDB.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 07 -->
+            <article class="evidence-card">
+
+                <img
+                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/07-GLPI-Archivos-Preparados.png"
+                    alt="Archivos de GLPI preparados"
+                    loading="lazy"
+                >
+
+                <div class="evidence-content">
+
+                    <h3>Archivos de GLPI preparados</h3>
+
+                    <p>
+                        Preparación de los archivos de GLPI antes de
+                        completar la configuración del servidor web.
                     </p>
 
                 </div>
@@ -429,8 +513,8 @@
             <article class="evidence-card">
 
                 <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/evidencias/09-GLPI-Requisitos-Sistema-OK.png"
-                    alt="Requisitos de GLPI"
+                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/09-GLPI-Requisitos-Sistema.png"
+                    alt="Requisitos del sistema GLPI"
                     loading="lazy"
                 >
 
@@ -439,8 +523,77 @@
                     <h3>Requisitos del sistema</h3>
 
                     <p>
-                        Validación de los requisitos necesarios antes de
-                        completar la instalación de GLPI 11.
+                        Validación de los requisitos necesarios para
+                        continuar con la instalación de GLPI.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 10 -->
+            <article class="evidence-card">
+
+                <img
+                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/10-GLPI-BaseDatos-Seleccionada.png"
+                    alt="Base de datos seleccionada en GLPI"
+                    loading="lazy"
+                >
+
+                <div class="evidence-content">
+
+                    <h3>Base de datos seleccionada</h3>
+
+                    <p>
+                        Selección de la base de datos previamente creada
+                        para completar la instalación de GLPI.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 11 -->
+            <article class="evidence-card">
+
+                <img
+                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/11-GLPI-Instalacion-Completada.png"
+                    alt="Instalación de GLPI completada"
+                    loading="lazy"
+                >
+
+                <div class="evidence-content">
+
+                    <h3>Instalación completada</h3>
+
+                    <p>
+                        Evidencia de que el asistente de instalación
+                        de GLPI finalizó correctamente.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 12 -->
+            <article class="evidence-card">
+
+                <img
+                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/12-GLPI-Panel-Principal.png"
+                    alt="Panel principal de GLPI"
+                    loading="lazy"
+                >
+
+                <div class="evidence-content">
+
+                    <h3>Panel principal de GLPI</h3>
+
+                    <p>
+                        Acceso al panel principal después de completar
+                        la instalación y configuración inicial.
                     </p>
 
                 </div>
@@ -452,19 +605,41 @@
             <article class="evidence-card">
 
                 <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/evidencias/13-GLPI-Instalacion-Completada.png"
-                    alt="Instalación de GLPI completada"
+                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/13-GLPI-Categorias-Tickets.png"
+                    alt="Categorías ITIL de GLPI"
                     loading="lazy"
                 >
 
                 <div class="evidence-content">
 
-                    <h3>Instalación completada</h3>
+                    <h3>Categorías ITIL</h3>
 
                     <p>
-                        Evidencia del asistente de instalación después de
-                        completar correctamente la configuración inicial
-                        de GLPI 11.
+                        Configuración de categorías para organizar
+                        las solicitudes de soporte.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 14 -->
+            <article class="evidence-card">
+
+                <img
+                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/14-GLPI-Primer-Ticket.png"
+                    alt="Primer ticket de GLPI"
+                    loading="lazy"
+                >
+
+                <div class="evidence-content">
+
+                    <h3>Primera solicitud</h3>
+
+                    <p>
+                        Registro de una incidencia simulada para
+                        comprobar el flujo de atención del Service Desk.
                     </p>
 
                 </div>
@@ -476,18 +651,18 @@
             <article class="evidence-card">
 
                 <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/evidencias/15-GLPI-Categorias-Tickets.png"
-                    alt="Categorías ITIL en GLPI"
+                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/15-GLPI-Primer-Ticket.png"
+                    alt="Seguimiento de ticket GLPI"
                     loading="lazy"
                 >
 
                 <div class="evidence-content">
 
-                    <h3>Categorías ITIL</h3>
+                    <h3>Seguimiento de la solicitud</h3>
 
                     <p>
-                        Configuración de categorías para clasificar las
-                        solicitudes de soporte según el tipo de asistencia.
+                        Evidencia del seguimiento realizado durante
+                        la atención de la incidencia.
                     </p>
 
                 </div>
@@ -499,18 +674,18 @@
             <article class="evidence-card">
 
                 <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/evidencias/16-GLPI-Primer-Ticket.png"
-                    alt="Primer ticket de GLPI"
+                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/16-GLPI-Peticion-Cerrada.png"
+                    alt="Petición cerrada en GLPI"
                     loading="lazy"
                 >
 
                 <div class="evidence-content">
 
-                    <h3>Primer ticket</h3>
+                    <h3>Petición cerrada</h3>
 
                     <p>
-                        Registro de una incidencia simulada para comprobar
-                        el funcionamiento del sistema de solicitudes.
+                        Evidencia de la solución registrada y del
+                        cierre de la solicitud.
                     </p>
 
                 </div>
@@ -522,41 +697,18 @@
             <article class="evidence-card">
 
                 <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/evidencias/17-GLPI-Seguimiento-Peticion.png"
-                    alt="Seguimiento de petición"
+                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/17-GLPI-Usuario-Tecnico.png"
+                    alt="Usuario técnico de GLPI"
                     loading="lazy"
                 >
 
                 <div class="evidence-content">
 
-                    <h3>Seguimiento de la petición</h3>
+                    <h3>Usuario técnico</h3>
 
                     <p>
-                        Registro de las acciones realizadas durante la
-                        atención de la incidencia.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 18 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/evidencias/18-GLPI-Peticion-Cerrada.png"
-                    alt="Petición cerrada en GLPI"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>Petición cerrada</h3>
-
-                    <p>
-                        Evidencia de la solución registrada y del cierre
-                        de la solicitud dentro de GLPI.
+                        Evidencia de la configuración de un usuario
+                        con funciones orientadas a la atención técnica.
                     </p>
 
                 </div>
@@ -569,7 +721,7 @@
     </section>
 
 
-    <!-- RESULT -->
+    <!-- RESULTADO -->
     <section class="section">
 
         <h2>Resultado</h2>
@@ -581,7 +733,7 @@
             </div>
 
             <div class="result-item">
-                ✓ PHP configurado con los componentes requeridos
+                ✓ PHP configurado
             </div>
 
             <div class="result-item">
@@ -589,11 +741,11 @@
             </div>
 
             <div class="result-item">
-                ✓ Base de datos dedicada para GLPI
+                ✓ Base de datos de GLPI creada
             </div>
 
             <div class="result-item">
-                ✓ GLPI 11 instalado y operativo
+                ✓ GLPI 11 instalado
             </div>
 
             <div class="result-item">
@@ -605,11 +757,15 @@
             </div>
 
             <div class="result-item">
-                ✓ Seguimiento y solución registrados
+                ✓ Seguimiento realizado
             </div>
 
             <div class="result-item">
-                ✓ Solicitud cerrada correctamente
+                ✓ Solución registrada
+            </div>
+
+            <div class="result-item">
+                ✓ Solicitud cerrada
             </div>
 
         </div>
@@ -617,7 +773,7 @@
     </section>
 
 
-    <!-- REPOSITORY -->
+    <!-- REPOSITORIO -->
     <section class="section">
 
         <h2>Repositorio del laboratorio</h2>
@@ -625,20 +781,18 @@
         <div class="repo-box">
 
             <p>
-                El código de esta página pertenece al portafolio.
-                Las evidencias y documentación del laboratorio se
-                encuentran en un repositorio independiente.
+                La página de presentación forma parte del portafolio.
+                La documentación y las evidencias del laboratorio se
+                mantienen en un repositorio independiente de GitHub.
             </p>
 
-            <p>
-                <a
-                    href="https://github.com/orlandyvalvarez/it-service-desk-glpi"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Ver repositorio de IT Service Desk & GLPI →
-                </a>
-            </p>
+            <a
+                href="https://github.com/orlandyvalvarez/it-service-desk-glpi"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Ver repositorio de IT Service Desk & GLPI →
+            </a>
 
         </div>
 

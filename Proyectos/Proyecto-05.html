@@ -1,809 +1,2777 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Proyecto 05 | IT Service Desk & Ticketing</title>
+    <title>Proyecto 05 | IT Service Desk & Ticketing | Orlandy Vilorio</title>
 
-    <link rel="stylesheet" href="../css/style.css">
+    <meta
+        name="description"
+        content="Laboratorio práctico de IT Service Desk utilizando GLPI 11, Linux Mint, Apache, PHP y MariaDB desarrollado por Orlandy Vilorio."
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
 
     <style>
-        .project-page {
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0d1117;
+            color: #e6edf3;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            line-height: 1.7;
+        }
+
+        :root {
+
+            --background: #0d1117;
+            --card: #161b22;
+            --card-hover: #1c2128;
+            --border: #30363d;
+
+            --text: #e6edf3;
+            --muted: #8b949e;
+
+            --green: #3fb950;
+            --blue: #58a6ff;
+            --purple: #bc8cff;
+            --orange: #f0883e;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(13, 17, 23, 0.95);
+
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+
             max-width: 1100px;
             margin: auto;
-            padding: 40px 20px 80px;
+
+            padding: 15px 20px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .project-hero {
-            padding: 60px 0 40px;
-            border-bottom: 1px solid #30363d;
-        }
+        .logo {
 
-        .project-number {
-            color: #58a6ff;
+            color: var(--green);
+
+            text-decoration: none;
+
+            font-family: monospace;
+            font-size: 20px;
             font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 2px;
         }
 
-        .project-hero h1 {
-            font-size: clamp(36px, 6vw, 64px);
-            margin: 10px 0;
+        .logo span {
+            color: var(--blue);
         }
 
-        .project-hero p {
-            color: #8b949e;
-            font-size: 18px;
-            max-width: 750px;
-            line-height: 1.7;
+        .nav-links {
+
+            display: flex;
+            gap: 22px;
+        }
+
+        .nav-links a {
+
+            color: var(--muted);
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        .container {
+
+            max-width: 1100px;
+            margin: auto;
+
+            padding: 0 20px;
         }
 
         .section {
-            padding: 50px 0;
-            border-bottom: 1px solid #30363d;
+
+            padding: 80px 0;
+
+            border-bottom:
+                1px solid
+                rgba(48, 54, 61, 0.45);
         }
 
-        .section h2 {
-            font-size: 28px;
-            margin-bottom: 25px;
-        }
+        .section-number {
 
-        .overview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-        }
+            color: var(--green);
 
-        .info-card {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 10px;
-            padding: 20px;
-        }
+            font-family: monospace;
+            font-size: 12px;
 
-        .info-card strong {
-            display: block;
             margin-bottom: 8px;
         }
 
-        .info-card span {
-            color: #8b949e;
-            font-size: 14px;
+        .section-title {
+
+            font-size: 32px;
+
+            line-height: 1.2;
+
+            margin-bottom: 15px;
         }
+
+        .section-description {
+
+            max-width: 800px;
+
+            color: var(--muted);
+
+            font-size: 15px;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+
+            padding: 90px 0 70px;
+        }
+
+        .hero-label {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 7px 13px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 20px;
+
+            background: var(--card);
+
+            color: var(--muted);
+
+            font-family: monospace;
+
+            font-size: 12px;
+
+            margin-bottom: 20px;
+        }
+
+        .hero-dot {
+
+            width: 8px;
+            height: 8px;
+
+            background: var(--green);
+
+            border-radius: 50%;
+
+            margin-right: 9px;
+
+            box-shadow:
+                0 0 10px
+                var(--green);
+        }
+
+        .hero h1 {
+
+            max-width: 900px;
+
+            font-size:
+                clamp(32px, 6vw, 58px);
+
+            line-height: 1.08;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: var(--blue);
+        }
+
+        .hero-subtitle {
+
+            color: var(--green);
+
+            font-family: monospace;
+
+            font-size: 16px;
+
+            margin-bottom: 20px;
+        }
+
+        .hero-text {
+
+            max-width: 800px;
+
+            color: var(--muted);
+
+            font-size: 16px;
+
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+
+            display: flex;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 11px 18px;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+        .btn-primary {
+
+            background: var(--green);
+
+            color: #0d1117;
+        }
+
+        .btn-primary:hover {
+
+            transform: translateY(-2px);
+
+            background: #56d364;
+        }
+
+        .btn-secondary {
+
+            background: var(--card);
+
+            color: var(--text);
+
+            border:
+                1px solid
+                var(--border);
+        }
+
+        .btn-secondary:hover {
+
+            color: var(--blue);
+
+            border-color: var(--blue);
+        }
+
+
+        /* =========================
+           INFO
+        ========================= */
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+
+            margin-top: 30px;
+        }
+
+        .info-card {
+
+            background: var(--card);
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 8px;
+
+            padding: 18px;
+        }
+
+        .info-card i {
+
+            color: var(--green);
+
+            font-size: 18px;
+
+            margin-bottom: 10px;
+        }
+
+        .info-card h3 {
+
+            font-size: 14px;
+
+            margin-bottom: 4px;
+        }
+
+        .info-card p {
+
+            color: var(--muted);
+
+            font-family: monospace;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           ARCHITECTURE
+        ========================= */
 
         .architecture {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-        }
 
-        .architecture-card {
-            background: #161b22;
-            border: 1px solid #30363d;
+            background: #010409;
+
+            border:
+                1px solid
+                var(--border);
+
             border-radius: 10px;
-            padding: 22px;
+
+            padding: 30px;
+
+            overflow-x: auto;
+
+            margin-top: 30px;
         }
 
-        .architecture-card h3 {
-            margin: 0 0 8px;
+        .architecture-grid {
+
+            min-width: 650px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 14px;
         }
 
-        .architecture-card p {
-            color: #8b949e;
+        .architecture-title {
+
+            color: var(--blue);
+
+            font-family: monospace;
+
             font-size: 14px;
-            line-height: 1.6;
-            margin: 0;
+
+            margin-bottom: 5px;
         }
+
+        .architecture-node {
+
+            width: 280px;
+
+            background: var(--card);
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 8px;
+
+            padding: 16px;
+
+            text-align: center;
+        }
+
+        .architecture-node i {
+
+            color: var(--green);
+
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+        .architecture-node h3 {
+
+            font-size: 15px;
+
+            margin-bottom: 4px;
+        }
+
+        .architecture-node p {
+
+            color: var(--muted);
+
+            font-family: monospace;
+
+            font-size: 11px;
+        }
+
+        .architecture-arrow {
+
+            color: var(--green);
+
+            font-size: 20px;
+        }
+
+        .architecture-services {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+
+            width: 100%;
+
+            max-width: 760px;
+        }
+
+        .architecture-service {
+
+            background: #161b22;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 7px;
+
+            padding: 14px;
+
+            text-align: center;
+
+            color: var(--blue);
+
+            font-family: monospace;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           TECHNOLOGIES
+        ========================= */
 
         .tech-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+            margin-top: 25px;
         }
 
         .tech {
-            background: #21262d;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 8px 12px;
-            color: #c9d1d9;
-            font-size: 14px;
+
+            background: var(--card);
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 7px;
+
+            padding: 14px;
+
+            color: var(--blue);
+
+            font-family: monospace;
+
+            font-size: 12px;
         }
 
-        .evidence-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+
+        /* =========================
+           EVIDENCE
+        ========================= */
+
+        .evidence-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 45px;
+
+            margin-top: 40px;
         }
 
-        .evidence-card {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 12px;
+        .evidence {
+
+            background: var(--card);
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 10px;
+
             overflow: hidden;
+
+            transition: 0.2s;
         }
 
-        .evidence-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-            background: #0d1117;
+        .evidence:hover {
+
+            border-color: var(--green);
         }
 
-        .evidence-content {
+        .evidence-header {
+
+            padding: 22px 24px 15px;
+        }
+
+        .evidence-number {
+
+            color: var(--green);
+
+            font-family: monospace;
+
+            font-size: 12px;
+
+            margin-bottom: 5px;
+        }
+
+        .evidence h3 {
+
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+        .evidence-description {
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            max-width: 850px;
+        }
+
+        .evidence-image {
+
+            background: #010409;
+
+            border-top:
+                1px solid
+                var(--border);
+
             padding: 20px;
         }
 
-        .evidence-content h3 {
-            margin: 0 0 10px;
+        .evidence-image img {
+
+            display: block;
+
+            width: 100%;
+
+            max-width: 950px;
+
+            height: auto;
+
+            margin: auto;
+
+            border-radius: 6px;
+
+            border:
+                1px solid
+                var(--border);
+
+            box-shadow:
+                0 10px 35px
+                rgba(0,0,0,0.35);
         }
 
-        .evidence-content p {
-            color: #8b949e;
-            font-size: 14px;
-            line-height: 1.6;
-            margin: 0;
+        .evidence-footer {
+
+            padding: 15px 24px 22px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
         }
 
-        .result-list {
+        .evidence-tag {
+
+            color: var(--blue);
+
+            font-family: monospace;
+
+            font-size: 11px;
+        }
+
+
+        /* =========================
+           COMMANDS
+        ========================= */
+
+        .commands {
+
             display: grid;
-            gap: 12px;
-        }
 
-        .result-item {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 15px 18px;
-        }
+            grid-template-columns:
+                repeat(2, 1fr);
 
-        .repo-box {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            padding: 30px;
-        }
+            gap: 15px;
 
-        .repo-box p {
-            color: #8b949e;
-            line-height: 1.7;
-        }
-
-        .repo-box a,
-        .back-link {
-            color: #58a6ff;
-            text-decoration: none;
-        }
-
-        .back-link {
-            display: inline-block;
             margin-top: 30px;
         }
+
+        .command-box {
+
+            background: #010409;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 7px;
+
+            padding: 18px;
+        }
+
+        .command-box span {
+
+            display: block;
+
+            color: var(--green);
+
+            font-family: monospace;
+
+            font-size: 12px;
+
+            margin-bottom: 8px;
+        }
+
+        .command-box code {
+
+            color: #e6edf3;
+
+            font-family: monospace;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           RESULT
+        ========================= */
+
+        .result-box {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(63,185,80,0.08),
+                    rgba(88,166,255,0.05)
+                );
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 10px;
+
+            padding: 30px;
+
+            margin-top: 30px;
+        }
+
+        .result-box h3 {
+
+            color: var(--green);
+
+            font-size: 20px;
+
+            margin-bottom: 12px;
+        }
+
+        .result-box p {
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            margin-bottom: 12px;
+        }
+
+        .check-list {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+        .check {
+
+            color: var(--text);
+
+            font-size: 13px;
+        }
+
+        .check i {
+
+            color: var(--green);
+
+            margin-right: 8px;
+        }
+
+
+        /* =========================
+           REPOSITORY
+        ========================= */
+
+        .repo {
+
+            text-align: center;
+
+            padding: 80px 20px;
+        }
+
+        .repo h2 {
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+        .repo p {
+
+            color: var(--muted);
+
+            max-width: 650px;
+
+            margin:
+                0 auto 25px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 25px 20px;
+
+            border-top:
+                1px solid
+                var(--border);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            .info-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .tech-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .architecture-services {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .commands {
+
+                grid-template-columns: 1fr;
+            }
+
+            .check-list {
+
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 650px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+
+                padding:
+                    55px 0 50px;
+            }
+
+            .hero h1 {
+
+                letter-spacing: -1px;
+            }
+
+            .section {
+
+                padding:
+                    55px 0;
+            }
+
+            .section-title {
+
+                font-size: 26px;
+            }
+
+            .info-grid,
+            .tech-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+            .architecture {
+
+                padding: 20px;
+            }
+
+            .evidence-header {
+
+                padding: 18px;
+            }
+
+            .evidence-image {
+
+                padding: 10px;
+            }
+
+            .evidence-footer {
+
+                padding:
+                    12px 18px 18px;
+            }
+
+            footer {
+
+                flex-direction: column;
+
+                gap: 8px;
+
+                text-align: center;
+            }
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
-<div class="project-page">
 
-    <!-- HERO -->
-    <header class="project-hero">
+<header>
 
-        <div class="project-number">
-            PROYECTO 05
-        </div>
+    <nav class="navbar">
 
-        <h1>IT Service Desk & Ticketing</h1>
+        <a
+            href="../index.html"
+            class="logo"
+        >
+            OV<span>_</span>
+        </a>
 
-        <p>
-            Implementación de una plataforma de mesa de ayuda utilizando
-            GLPI 11 sobre Linux Mint para gestionar solicitudes de soporte,
-            categorías ITIL, seguimiento, soluciones y cierre de incidencias.
-        </p>
+        <div class="nav-links">
 
-    </header>
+            <a href="#overview">
+                Overview
+            </a>
 
+            <a href="#architecture">
+                Architecture
+            </a>
 
-    <!-- RESUMEN -->
-    <section class="section">
+            <a href="#evidence">
+                Evidence
+            </a>
 
-        <h2>Resumen del laboratorio</h2>
-
-        <div class="overview-grid">
-
-            <div class="info-card">
-                <strong>Sistema</strong>
-                <span>Linux Mint XFCE</span>
-            </div>
-
-            <div class="info-card">
-                <strong>Aplicación</strong>
-                <span>GLPI 11</span>
-            </div>
-
-            <div class="info-card">
-                <strong>Servidor web</strong>
-                <span>Apache2</span>
-            </div>
-
-            <div class="info-card">
-                <strong>Lenguaje</strong>
-                <span>PHP</span>
-            </div>
-
-            <div class="info-card">
-                <strong>Base de datos</strong>
-                <span>MariaDB</span>
-            </div>
-
-            <div class="info-card">
-                <strong>Base de datos GLPI</strong>
-                <span>glpidb</span>
-            </div>
-
-            <div class="info-card">
-                <strong>Gestión</strong>
-                <span>ITIL / Service Desk</span>
-            </div>
-
-            <div class="info-card">
-                <strong>Flujo probado</strong>
-                <span>Solicitud → Seguimiento → Solución → Cierre</span>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ARQUITECTURA -->
-    <section class="section">
-
-        <h2>Componentes del laboratorio</h2>
-
-        <div class="architecture">
-
-            <div class="architecture-card">
-                <h3>Linux Mint</h3>
-                <p>
-                    Sistema operativo utilizado como entorno principal
-                    para realizar el laboratorio.
-                </p>
-            </div>
-
-            <div class="architecture-card">
-                <h3>Apache2</h3>
-                <p>
-                    Servidor web utilizado para publicar y ejecutar
-                    la plataforma GLPI.
-                </p>
-            </div>
-
-            <div class="architecture-card">
-                <h3>PHP</h3>
-                <p>
-                    Entorno necesario para ejecutar GLPI y sus
-                    componentes web.
-                </p>
-            </div>
-
-            <div class="architecture-card">
-                <h3>GLPI 11</h3>
-                <p>
-                    Plataforma utilizada para administrar solicitudes
-                    y operaciones del Service Desk.
-                </p>
-            </div>
-
-            <div class="architecture-card">
-                <h3>MariaDB</h3>
-                <p>
-                    Sistema de base de datos utilizado para almacenar
-                    la información de GLPI.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- TECNOLOGÍAS -->
-    <section class="section">
-
-        <h2>Tecnologías utilizadas</h2>
-
-        <div class="tech-grid">
-
-            <span class="tech">Linux Mint</span>
-            <span class="tech">GLPI 11</span>
-            <span class="tech">Apache2</span>
-            <span class="tech">PHP</span>
-            <span class="tech">MariaDB</span>
-            <span class="tech">ITIL</span>
-            <span class="tech">Service Desk</span>
-            <span class="tech">Ticketing</span>
-            <span class="tech">Incident Management</span>
-            <span class="tech">Linux Administration</span>
-
-        </div>
-
-    </section>
-
-
-    <!-- EVIDENCIAS -->
-    <section class="section">
-
-        <h2>Evidencias del laboratorio</h2>
-
-        <p style="color:#8b949e; max-width:780px; line-height:1.7; margin-bottom:30px;">
-            Las capturas documentan las principales etapas de instalación,
-            configuración y validación del laboratorio. Algunas muestran
-            comandos de terminal porque fueron utilizados para instalar,
-            configurar o comprobar los servicios desde Linux.
-        </p>
-
-
-        <div class="evidence-grid">
-
-
-            <!-- 01 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/01-Runnig%20Apache.png"
-                    alt="Apache funcionando"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>Apache funcionando</h3>
-
-                    <p>
-                        Verificación del servidor web Apache2 después
-                        de su instalación en Linux Mint.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 02 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/02-Running%20PHP.png"
-                    alt="PHP funcionando"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>PHP funcionando</h3>
-
-                    <p>
-                        Comprobación de PHP y de los componentes
-                        necesarios para ejecutar GLPI.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 03 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/03-MariaDB-Funcionando.png"
-                    alt="MariaDB funcionando"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>MariaDB funcionando</h3>
-
-                    <p>
-                        Verificación del servicio MariaDB utilizado
-                        como base de datos de GLPI.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 04 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/04-MariaDB-Seguridad-Configurada.png"
-                    alt="Seguridad de MariaDB configurada"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>Seguridad de MariaDB</h3>
-
-                    <p>
-                        Configuración inicial de seguridad de MariaDB
-                        mediante la herramienta de instalación segura.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 05 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/05-BaseDatos-GLPI-Creada.png"
-                    alt="Base de datos GLPI creada"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>Base de datos GLPI</h3>
-
-                    <p>
-                        Creación de la base de datos dedicada para
-                        almacenar la información de GLPI.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 06 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/06-Usuario-GLPI-Creado.png"
-                    alt="Usuario de GLPI creado"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>Usuario de base de datos</h3>
-
-                    <p>
-                        Creación del usuario utilizado por GLPI para
-                        conectarse con MariaDB.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 07 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/07-GLPI-Archivos-Preparados.png"
-                    alt="Archivos de GLPI preparados"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>Archivos de GLPI preparados</h3>
-
-                    <p>
-                        Preparación de los archivos de GLPI antes de
-                        completar la configuración del servidor web.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 09 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/09-GLPI-Requisitos-Sistema.png"
-                    alt="Requisitos del sistema GLPI"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>Requisitos del sistema</h3>
-
-                    <p>
-                        Validación de los requisitos necesarios para
-                        continuar con la instalación de GLPI.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 10 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/10-GLPI-BaseDatos-Seleccionada.png"
-                    alt="Base de datos seleccionada en GLPI"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>Base de datos seleccionada</h3>
-
-                    <p>
-                        Selección de la base de datos previamente creada
-                        para completar la instalación de GLPI.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 11 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/11-GLPI-Instalacion-Completada.png"
-                    alt="Instalación de GLPI completada"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>Instalación completada</h3>
-
-                    <p>
-                        Evidencia de que el asistente de instalación
-                        de GLPI finalizó correctamente.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 12 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/12-GLPI-Panel-Principal.png"
-                    alt="Panel principal de GLPI"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>Panel principal de GLPI</h3>
-
-                    <p>
-                        Acceso al panel principal después de completar
-                        la instalación y configuración inicial.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 13 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/13-GLPI-Categorias-Tickets.png"
-                    alt="Categorías ITIL de GLPI"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>Categorías ITIL</h3>
-
-                    <p>
-                        Configuración de categorías para organizar
-                        las solicitudes de soporte.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 14 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/14-GLPI-Primer-Ticket.png"
-                    alt="Primer ticket de GLPI"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>Primera solicitud</h3>
-
-                    <p>
-                        Registro de una incidencia simulada para
-                        comprobar el flujo de atención del Service Desk.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 15 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/15-GLPI-Primer-Ticket.png"
-                    alt="Seguimiento de ticket GLPI"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>Seguimiento de la solicitud</h3>
-
-                    <p>
-                        Evidencia del seguimiento realizado durante
-                        la atención de la incidencia.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 16 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/16-GLPI-Peticion-Cerrada.png"
-                    alt="Petición cerrada en GLPI"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>Petición cerrada</h3>
-
-                    <p>
-                        Evidencia de la solución registrada y del
-                        cierre de la solicitud.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- 17 -->
-            <article class="evidence-card">
-
-                <img
-                    src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/17-GLPI-Usuario-Tecnico.png"
-                    alt="Usuario técnico de GLPI"
-                    loading="lazy"
-                >
-
-                <div class="evidence-content">
-
-                    <h3>Usuario técnico</h3>
-
-                    <p>
-                        Evidencia de la configuración de un usuario
-                        con funciones orientadas a la atención técnica.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- RESULTADO -->
-    <section class="section">
-
-        <h2>Resultado</h2>
-
-        <div class="result-list">
-
-            <div class="result-item">
-                ✓ Apache2 instalado y operativo
-            </div>
-
-            <div class="result-item">
-                ✓ PHP configurado
-            </div>
-
-            <div class="result-item">
-                ✓ MariaDB configurado
-            </div>
-
-            <div class="result-item">
-                ✓ Base de datos de GLPI creada
-            </div>
-
-            <div class="result-item">
-                ✓ GLPI 11 instalado
-            </div>
-
-            <div class="result-item">
-                ✓ Categorías ITIL configuradas
-            </div>
-
-            <div class="result-item">
-                ✓ Solicitud de soporte registrada
-            </div>
-
-            <div class="result-item">
-                ✓ Seguimiento realizado
-            </div>
-
-            <div class="result-item">
-                ✓ Solución registrada
-            </div>
-
-            <div class="result-item">
-                ✓ Solicitud cerrada
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- REPOSITORIO -->
-    <section class="section">
-
-        <h2>Repositorio del laboratorio</h2>
-
-        <div class="repo-box">
-
-            <p>
-                La página de presentación forma parte del portafolio.
-                La documentación y las evidencias del laboratorio se
-                mantienen en un repositorio independiente de GitHub.
-            </p>
-
-            <a
-                href="https://github.com/orlandyvalvarez/it-service-desk-glpi"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Ver repositorio de IT Service Desk & GLPI →
+            <a href="#results">
+                Results
             </a>
 
         </div>
 
-        <a class="back-link" href="../index.html">
-            ← Volver al portafolio
+    </nav>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-label">
+
+            <span class="hero-dot"></span>
+
+            PROJECT 05 / INFRASTRUCTURE LAB
+
+        </div>
+
+
+        <h1>
+
+            IT Service Desk
+            <span>& Ticketing</span>
+
+        </h1>
+
+
+        <p class="hero-subtitle">
+
+            GLPI · ITSM · Linux · Apache · PHP · MariaDB
+
+        </p>
+
+
+        <p class="hero-text">
+
+            Laboratorio práctico de IT Service Desk desarrollado
+            utilizando GLPI 11 sobre Linux Mint.
+
+            El objetivo fue implementar una plataforma de mesa de ayuda
+            funcional para gestionar solicitudes de soporte, clasificación
+            de incidencias, seguimiento, solución y cierre de peticiones.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+
+            <a
+                href="https://github.com/orlandyvalvarez/it-service-desk-glpi"
+                target="_blank"
+                class="btn btn-primary"
+            >
+
+                <i class="fab fa-github"></i>
+
+                Ver repositorio
+
+            </a>
+
+
+            <a
+                href="../index.html"
+                class="btn btn-secondary"
+            >
+
+                <i class="fas fa-arrow-left"></i>
+
+                Volver al portafolio
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     OVERVIEW
+===================================================== -->
+
+<section
+    id="overview"
+    class="section"
+>
+
+    <div class="container">
+
+
+        <p class="section-number">
+
+            01 / OVERVIEW
+
+        </p>
+
+
+        <h2 class="section-title">
+
+            Entorno del laboratorio
+
+        </h2>
+
+
+        <p class="section-description">
+
+            El laboratorio fue construido directamente sobre Linux Mint
+            utilizando una instalación local de Apache, PHP y MariaDB.
+            Sobre esta infraestructura se implementó GLPI 11 para simular
+            un entorno básico de mesa de ayuda y gestión de incidencias.
+
+        </p>
+
+
+
+        <div class="info-grid">
+
+
+            <div class="info-card">
+
+                <i class="fab fa-linux"></i>
+
+                <h3>
+                    Sistema Operativo
+                </h3>
+
+                <p>
+                    Linux Mint
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <i class="fas fa-headset"></i>
+
+                <h3>
+                    Service Desk
+                </h3>
+
+                <p>
+                    GLPI 11
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <i class="fas fa-server"></i>
+
+                <h3>
+                    Web Server
+                </h3>
+
+                <p>
+                    Apache2
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <i class="fab fa-php"></i>
+
+                <h3>
+                    Application
+                </h3>
+
+                <p>
+                    PHP
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <i class="fas fa-database"></i>
+
+                <h3>
+                    Database
+                </h3>
+
+                <p>
+                    MariaDB
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <i class="fas fa-database"></i>
+
+                <h3>
+                    Database Name
+                </h3>
+
+                <p>
+                    glpidb
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <i class="fas fa-list-check"></i>
+
+                <h3>
+                    ITIL Categories
+                </h3>
+
+                <p>
+                    Hardware / Software
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <i class="fas fa-ticket"></i>
+
+                <h3>
+                    Ticketing
+                </h3>
+
+                <p>
+                    Request → Solution → Close
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ARCHITECTURE
+===================================================== -->
+
+<section
+    id="architecture"
+    class="section"
+>
+
+    <div class="container">
+
+
+        <p class="section-number">
+
+            02 / ARCHITECTURE
+
+        </p>
+
+
+        <h2 class="section-title">
+
+            Arquitectura del Service Desk
+
+        </h2>
+
+
+        <p class="section-description">
+
+            GLPI funciona como la plataforma central del laboratorio.
+            Apache proporciona el servicio web, PHP ejecuta la aplicación
+            y MariaDB almacena la información de usuarios, categorías,
+            solicitudes y soluciones.
+
+        </p>
+
+
+
+        <div class="architecture">
+
+
+            <div class="architecture-grid">
+
+
+                <div class="architecture-title">
+
+                    LINUX MINT / LOCAL LAB
+
+                </div>
+
+
+                <div class="architecture-node">
+
+                    <i class="fas fa-server"></i>
+
+                    <h3>
+                        Apache2
+                    </h3>
+
+                    <p>
+                        Web Server
+                    </p>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+
+                    ↓
+
+                </div>
+
+
+                <div class="architecture-node">
+
+                    <i class="fas fa-headset"></i>
+
+                    <h3>
+                        GLPI 11
+                    </h3>
+
+                    <p>
+                        IT Service Desk / Ticketing
+                    </p>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+
+                    ↓
+
+                </div>
+
+
+                <div class="architecture-node">
+
+                    <i class="fab fa-php"></i>
+
+                    <h3>
+                        PHP
+                    </h3>
+
+                    <p>
+                        Application Runtime
+                    </p>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+
+                    ↓
+
+                </div>
+
+
+                <div class="architecture-node">
+
+                    <i class="fas fa-database"></i>
+
+                    <h3>
+                        MariaDB
+                    </h3>
+
+                    <p>
+                        Database: glpidb
+                    </p>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+
+                    ↓
+
+                </div>
+
+
+                <div class="architecture-services">
+
+
+                    <div class="architecture-service">
+
+                        <i class="fas fa-user"></i>
+
+                        Usuarios
+
+                    </div>
+
+
+                    <div class="architecture-service">
+
+                        <i class="fas fa-ticket"></i>
+
+                        Tickets
+
+                    </div>
+
+
+                    <div class="architecture-service">
+
+                        <i class="fas fa-tags"></i>
+
+                        ITIL
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TECHNOLOGIES
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <p class="section-number">
+
+            03 / TECHNOLOGIES
+
+        </p>
+
+
+        <h2 class="section-title">
+
+            Tecnologías utilizadas
+
+        </h2>
+
+
+        <div class="tech-grid">
+
+
+            <div class="tech">
+                Linux Mint
+            </div>
+
+
+            <div class="tech">
+                GLPI 11
+            </div>
+
+
+            <div class="tech">
+                Apache2
+            </div>
+
+
+            <div class="tech">
+                PHP
+            </div>
+
+
+            <div class="tech">
+                MariaDB
+            </div>
+
+
+            <div class="tech">
+                MySQL
+            </div>
+
+
+            <div class="tech">
+                ITIL
+            </div>
+
+
+            <div class="tech">
+                ITSM
+            </div>
+
+
+            <div class="tech">
+                Service Desk
+            </div>
+
+
+            <div class="tech">
+                Ticketing
+            </div>
+
+
+            <div class="tech">
+                Apache VirtualHost
+            </div>
+
+
+            <div class="tech">
+                Linux Terminal
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EVIDENCIAS
+===================================================== -->
+
+<section
+    id="evidence"
+    class="section"
+>
+
+    <div class="container">
+
+
+        <p class="section-number">
+
+            04 / VISUAL EVIDENCE
+
+        </p>
+
+
+        <h2 class="section-title">
+
+            Implementación paso a paso
+
+        </h2>
+
+
+        <p class="section-description">
+
+            Las capturas documentan las principales etapas de instalación,
+            configuración y validación del laboratorio.
+
+            Algunas muestran comandos de terminal porque fueron utilizados
+            para instalar, configurar o comprobar los servicios desde Linux.
+
+        </p>
+
+
+
+        <div class="evidence-list">
+
+
+
+            <!-- STEP 01 -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 01
+                    </p>
+
+                    <h3>
+                        Apache funcionando
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se instaló Apache2 y se verificó que el servidor web
+                        estuviera funcionando correctamente en Linux Mint.
+
+                    </p>
+
+                </div>
+
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/01-Runnig%20Apache.png"
+                        alt="Apache funcionando"
+                    >
+
+                </div>
+
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        Apache2
+                    </span>
+
+                    <span class="evidence-tag">
+                        Web Server
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- STEP 02 -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 02
+                    </p>
+
+                    <h3>
+                        PHP funcionando
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se instalaron PHP y las extensiones necesarias
+                        para permitir la ejecución de GLPI sobre Apache.
+
+                    </p>
+
+                </div>
+
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/02-Running%20PHP.png"
+                        alt="PHP funcionando"
+                    >
+
+                </div>
+
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        PHP
+                    </span>
+
+                    <span class="evidence-tag">
+                        PHP Extensions
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- STEP 03 -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 03
+                    </p>
+
+                    <h3>
+                        MariaDB funcionando
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se instaló MariaDB como sistema gestor de base
+                        de datos utilizado por GLPI.
+
+                    </p>
+
+                </div>
+
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/03-MariaDB-Funcionando.png"
+                        alt="MariaDB funcionando"
+                    >
+
+                </div>
+
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        MariaDB
+                    </span>
+
+                    <span class="evidence-tag">
+                        Database Server
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- STEP 04 -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 04
+                    </p>
+
+                    <h3>
+                        Seguridad de MariaDB
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se ejecutó la configuración de seguridad inicial
+                        de MariaDB eliminando usuarios anónimos,
+                        base de datos de prueba y acceso remoto de root.
+
+                    </p>
+
+                </div>
+
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/04-MariaDB-Seguridad-Configurada.png"
+                        alt="Seguridad MariaDB configurada"
+                    >
+
+                </div>
+
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        MariaDB Security
+                    </span>
+
+                    <span class="evidence-tag">
+                        Hardening
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- STEP 05 -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 05
+                    </p>
+
+                    <h3>
+                        Base de datos de GLPI
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se creó la base de datos glpidb destinada
+                        al almacenamiento de la plataforma GLPI.
+
+                    </p>
+
+                </div>
+
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/05-BaseDatos-GLPI-Creada.png"
+                        alt="Base de datos GLPI creada"
+                    >
+
+                </div>
+
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        glpidb
+                    </span>
+
+                    <span class="evidence-tag">
+                        MariaDB
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- STEP 06 -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 06
+                    </p>
+
+                    <h3>
+                        Usuario de base de datos
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se creó el usuario dedicado que utilizará GLPI
+                        para conectarse con MariaDB.
+
+                    </p>
+
+                </div>
+
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/06-Usuario-GLPI-Creado.png"
+                        alt="Usuario GLPI creado en MariaDB"
+                    >
+
+                </div>
+
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        Database User
+                    </span>
+
+                    <span class="evidence-tag">
+                        Permissions
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- STEP 07 -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 07
+                    </p>
+
+                    <h3>
+                        Archivos de GLPI preparados
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se descargaron y prepararon los archivos de GLPI 11
+                        dentro del directorio web de Apache.
+
+                    </p>
+
+                </div>
+
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/07-GLPI-Archivos-Preparados.png"
+                        alt="Archivos GLPI preparados"
+                    >
+
+                </div>
+
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        GLPI 11
+                    </span>
+
+                    <span class="evidence-tag">
+                        Apache DocumentRoot
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- STEP 08 -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 08
+                    </p>
+
+                    <h3>
+                        Requisitos del sistema
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se validaron desde el instalador web los requisitos
+                        necesarios para ejecutar correctamente GLPI.
+
+                    </p>
+
+                </div>
+
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/09-GLPI-Requisitos-Sistema.png"
+                        alt="Requisitos del sistema GLPI"
+                    >
+
+                </div>
+
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        GLPI Requirements
+                    </span>
+
+                    <span class="evidence-tag">
+                        System Validation
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- STEP 09 -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 09
+                    </p>
+
+                    <h3>
+                        Selección de base de datos
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Durante el asistente de instalación se configuró
+                        la conexión de GLPI con MariaDB y se seleccionó
+                        la base de datos glpidb.
+
+                    </p>
+
+                </div>
+
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/10-GLPI-BaseDatos-Seleccionada.png"
+                        alt="Base de datos seleccionada en GLPI"
+                    >
+
+                </div>
+
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        GLPI Installer
+                    </span>
+
+                    <span class="evidence-tag">
+                        MariaDB Connection
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- STEP 10 -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 10
+                    </p>
+
+                    <h3>
+                        Instalación completada
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se completó correctamente el asistente de instalación
+                        de GLPI 11 y se verificó la creación de la plataforma.
+
+                    </p>
+
+                </div>
+
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/11-GLPI-Instalacion-Completada.png"
+                        alt="Instalación GLPI completada"
+                    >
+
+                </div>
+
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        Installation
+                    </span>
+
+                    <span class="evidence-tag">
+                        GLPI 11
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- STEP 11 -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 11
+                    </p>
+
+                    <h3>
+                        Panel principal de GLPI
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se accedió al panel principal de GLPI para
+                        comprobar que la plataforma estaba disponible
+                        y operativa.
+
+                    </p>
+
+                </div>
+
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/12-GLPI-Panel-Principal.png"
+                        alt="Panel principal de GLPI"
+                    >
+
+                </div>
+
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        GLPI Dashboard
+                    </span>
+
+                    <span class="evidence-tag">
+                        Service Desk
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- STEP 12 -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 12
+                    </p>
+
+                    <h3>
+                        Categorías ITIL
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se configuraron categorías para clasificar
+                        solicitudes de soporte de hardware y software.
+
+                    </p>
+
+                </div>
+
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/13-GLPI-Categorias-Tickets.png"
+                        alt="Categorías ITIL de GLPI"
+                    >
+
+                </div>
+
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        ITIL
+                    </span>
+
+                    <span class="evidence-tag">
+                        Ticket Categories
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- STEP 13 -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 13
+                    </p>
+
+                    <h3>
+                        Primera petición de soporte
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se registró una solicitud simulando una incidencia
+                        real de soporte: una computadora que no inicia
+                        correctamente.
+
+                    </p>
+
+                </div>
+
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/14-GLPI-Primer-Ticket.png"
+                        alt="Primer ticket GLPI"
+                    >
+
+                </div>
+
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        Ticket
+                    </span>
+
+                    <span class="evidence-tag">
+                        Hardware Support
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- STEP 14 -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 14
+                    </p>
+
+                    <h3>
+                        Seguimiento de la petición
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se realizó seguimiento de la incidencia utilizando
+                        el flujo de gestión de solicitudes de GLPI.
+
+                    </p>
+
+                </div>
+
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/15-GLPI-Primer-Ticket.png"
+                        alt="Seguimiento del primer ticket"
+                    >
+
+                </div>
+
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        Ticket Tracking
+                    </span>
+
+                    <span class="evidence-tag">
+                        ITSM
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- STEP 15 -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 15
+                    </p>
+
+                    <h3>
+                        Solución y cierre de la petición
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Se registró la solución de la incidencia,
+                        se aprobó la resolución y finalmente se cerró
+                        la solicitud.
+
+                    </p>
+
+                </div>
+
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/16-GLPI-Peticion-Cerrada.png"
+                        alt="Petición GLPI cerrada"
+                    >
+
+                </div>
+
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        Solution
+                    </span>
+
+                    <span class="evidence-tag">
+                        Ticket Closed
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- STEP 16 -->
+
+            <article class="evidence">
+
+                <div class="evidence-header">
+
+                    <p class="evidence-number">
+                        STEP 16
+                    </p>
+
+                    <h3>
+                        Usuario técnico
+                    </h3>
+
+                    <p class="evidence-description">
+
+                        Evidencia relacionada con la configuración
+                        de usuarios dentro de la plataforma GLPI
+                        para representar diferentes roles del Service Desk.
+
+                    </p>
+
+                </div>
+
+
+                <div class="evidence-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/17-GLPI-Usuario-Tecnico.png"
+                        alt="Usuario técnico GLPI"
+                    >
+
+                </div>
+
+
+                <div class="evidence-footer">
+
+                    <span class="evidence-tag">
+                        GLPI User
+                    </span>
+
+                    <span class="evidence-tag">
+                        Technician
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VALIDATION
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <p class="section-number">
+
+            05 / VALIDATION
+
+        </p>
+
+
+        <h2 class="section-title">
+
+            Validación del laboratorio
+
+        </h2>
+
+
+        <p class="section-description">
+
+            La validación se realizó comprobando cada componente
+            necesario para que la plataforma de Service Desk funcionara
+            correctamente.
+
+        </p>
+
+
+
+        <div class="commands">
+
+
+            <div class="command-box">
+
+                <span>
+                    Web Server
+                </span>
+
+                <code>
+                    systemctl status apache2
+                </code>
+
+            </div>
+
+
+            <div class="command-box">
+
+                <span>
+                    Database
+                </span>
+
+                <code>
+                    systemctl status mariadb
+                </code>
+
+            </div>
+
+
+            <div class="command-box">
+
+                <span>
+                    PHP
+                </span>
+
+                <code>
+                    php -v
+                </code>
+
+            </div>
+
+
+            <div class="command-box">
+
+                <span>
+                    Apache Configuration
+                </span>
+
+                <code>
+                    apache2ctl configtest
+                </code>
+
+            </div>
+
+
+            <div class="command-box">
+
+                <span>
+                    GLPI
+                </span>
+
+                <code>
+                    http://localhost/
+                </code>
+
+            </div>
+
+
+            <div class="command-box">
+
+                <span>
+                    Database
+                </span>
+
+                <code>
+                    SHOW DATABASES;
+                </code>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FINAL RESULT
+===================================================== -->
+
+<section
+    id="results"
+    class="section"
+>
+
+    <div class="container">
+
+
+        <p class="section-number">
+
+            06 / FINAL RESULT
+
+        </p>
+
+
+        <h2 class="section-title">
+
+            Resultado del laboratorio
+
+        </h2>
+
+
+
+        <div class="result-box">
+
+
+            <h3>
+
+                IT Service Desk funcional
+
+            </h3>
+
+
+            <p>
+
+                El laboratorio quedó funcionando como una plataforma
+                básica de mesa de ayuda utilizando GLPI 11 sobre Linux Mint.
+
+                Se implementaron los componentes necesarios de infraestructura,
+                se configuró la base de datos y se validó el flujo completo
+                de una solicitud de soporte.
+
+            </p>
+
+
+            <p>
+
+                La prueba permitió recorrer el ciclo de una incidencia
+                desde su creación hasta el registro de la solución y
+                posterior cierre de la petición.
+
+            </p>
+
+
+
+            <div class="check-list">
+
+
+                <div class="check">
+
+                    <i class="fas fa-check"></i>
+
+                    Linux Mint configurado
+
+                </div>
+
+
+                <div class="check">
+
+                    <i class="fas fa-check"></i>
+
+                    Apache2 funcionando
+
+                </div>
+
+
+                <div class="check">
+
+                    <i class="fas fa-check"></i>
+
+                    PHP configurado
+
+                </div>
+
+
+                <div class="check">
+
+                    <i class="fas fa-check"></i>
+
+                    MariaDB funcionando
+
+                </div>
+
+
+                <div class="check">
+
+                    <i class="fas fa-check"></i>
+
+                    Base de datos glpidb creada
+
+                </div>
+
+
+                <div class="check">
+
+                    <i class="fas fa-check"></i>
+
+                    GLPI 11 instalado
+
+                </div>
+
+
+                <div class="check">
+
+                    <i class="fas fa-check"></i>
+
+                    Categorías ITIL configuradas
+
+                </div>
+
+
+                <div class="check">
+
+                    <i class="fas fa-check"></i>
+
+                    Solicitud de soporte creada
+
+                </div>
+
+
+                <div class="check">
+
+                    <i class="fas fa-check"></i>
+
+                    Seguimiento registrado
+
+                </div>
+
+
+                <div class="check">
+
+                    <i class="fas fa-check"></i>
+
+                    Solución registrada
+
+                </div>
+
+
+                <div class="check">
+
+                    <i class="fas fa-check"></i>
+
+                    Petición cerrada
+
+                </div>
+
+
+                <div class="check">
+
+                    <i class="fas fa-check"></i>
+
+                    Flujo ITSM validado
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     REPOSITORY
+===================================================== -->
+
+<section class="repo">
+
+
+    <h2>
+
+        Documentación completa
+
+    </h2>
+
+
+    <p>
+
+        El repositorio contiene la documentación técnica,
+        evidencias originales y archivos relacionados con
+        la implementación del laboratorio GLPI.
+
+    </p>
+
+
+    <div class="hero-buttons"
+         style="justify-content:center;">
+
+
+        <a
+            href="https://github.com/orlandyvalvarez/it-service-desk-glpi"
+            target="_blank"
+            class="btn btn-primary"
+        >
+
+            <i class="fab fa-github"></i>
+
+            GitHub Repository
+
         </a>
 
-    </section>
 
-</div>
+        <a
+            href="../index.html"
+            class="btn btn-secondary"
+        >
+
+            <i class="fas fa-arrow-left"></i>
+
+            Volver al portafolio
+
+        </a>
+
+
+    </div>
+
+
+</section>
+
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <span>
+
+        © 2026 Orlandy Vilorio Cloud & Infrastructure Portfolio
+
+    </span>
+
+
+    <span>
+
+        IT Support · Systems · Networking · Cloud
+
+    </span>
+
+</footer>
+
 
 </body>
+
 </html>
 

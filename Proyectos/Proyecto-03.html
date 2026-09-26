@@ -922,43 +922,175 @@
         </h2>
 
         <p class="section-description">
-
             El controlador de dominio proporciona Active Directory,
             DNS, DHCP y Group Policy al cliente Windows 10.
-
         </p>
-
 
         <div class="architecture">
 
-<pre>
-                         VMware VMnet1
-                         192.168.78.0/24
-                                |
-                    +-----------+-----------+
-                    |                       |
-                    |                       |
-             DC01-LAB-WS              WIN10-CLIENTE01
-           Windows Server 2025          Windows 10 Pro
-             192.168.78.10              DHCP
-                    |                       |
-                    |                       |
-          +---------+---------+             |
-          |         |         |             |
-         AD DS     DNS       DHCP           |
-          |         |         |             |
-          +---------+---------+             |
-                    |                       |
-                    +---------+-------------+
-                              |
-                       alvarez.local
-                              |
-                       ALVAREZ\orlandy
-                              |
-                     Group Policy / GPO
-                              |
-                GPO-IT-Restriccion-Panel
-</pre>
+            <div class="architecture-network">
+
+                <div class="architecture-node network-node">
+
+                    <div class="architecture-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+
+                    <div>
+                        <span>NETWORK</span>
+                        <h3>VMware VMnet1</h3>
+                        <p>192.168.78.0/24</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="architecture-line"></div>
+
+            <div class="architecture-grid">
+
+                <div class="architecture-card">
+
+                    <div class="architecture-card-number">
+                        01
+                    </div>
+
+                    <div>
+                        <span>DOMAIN CONTROLLER</span>
+                        <h3>DC01-LAB-WS</h3>
+                        <p>Windows Server 2025</p>
+
+                        <div class="architecture-detail">
+                            <small>IP ADDRESS</small>
+                            <strong>192.168.78.10</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="architecture-card">
+
+                    <div class="architecture-card-number">
+                        02
+                    </div>
+
+                    <div>
+                        <span>WINDOWS CLIENT</span>
+                        <h3>WIN10-CLIENTE01</h3>
+                        <p>Windows 10 Pro</p>
+
+                        <div class="architecture-detail">
+                            <small>ADDRESSING</small>
+                            <strong>DHCP</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="architecture-line"></div>
+
+            <div class="architecture-services">
+
+                <div class="architecture-service">
+
+                    <div class="service-icon">
+                        AD
+                    </div>
+
+                    <div>
+                        <span>DIRECTORY</span>
+                        <h3>Active Directory</h3>
+                        <p>AD DS</p>
+                    </div>
+
+                </div>
+
+
+                <div class="architecture-service">
+
+                    <div class="service-icon">
+                        DNS
+                    </div>
+
+                    <div>
+                        <span>NAME SERVICE</span>
+                        <h3>DNS</h3>
+                        <p>Resolución de nombres</p>
+                    </div>
+
+                </div>
+
+
+                <div class="architecture-service">
+
+                    <div class="service-icon">
+                        DHCP
+                    </div>
+
+                    <div>
+                        <span>NETWORK SERVICE</span>
+                        <h3>DHCP</h3>
+                        <p>Asignación automática de IP</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="architecture-line"></div>
+
+
+            <div class="architecture-node">
+
+                <div class="architecture-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+
+                <div>
+                    <span>ACTIVE DIRECTORY DOMAIN</span>
+                    <h3>alvarez.local</h3>
+                    <p>Dominio del laboratorio</p>
+                </div>
+
+            </div>
+
+            <div class="architecture-line"></div>
+
+
+            <div class="architecture-node">
+
+                <div class="architecture-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <div>
+                    <span>DOMAIN USER</span>
+                    <h3>ALVAREZ\orlandy</h3>
+                    <p>Usuario utilizado para validar el dominio</p>
+                </div>
+
+            </div>
+
+            <div class="architecture-line"></div>
+
+
+            <div class="architecture-node">
+
+                <div class="architecture-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+
+                <div>
+                    <span>GROUP POLICY</span>
+                    <h3>GPO-IT-Restriccion-Panel</h3>
+                    <p>Política aplicada al usuario del laboratorio</p>
+                </div>
+
+            </div>
 
         </div>
 

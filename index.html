@@ -1,16 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Orlandy Vilorio | Cloud & Infrastructure</title>
+
     <meta
         name="description"
         content="Portfolio de Orlandy Vilorio - Cloud, Infrastructure, Linux, Networking and Automation."
     >
-    <!-- Enlace a FontAwesome para los íconos de redes sociales -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- FontAwesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <!-- CSS principal -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -18,7 +25,10 @@
 
     <header>
         <nav class="navbar">
-            <a href="#" class="logo">OV<span>_</span></a>
+
+            <a href="#" class="logo">
+                OV<span>_</span>
+            </a>
 
             <div class="nav-links">
                 <a href="#about">About</a>
@@ -26,32 +36,43 @@
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
             </div>
-            
-             <div class="language-switcher">
-        <button onclick="translatePage('es')">ES</button>
-        <span>|</span>
-        <button onclick="translatePage('en')">EN</button>
-    </div>
+
+            <!-- LANGUAGE SWITCHER -->
+            <div class="language-switcher">
+                <button type="button" onclick="translatePage('es')">ES</button>
+                <span>|</span>
+                <button type="button" onclick="translatePage('en')">EN</button>
+            </div>
 
         </nav>
     </header>
 
+
     <main>
 
         <!-- HERO -->
-       <section id="about" class="hero-container">
+        <section id="about" class="hero-container">
+
             <div class="hero">
+
                 <div class="hero-text">
+
                     <div class="terminal-label">
                         <span class="dot"></span>
                         Available for opportunities
                     </div>
 
-                    <p class="hello">Hello, I'm</p>
+                    <p class="hello">
+                        Hello, I'm
+                    </p>
 
-                    <h1 class="name">Orlandy Y Vilorio Alvarez</h1>
+                    <h1 class="name">
+                        Orlandy Y Vilorio Alvarez
+                    </h1>
 
-                    <h2>Cloud & Infrastructure</h2>
+                    <h2>
+                        Cloud & Infrastructure
+                    </h2>
 
                     <p class="hero-description">
                         Soy Licenciado en Informática enfocado en Cloud Computing,
@@ -60,99 +81,211 @@
                         redes, virtualización, servicios de infraestructura y tecnologías Cloud.
                     </p>
 
-                    <!-- Enlaces de Redes Sociales en el Hero -->
+
+                    <!-- Redes Sociales en Hero -->
                     <div class="hero-socials">
-                        <a href="https://github.com/orlandyvalvarez" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://linkedin.com/in/tu-usuario" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="mailto:tu-correo@example.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+
+                        <a
+                            href="https://github.com/orlandyvalvarez"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="GitHub"
+                        >
+                            <i class="fab fa-github"></i>
+                        </a>
+
+                        <a
+                            href="https://www.linkedin.com/in/orlandy-alvarez/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="LinkedIn"
+                        >
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+
+                        <a
+                            href="mailto:alvarezorlandy2@gmail.com"
+                            aria-label="Email"
+                        >
+                            <i class="fas fa-envelope"></i>
+                        </a>
+
                     </div>
 
+
+                    <!-- BOTONES -->
                     <div class="buttons">
-                        <a href="#projects" class="btn primary">
+
+                        <a
+                            href="#projects"
+                            class="btn primary"
+                        >
                             View Projects
                         </a>
 
-                        <a href="https://github.com/orlandyvalvarez"
-                           target="_blank"
-                           class="btn secondary">
+                        <a
+                            href="https://github.com/orlandyvalvarez"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn secondary"
+                        >
                             GitHub
                         </a>
+
                     </div>
+
                 </div>
+
 
                 <!-- FOTO DE PERFIL -->
                 <div class="hero-image-container">
-                    <img src="foto.jpg" alt="Orlandy Vilorio" class="profile-img">
+
+                    <img
+                        src="foto.jpg"
+                        alt="Orlandy Vilorio"
+                        class="profile-img"
+                    >
+
                 </div>
+
             </div>
+
         </section>
 
 
-       <!-- TECHNOLOGIES -->
+        <!-- TECHNOLOGIES -->
         <section id="skills" class="section">
 
-            <p class="section-number">01 / TECHNOLOGIES</p>
+            <p class="section-number">
+                01 / TECHNOLOGIES
+            </p>
 
-            <h2>Technologies</h2>
+            <h2>
+                Technologies
+            </h2>
+
 
             <div class="skills-grid">
 
                 <div class="skill-card">
+
                     <span>💻</span>
-                    <h3>IT Support & ITSM</h3>
-                    <p>GLPI • osTicket • Helpdesk L1/L2 • Troubleshooting</p>
+
+                    <h3>
+                        IT Support & ITSM
+                    </h3>
+
+                    <p>
+                        GLPI • osTicket • Helpdesk L1/L2 • Troubleshooting
+                    </p>
+
                 </div>
 
+
                 <div class="skill-card">
+
                     <span>🐧</span>
-                    <h3>Operating Systems</h3>
-                    <p>Linux (Ubuntu/Debian) • Windows Server • Active Directory</p>
+
+                    <h3>
+                        Operating Systems
+                    </h3>
+
+                    <p>
+                        Linux (Ubuntu/Debian) • Windows Server • Active Directory
+                    </p>
+
                 </div>
 
+
                 <div class="skill-card">
+
                     <span>🌐</span>
-                    <h3>Networking Fundamentals</h3>
-                    <p>CCNA • TCP/IP • Routing • DNS / DHCP • Samba / NFS</p>
+
+                    <h3>
+                        Networking Fundamentals
+                    </h3>
+
+                    <p>
+                        CCNA • TCP/IP • Routing • DNS / DHCP • Samba / NFS
+                    </p>
+
                 </div>
 
+
                 <div class="skill-card">
+
                     <span>🐳</span>
-                    <h3>Containers & Automation</h3>
-                    <p>Docker • Ansible • Terraform Basics</p>
+
+                    <h3>
+                        Containers & Automation
+                    </h3>
+
+                    <p>
+                        Docker • Ansible • Terraform Basics
+                    </p>
+
                 </div>
 
+
                 <div class="skill-card">
+
                     <span>☁</span>
-                    <h3>Cloud & Infrastructure</h3>
-                    <p>AWS Fundamentals</p>
+
+                    <h3>
+                        Cloud & Infrastructure
+                    </h3>
+
+                    <p>
+                        AWS Fundamentals
+                    </p>
+
                 </div>
 
+
                 <div class="skill-card">
+
                     <span>📊</span>
-                    <h3>Monitoring & Security</h3>
-                    <p>Prometheus • Grafana • Fortinet • GPO Policies</p>
+
+                    <h3>
+                        Monitoring & Security
+                    </h3>
+
+                    <p>
+                        Prometheus • Grafana • Fortinet • GPO Policies
+                    </p>
+
                 </div>
 
             </div>
 
         </section>
 
-       <!-- PROJECTS -->
+
+        <!-- PROJECTS -->
         <section id="projects" class="section">
 
-            <p class="section-number">02 / PROJECTS</p>
+            <p class="section-number">
+                02 / PROJECTS
+            </p>
 
-            <h2>Featured Projects</h2>
+            <h2>
+                Featured Projects
+            </h2>
+
 
             <div class="projects-grid">
 
+
+                <!-- PROJECT 01 -->
                 <article class="project-card">
 
                     <div class="project-number">
                         01
                     </div>
 
-                    <h3>AWS Enterprise Infrastructure</h3>
+                    <h3>
+                        AWS Enterprise Infrastructure
+                    </h3>
 
                     <p>
                         Infraestructura cloud diseñada y desplegada
@@ -172,13 +305,16 @@
                 </article>
 
 
+                <!-- PROJECT 02 -->
                 <article class="project-card">
 
                     <div class="project-number">
                         02
                     </div>
 
-                    <h3>Linux Server Automation</h3>
+                    <h3>
+                        Linux Server Automation
+                    </h3>
 
                     <p>
                         Automatización y configuración de servidores
@@ -198,13 +334,16 @@
                 </article>
 
 
+                <!-- PROJECT 03 -->
                 <article class="project-card">
 
                     <div class="project-number">
                         03
                     </div>
 
-                    <h3>Windows Server Directory Services</h3>
+                    <h3>
+                        Windows Server Directory Services
+                    </h3>
 
                     <p>
                         Implementación y administración de Active Directory,
@@ -218,18 +357,23 @@
                         <span>GPO</span>
                     </div>
 
-                  <a href="Proyectos/Proyecto-03.html">Ver proyecto</a>
+                    <a href="Proyectos/Proyecto-03.html">
+                        Ver proyecto
+                    </a>
 
                 </article>
 
 
+                <!-- PROJECT 04 -->
                 <article class="project-card">
 
                     <div class="project-number">
                         04
                     </div>
 
-                    <h3>Infrastructure Monitoring</h3>
+                    <h3>
+                        Infrastructure Monitoring
+                    </h3>
 
                     <p>
                         Sistema de monitoreo de infraestructura utilizando
@@ -249,41 +393,47 @@
                 </article>
 
 
-                
-   <article class="project-card">
+                <!-- PROJECT 05 -->
+                <article class="project-card">
 
-    <div class="project-number">
-        05
-    </div>
+                    <div class="project-number">
+                        05
+                    </div>
 
-    <h3>IT Service Desk & Ticketing</h3>
+                    <h3>
+                        IT Service Desk & Ticketing
+                    </h3>
 
-    <p>
-        Implementación de una plataforma de mesa de ayuda con GLPI 11
-        para gestionar solicitudes de soporte, categorías ITIL,
-        seguimiento, soluciones y cierre de incidencias.
-    </p>
+                    <p>
+                        Implementación de una plataforma de mesa de ayuda con GLPI 11
+                        para gestionar solicitudes de soporte, categorías ITIL,
+                        seguimiento, soluciones y cierre de incidencias.
+                    </p>
 
-    <div class="tags">
-        <span>GLPI</span>
-        <span>ITSM</span>
-        <span>Linux</span>
-        <span>Service Desk</span>
-    </div>
+                    <div class="tags">
+                        <span>GLPI</span>
+                        <span>ITSM</span>
+                        <span>Linux</span>
+                        <span>Service Desk</span>
+                    </div>
 
-    <a href="Proyectos/Proyecto-05.html">
-        Ver proyecto →
-      </a>
+                    <a href="Proyectos/Proyecto-05.html">
+                        Ver proyecto →
+                    </a>
 
-       </article>
+                </article>
 
+
+                <!-- PROJECT 06 -->
                 <article class="project-card">
 
                     <div class="project-number">
                         06
                     </div>
 
-                    <h3>Network Storage & Backup Server</h3>
+                    <h3>
+                        Network Storage & Backup Server
+                    </h3>
 
                     <p>
                         Configuración de un servidor de archivos compartidos
@@ -307,38 +457,67 @@
 
         </section>
 
+
         <!-- CONTACT -->
         <section id="contact" class="section contact">
 
-            <p class="section-number">03 / CONTACT</p>
-
-            <h2>Let's connect</h2>
-
-            <p>
-                Puedes encontrar mis proyectos y código en GitHub o contactarme a través de mis redes.
+            <p class="section-number">
+                03 / CONTACT
             </p>
 
-           <!-- Redes Sociales en Contacto -->
-          <div class="contact-socials">
-               <a href="https://github.com/orlandyvalvarez" target="_blank" rel="noopener noreferrer" class="btn secondary">
-                  <i class="fab fa-github"></i> GitHub
-                    </a>
+            <h2>
+                Let's connect
+            </h2>
 
-          <a href="https://www.linkedin.com/in/orlandy-alvarez/" target="_blank" rel="noopener noreferrer" class="btn secondary">
-                <i class="fab fa-linkedin-in"></i> LinkedIn  
+            <p>
+                Puedes encontrar mis proyectos y código en GitHub
+                o contactarme a través de mis redes.
+            </p>
+
+
+            <!-- Redes Sociales en Contacto -->
+            <div class="contact-socials">
+
+                <a
+                    href="https://github.com/orlandyvalvarez"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn secondary"
+                >
+                    <i class="fab fa-github"></i>
+                    GitHub
                 </a>
 
-               <a href="https://mail.google.com/mail/?view=cm&fs=1&to=alvarezorlandy2@gmail.com"
-                target="_blank"
-               rel="noopener noreferrer"
-              class="btn secondary">
-               <i class="fas fa-envelope"></i> Email
-                 </a>
+
+                <a
+                    href="https://www.linkedin.com/in/orlandy-alvarez/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn secondary"
+                >
+                    <i class="fab fa-linkedin-in"></i>
+                    LinkedIn
+                </a>
+
+
+                <a
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=alvarezorlandy2@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn secondary"
+                >
+                    <i class="fas fa-envelope"></i>
+                    Email
+                </a>
+
             </div>
+
+        </section>
 
     </main>
 
 
+    <!-- FOOTER -->
     <footer>
 
         <p>
@@ -350,6 +529,67 @@
         </p>
 
     </footer>
+
+
+    <!-- GOOGLE TRANSLATE -->
+    <div
+        id="google_translate_element"
+        aria-hidden="true"
+    ></div>
+
+
+    <script>
+
+        function googleTranslateElementInit() {
+
+            new google.translate.TranslateElement({
+
+                pageLanguage: 'es',
+
+                includedLanguages: 'es,en',
+
+                autoDisplay: false
+
+            }, 'google_translate_element');
+
+        }
+
+
+        function translatePage(lang, attempts = 0) {
+
+            const select = document.querySelector('.goog-te-combo');
+
+
+            if (select) {
+
+                select.value = lang;
+
+                select.dispatchEvent(
+                    new Event('change')
+                );
+
+                return;
+
+            }
+
+
+            if (attempts < 10) {
+
+                setTimeout(
+                    () => translatePage(lang, attempts + 1),
+                    300
+                );
+
+            }
+
+        }
+
+    </script>
+
+
+    <script
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
 
 </body>
 </html>

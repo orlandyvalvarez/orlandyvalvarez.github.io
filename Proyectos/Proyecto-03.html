@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto 03 | Windows Server Directory Services | Orlandy Vilorio</title>
+<meta name="description" content="Laboratorio práctico de Windows Server 2025, Active Directory, DNS, DHCP y Group Policy desarrollado por Orlandy Vilorio.">
+<meta name="theme-color" content="#0D1520">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230D1520'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='700' fill='%234FC3F7' text-anchor='middle'%3EOV%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/project.css">
+<noscript><style>.shot img{opacity:1}.rise{opacity:1;transform:none}</style></noscript>
+</head>
+
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="../index.html" aria-label="Volver al portafolio" translate="no"><b>~/</b>orlandy<span class="cur" aria-hidden="true"></span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menú" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a class="link" href="#overview">Entorno</a>
+      <a class="link" href="#evidence">Evidencias</a>
+      <a class="link" href="#validation">Validación</a>
+      <a class="link" href="#results">Resultado</a>
+      <div class="lang" role="group" aria-label="Idioma" translate="no">
+        <button type="button" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <div class="hero">
+    <canvas id="net" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="p-hero">
+        <span class="status-pill rise d1"><span class="dot"></span>Proyecto 03: laboratorio de infraestructura</span>
+        <h1 class="rise d2">Windows Server Directory Services</h1>
+        <ul class="chips rise d3" translate="no"><li>Active Directory</li><li>DNS</li><li>DHCP</li><li>Group Policy</li></ul>
+        <p class="lead rise d4">Laboratorio práctico de infraestructura Windows desarrollado utilizando VMware Workstation, Windows Server 2025 y Windows 10 Pro. El objetivo fue construir un entorno de dominio funcional, implementar servicios de infraestructura y validar su funcionamiento mediante pruebas reales.</p>
+        <div class="actions rise d5">
+          <a class="btn" href="https://github.com/orlandyvalvarez/windows-server-directory-services" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>Ver repositorio</a>
+          <a class="btn ghost" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2Z"/></svg>Volver al portafolio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ENTORNO ============ -->
+  <section id="overview">
+    <div class="wrap ov-grid">
+      <div class="sec-head">
+        <h2>Entorno del laboratorio</h2>
+        <p>El laboratorio fue construido sobre una red virtual aislada utilizando VMware VMnet1 Host-Only. Esto permitió realizar las pruebas de infraestructura sin depender de la red física.</p>
+      </div>
+      <div class="spec">
+        <div class="spec-head" translate="no">lab.conf</div>
+        <dl><div><dt>Servidor</dt><dd translate="no">Windows Server 2025</dd></div><div><dt>Cliente</dt><dd translate="no">Windows 10 Pro</dd></div><div><dt>Network</dt><dd translate="no">192.168.78.0/24</dd></div><div><dt>Domain</dt><dd translate="no">alvarez.local</dd></div><div><dt>Domain Controller</dt><dd translate="no">DC01-LAB-WS</dd></div><div><dt>Server IP</dt><dd translate="no">192.168.78.10</dd></div><div><dt>DHCP Scope</dt><dd translate="no">192.168.78.100 - 200</dd></div><div><dt>Group Policy</dt><dd translate="no">GPO-IT-Restriccion-Panel</dd></div></dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVIDENCIAS ============ -->
+  <section id="evidence" class="steps-section">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Implementación paso a paso</h2>
+        <p>Evidencias visuales del proceso de instalación, configuración y validación del laboratorio.</p>
+      </div>
+      <div class="steps-layout">
+        <nav class="steps-nav" aria-label="Pasos del laboratorio">
+          <h3>23 pasos</h3>
+          <a href="#step-01"><span>01</span>Cambio de nombre del servidor</a><a href="#step-02"><span>02</span>Agregando roles y servicios</a><a href="#step-03"><span>03</span>Active Directory Domain Services</a><a href="#step-04"><span>04</span>Usuarios y grupos</a><a href="#step-05"><span>05</span>Creación de usuario de dominio</a><a href="#step-06"><span>06</span>Política de cambio de contraseña</a><a href="#step-07"><span>07</span>Cambio de contraseña</a><a href="#step-08"><span>08</span>Configuración de red del cliente</a><a href="#step-09"><span>09</span>Uniendo el cliente al dominio</a><a href="#step-10"><span>10</span>Cliente unido correctamente</a><a href="#step-11"><span>11</span>Instalación del rol DHCP</a><a href="#step-12"><span>12</span>Configuración de DHCP</a><a href="#step-13"><span>13</span>Servicio DHCP configurado</a><a href="#step-14"><span>14</span>Intervalo de direcciones IP</a><a href="#step-15"><span>15</span>DHCP completado</a><a href="#step-16"><span>16</span>Creación de Group Policy</a><a href="#step-17"><span>17</span>Configuración de la GPO</a><a href="#step-18"><span>18</span>Aplicando políticas</a><a href="#step-19"><span>19</span>Directiva actualizada</a><a href="#step-20"><span>20</span>Validación con gpresult</a><a href="#step-21"><span>21</span>Prueba de conectividad</a><a href="#step-22"><span>22</span>Validación del usuario de dominio</a><a href="#step-23"><span>23</span>Regla de Firewall</a>
+        </nav>
+        <div class="steps">
+          <article class="step" id="step-01">
+            <span class="step-num" aria-hidden="true">01</span>
+            <h3>Cambio de nombre del servidor</h3>
+            <p>Se configuró el nombre del servidor para identificarlo dentro del laboratorio como controlador de dominio.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Cambio%20de%20nombre%20del%20servidor.png" data-alt="Cambio de nombre del servidor" data-title="01. Cambio de nombre del servidor" aria-label="Ampliar captura: Cambio de nombre del servidor"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Cambio%20de%20nombre%20del%20servidor.png" alt="Cambio de nombre del servidor" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Windows Server</li><li translate="no">DC01-LAB-WS</li></ul>
+          </article>
+          <article class="step" id="step-02">
+            <span class="step-num" aria-hidden="true">02</span>
+            <h3>Agregando roles y servicios</h3>
+            <p>Se inició la instalación de los roles necesarios para convertir Windows Server en el servidor de infraestructura del laboratorio.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Agregar%20roles%20y%20servicios.png" data-alt="Agregar roles y servicios" data-title="02. Agregando roles y servicios" aria-label="Ampliar captura: Agregando roles y servicios"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Agregar%20roles%20y%20servicios.png" alt="Agregar roles y servicios" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Server Manager</li><li translate="no">Roles &amp; Services</li></ul>
+          </article>
+          <article class="step" id="step-03">
+            <span class="step-num" aria-hidden="true">03</span>
+            <h3>Active Directory Domain Services</h3>
+            <p>Se implementó Active Directory Domain Services y se configuró el dominio <strong>alvarez.local</strong>.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Active%20D.png" data-alt="Active Directory" data-title="03. Active Directory Domain Services" aria-label="Ampliar captura: Active Directory Domain Services"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Active%20D.png" alt="Active Directory" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Active Directory</li><li translate="no">alvarez.local</li></ul>
+          </article>
+          <article class="step" id="step-04">
+            <span class="step-num" aria-hidden="true">04</span>
+            <h3>Usuarios y grupos</h3>
+            <p>Se organizaron usuarios y grupos de seguridad dentro del dominio para administrar el acceso de los usuarios.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Usuarios%20y%20grupos.png" data-alt="Usuarios y grupos de Active Directory" data-title="04. Usuarios y grupos" aria-label="Ampliar captura: Usuarios y grupos"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Usuarios%20y%20grupos.png" alt="Usuarios y grupos de Active Directory" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Users &amp; Groups</li><li translate="no">Active Directory</li></ul>
+          </article>
+          <article class="step" id="step-05">
+            <span class="step-num" aria-hidden="true">05</span>
+            <h3>Creación de usuario de dominio</h3>
+            <p>Se creó el usuario de prueba utilizado posteriormente para validar la autenticación dentro del dominio.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Creacion-usuario.png" data-alt="Creación de usuario" data-title="05. Creación de usuario de dominio" aria-label="Ampliar captura: Creación de usuario de dominio"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Creacion-usuario.png" alt="Creación de usuario" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Domain User</li><li translate="no">Active Directory</li></ul>
+          </article>
+          <article class="step" id="step-06">
+            <span class="step-num" aria-hidden="true">06</span>
+            <h3>Política de cambio de contraseña</h3>
+            <p>Se validó el comportamiento del usuario cuando debe realizar el cambio de contraseña.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/User%20debe%20cambiar%20la%20contrase%C3%B1a.png" data-alt="Usuario debe cambiar la contraseña" data-title="06. Política de cambio de contraseña" aria-label="Ampliar captura: Política de cambio de contraseña"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/User%20debe%20cambiar%20la%20contrase%C3%B1a.png" alt="Usuario debe cambiar la contraseña" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">User Policy</li><li translate="no">Password</li></ul>
+          </article>
+          <article class="step" id="step-07">
+            <span class="step-num" aria-hidden="true">07</span>
+            <h3>Cambio de contraseña</h3>
+            <p>Se completó el cambio de contraseña del usuario de dominio como parte de la validación del proceso de autenticación.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/User%20cambio%20de%20contrase%C3%B1a.png" data-alt="Usuario cambia la contraseña" data-title="07. Cambio de contraseña" aria-label="Ampliar captura: Cambio de contraseña"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/User%20cambio%20de%20contrase%C3%B1a.png" alt="Usuario cambia la contraseña" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Authentication</li><li translate="no">Password Change</li></ul>
+          </article>
+          <article class="step" id="step-08">
+            <span class="step-num" aria-hidden="true">08</span>
+            <h3>Configuración de red del cliente</h3>
+            <p>Se preparó el equipo Windows 10 Pro para comunicarse con el controlador de dominio dentro de la red virtual del laboratorio.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Cliente%20Config%20de%20red.png" data-alt="Configuración de red del cliente" data-title="08. Configuración de red del cliente" aria-label="Ampliar captura: Configuración de red del cliente"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Cliente%20Config%20de%20red.png" alt="Configuración de red del cliente" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Windows 10 Pro</li><li translate="no">Networking</li></ul>
+          </article>
+          <article class="step" id="step-09">
+            <span class="step-num" aria-hidden="true">09</span>
+            <h3>Uniendo el cliente al dominio</h3>
+            <p>El equipo Windows 10 Pro fue incorporado al dominio <strong>alvarez.local</strong>.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Uniendo%20clien%20a%20dominio.png" data-alt="Uniendo cliente al dominio" data-title="09. Uniendo el cliente al dominio" aria-label="Ampliar captura: Uniendo el cliente al dominio"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Uniendo%20clien%20a%20dominio.png" alt="Uniendo cliente al dominio" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Domain Join</li><li translate="no">alvarez.local</li></ul>
+          </article>
+          <article class="step" id="step-10">
+            <span class="step-num" aria-hidden="true">10</span>
+            <h3>Cliente unido correctamente</h3>
+            <p>Se verificó que el equipo Windows 10 quedó correctamente integrado al dominio.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Cliente%20unido%20al%20dominio.png" data-alt="Cliente unido al dominio" data-title="10. Cliente unido correctamente" aria-label="Ampliar captura: Cliente unido correctamente"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Cliente%20unido%20al%20dominio.png" alt="Cliente unido al dominio" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Windows 10</li><li translate="no">Domain</li></ul>
+          </article>
+          <article class="step" id="step-11">
+            <span class="step-num" aria-hidden="true">11</span>
+            <h3>Instalación del rol DHCP</h3>
+            <p>Se agregó el rol DHCP al servidor Windows Server para proporcionar automáticamente direcciones IP al cliente.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Role%20dhcp.png" data-alt="Rol DHCP" data-title="11. Instalación del rol DHCP" aria-label="Ampliar captura: Instalación del rol DHCP"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Role%20dhcp.png" alt="Rol DHCP" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">DHCP Server</li><li translate="no">Windows Server</li></ul>
+          </article>
+          <article class="step" id="step-12">
+            <span class="step-num" aria-hidden="true">12</span>
+            <h3>Configuración de DHCP</h3>
+            <p>Se configuró el servicio DHCP para administrar automáticamente la configuración IPv4 de los equipos del laboratorio.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/configuraci%C3%B3n%20de%20DHCP.png" data-alt="Configuración de DHCP" data-title="12. Configuración de DHCP" aria-label="Ampliar captura: Configuración de DHCP"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/configuraci%C3%B3n%20de%20DHCP.png" alt="Configuración de DHCP" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">DHCP</li><li translate="no">IPv4</li></ul>
+          </article>
+          <article class="step" id="step-13">
+            <span class="step-num" aria-hidden="true">13</span>
+            <h3>Servicio DHCP configurado</h3>
+            <p>Evidencia de la configuración y administración del servicio DHCP dentro del servidor.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/DHCP.png" data-alt="DHCP" data-title="13. Servicio DHCP configurado" aria-label="Ampliar captura: Servicio DHCP configurado"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/DHCP.png" alt="DHCP" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">DHCP</li><li translate="no">Network Services</li></ul>
+          </article>
+          <article class="step" id="step-14">
+            <span class="step-num" aria-hidden="true">14</span>
+            <h3>Intervalo de direcciones IP</h3>
+            <p>Se definió el rango de direcciones que DHCP puede entregar a los clientes del laboratorio.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Intervalo%20de%20direciones%20ip.png" data-alt="Intervalo de direcciones IP DHCP" data-title="14. Intervalo de direcciones IP" aria-label="Ampliar captura: Intervalo de direcciones IP"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Intervalo%20de%20direciones%20ip.png" alt="Intervalo de direcciones IP DHCP" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">DHCP Scope</li><li translate="no">IPv4 Range</li></ul>
+          </article>
+          <article class="step" id="step-15">
+            <span class="step-num" aria-hidden="true">15</span>
+            <h3>DHCP completado</h3>
+            <p>Se completó la configuración del ámbito DHCP dentro del servidor.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/DHCP%20al%20100%25.png" data-alt="DHCP completado" data-title="15. DHCP completado" aria-label="Ampliar captura: DHCP completado"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/DHCP%20al%20100%25.png" alt="DHCP completado" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">DHCP</li><li translate="no">Scope Active</li></ul>
+          </article>
+          <article class="step" id="step-16">
+            <span class="step-num" aria-hidden="true">16</span>
+            <h3>Creación de Group Policy</h3>
+            <p>Se creó la política de grupo <strong>GPO-IT-Restriccion-Panel</strong> para controlar el acceso al Panel de control y Configuración.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/gpo-creada.png" data-alt="GPO creada" data-title="16. Creación de Group Policy" aria-label="Ampliar captura: Creación de Group Policy"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/gpo-creada.png" alt="GPO creada" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Group Policy</li><li translate="no">GPO</li></ul>
+          </article>
+          <article class="step" id="step-17">
+            <span class="step-num" aria-hidden="true">17</span>
+            <h3>Configuración de la GPO</h3>
+            <p>Se configuró la política administrativa para restringir el acceso al Panel de control y Configuración del PC.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Crear%20una%20GPO.png" data-alt="Crear una GPO" data-title="17. Configuración de la GPO" aria-label="Ampliar captura: Configuración de la GPO"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Crear%20una%20GPO.png" alt="Crear una GPO" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">GPO</li><li translate="no">Administrative Templates</li></ul>
+          </article>
+          <article class="step" id="step-18">
+            <span class="step-num" aria-hidden="true">18</span>
+            <h3>Aplicando políticas</h3>
+            <p>Se actualizó la configuración de políticas en el equipo cliente para aplicar las directivas configuradas en el controlador de dominio.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Aplicando%20politicas.png" data-alt="Aplicando políticas" data-title="18. Aplicando políticas" aria-label="Ampliar captura: Aplicando políticas"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Aplicando%20politicas.png" alt="Aplicando políticas" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Group Policy</li><li translate="no">Client</li></ul>
+          </article>
+          <article class="step" id="step-19">
+            <span class="step-num" aria-hidden="true">19</span>
+            <h3>Directiva actualizada</h3>
+            <p>Se comprobó que las políticas fueron actualizadas correctamente en el cliente.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/directiva%20Actualizada.png" data-alt="Directiva actualizada" data-title="19. Directiva actualizada" aria-label="Ampliar captura: Directiva actualizada"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/directiva%20Actualizada.png" alt="Directiva actualizada" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Policy Update</li><li translate="no">gpupdate</li></ul>
+          </article>
+          <article class="step" id="step-20">
+            <span class="step-num" aria-hidden="true">20</span>
+            <h3>Validación con gpresult</h3>
+            <p>Se utilizó <strong>gpresult /r</strong> para comprobar las políticas de grupo aplicadas al usuario y al equipo cliente.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/gpresult%20r.png" data-alt="GPResult" data-title="20. Validación con gpresult" aria-label="Ampliar captura: Validación con gpresult"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/gpresult%20r.png" alt="GPResult" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">gpresult /r</li><li translate="no">GPO Validation</li></ul>
+          </article>
+          <article class="step" id="step-21">
+            <span class="step-num" aria-hidden="true">21</span>
+            <h3>Prueba de conectividad</h3>
+            <p>Se realizó una prueba de conectividad desde el cliente hacia el servidor utilizando ICMP.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Prueba-Ping-Exitosa-Cliente-A-Servidor.png" data-alt="Ping exitoso desde cliente al servidor" data-title="21. Prueba de conectividad" aria-label="Ampliar captura: Prueba de conectividad"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Prueba-Ping-Exitosa-Cliente-A-Servidor.png" alt="Ping exitoso desde cliente al servidor" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">ICMP</li><li translate="no">Connectivity</li></ul>
+          </article>
+          <article class="step" id="step-22">
+            <span class="step-num" aria-hidden="true">22</span>
+            <h3>Validación del usuario de dominio</h3>
+            <p>Se utilizó el comando <strong>whoami</strong> para comprobar la identidad del usuario autenticado dentro del dominio.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/whoami.png" data-alt="Comando whoami" data-title="22. Validación del usuario de dominio" aria-label="Ampliar captura: Validación del usuario de dominio"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/whoami.png" alt="Comando whoami" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">whoami</li><li translate="no">Authentication</li></ul>
+          </article>
+          <article class="step" id="step-23">
+            <span class="step-num" aria-hidden="true">23</span>
+            <h3>Regla de Firewall</h3>
+            <p>Se creó una regla de firewall como parte de la configuración de seguridad y conectividad del entorno de laboratorio.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Creacion-Regla-Firew.png" data-alt="Creación de regla de Firewall" data-title="23. Regla de Firewall" aria-label="Ampliar captura: Regla de Firewall"><img src="https://raw.githubusercontent.com/orlandyvalvarez/windows-server-directory-services/main/evidencias/Creacion-Regla-Firew.png" alt="Creación de regla de Firewall" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Windows Firewall</li><li translate="no">Security</li></ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VALIDACIÓN ============ -->
+  <section id="validation">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Comandos de validación</h2>
+        <p>Se utilizaron diferentes comandos de Windows para validar conectividad, autenticación, DHCP y políticas de grupo.</p>
+      </div>
+      <div class="cmds">
+          <div class="cmd">
+            <div class="cmd-head"><span>Conectividad</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span class="win">ping 192.168.78.10</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>DNS</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span class="win">nslookup alvarez.local</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>DNS Controller</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span class="win">nslookup dc01-lab-ws.alvarez.local</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>Authentication</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span class="win">whoami</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>Computer Name</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span class="win">hostname</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>DHCP</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span class="win">ipconfig /all</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>Renew DHCP</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span class="win">ipconfig /release</span><span class="win">ipconfig /renew</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>Group Policy</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span class="win">gpupdate /force</span><span class="win">gpresult /r</span></code></pre>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESULTADO ============ -->
+  <section id="results">
+    <div class="wrap">
+      <div class="sec-head"><h2>Resultado del laboratorio</h2></div>
+      <div class="result">
+        <div>
+          <h3>Infraestructura Windows funcional</h3>
+          <p>El laboratorio quedó funcionando como un entorno de infraestructura Windows basado en dominio. Windows Server 2025 funciona como controlador de dominio y proporciona los servicios de Active Directory, DNS y DHCP.</p><p>El equipo Windows 10 Pro fue integrado correctamente al dominio <strong>alvarez.local</strong> y se realizaron pruebas de conectividad, autenticación y configuración de red.</p><p>También se implementó una política de grupo para restringir el acceso al Panel de control y Configuración, validando posteriormente su aplicación mediante las herramientas de Windows.</p>
+        </div>
+        <ul class="checks"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Active Directory implementado</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Dominio alvarez.local</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>DNS configurado</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>DHCP configurado</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Cliente Windows 10 unido al dominio</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Usuario de dominio validado</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Group Policy implementada</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>GPO validada</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Pruebas de conectividad</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Configuración de Firewall</span></li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REPOSITORIO ============ -->
+  <section class="repo">
+    <div class="wrap">
+      <div class="repo-box">
+        <div>
+          <h2>Documentación completa</h2>
+          <p>El repositorio contiene la documentación técnica, configuraciones y evidencias originales del laboratorio.</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="https://github.com/orlandyvalvarez/windows-server-directory-services" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>Repositorio en GitHub</a>
+          <a class="btn ghost" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2Z"/></svg>Volver al portafolio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="wrap pager" aria-label="Otros proyectos"><a class="next" href="Proyecto-04.html">Siguiente proyecto<strong>Infrastructure Monitoring</strong></a></nav>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Orlandy Vilorio</span>
+    <span>Cloud &amp; Infrastructure</span>
+  </div>
+</footer>
+
+<!-- Visor de capturas -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de capturas" aria-hidden="true" translate="no">
+  <div class="lb-top"><span class="lb-title"></span><button type="button" data-lb="close">Cerrar (Esc)</button></div>
+  <div class="lb-stage"><img alt=""></div>
+  <div class="lb-bottom"><span class="lb-count"></span>
+    <div class="lb-nav"><button type="button" data-lb="prev" aria-label="Captura anterior">Anterior</button><button type="button" data-lb="next" aria-label="Captura siguiente">Siguiente</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="google_translate_element" aria-hidden="true"></div>
+
+<script src="../js/main.js"></script>
+<script src="../js/project.js"></script>
+</body>
+</html>

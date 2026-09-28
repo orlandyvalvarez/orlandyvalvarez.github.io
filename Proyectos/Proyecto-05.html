@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto 05 | IT Service Desk &amp; Ticketing | Orlandy Vilorio</title>
+<meta name="description" content="Laboratorio práctico de IT Service Desk utilizando GLPI 11, Linux Mint, Apache, PHP y MariaDB desarrollado por Orlandy Vilorio.">
+<meta name="theme-color" content="#0D1520">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230D1520'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='700' fill='%234FC3F7' text-anchor='middle'%3EOV%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/project.css">
+<noscript><style>.shot img{opacity:1}.rise{opacity:1;transform:none}</style></noscript>
+</head>
+
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="../index.html" aria-label="Volver al portafolio" translate="no"><b>~/</b>orlandy<span class="cur" aria-hidden="true"></span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menú" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a class="link" href="#overview">Entorno</a>
+      <a class="link" href="#evidence">Evidencias</a>
+      <a class="link" href="#validation">Validación</a>
+      <a class="link" href="#results">Resultado</a>
+      <div class="lang" role="group" aria-label="Idioma" translate="no">
+        <button type="button" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <div class="hero">
+    <canvas id="net" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="p-hero">
+        <span class="status-pill rise d1"><span class="dot"></span>Proyecto 05: laboratorio de infraestructura</span>
+        <h1 class="rise d2">IT Service Desk &amp; Ticketing</h1>
+        <ul class="chips rise d3" translate="no"><li>GLPI</li><li>ITSM</li><li>Linux</li><li>Apache</li><li>PHP</li><li>MariaDB</li></ul>
+        <p class="lead rise d4">Laboratorio práctico de IT Service Desk desarrollado utilizando GLPI 11 sobre Linux Mint. El objetivo fue implementar una plataforma de mesa de ayuda funcional para gestionar solicitudes de soporte, clasificación de incidencias, seguimiento, solución y cierre de peticiones.</p>
+        <div class="actions rise d5">
+          <a class="btn" href="https://github.com/orlandyvalvarez/it-service-desk-glpi" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>Ver repositorio</a>
+          <a class="btn ghost" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2Z"/></svg>Volver al portafolio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ENTORNO ============ -->
+  <section id="overview">
+    <div class="wrap ov-grid">
+      <div class="sec-head">
+        <h2>Entorno del laboratorio</h2>
+        <p>El laboratorio fue construido directamente sobre Linux Mint utilizando una instalación local de Apache, PHP y MariaDB. Sobre esta infraestructura se implementó GLPI 11 para simular un entorno básico de mesa de ayuda y gestión de incidencias.</p>
+      </div>
+      <div class="spec">
+        <div class="spec-head" translate="no">lab.conf</div>
+        <dl><div><dt>Sistema Operativo</dt><dd translate="no">Linux Mint</dd></div><div><dt>Service Desk</dt><dd translate="no">GLPI 11</dd></div><div><dt>Web Server</dt><dd translate="no">Apache2</dd></div><div><dt>Application</dt><dd translate="no">PHP</dd></div><div><dt>Database</dt><dd translate="no">MariaDB</dd></div><div><dt>Database Name</dt><dd translate="no">glpidb</dd></div><div><dt>ITIL Categories</dt><dd translate="no">Hardware / Software</dd></div><div><dt>Ticketing</dt><dd translate="no">Request → Solution → Close</dd></div></dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVIDENCIAS ============ -->
+  <section id="evidence" class="steps-section">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Implementación paso a paso</h2>
+        <p>Las capturas documentan las principales etapas de instalación, configuración y validación del laboratorio. Algunas muestran comandos de terminal porque fueron utilizados para instalar, configurar o comprobar los servicios desde Linux.</p>
+      </div>
+      <div class="steps-layout">
+        <nav class="steps-nav" aria-label="Pasos del laboratorio">
+          <h3>16 pasos</h3>
+          <a href="#step-01"><span>01</span>Apache funcionando</a><a href="#step-02"><span>02</span>PHP funcionando</a><a href="#step-03"><span>03</span>MariaDB funcionando</a><a href="#step-04"><span>04</span>Seguridad de MariaDB</a><a href="#step-05"><span>05</span>Base de datos de GLPI</a><a href="#step-06"><span>06</span>Usuario de base de datos</a><a href="#step-07"><span>07</span>Archivos de GLPI preparados</a><a href="#step-08"><span>08</span>Requisitos del sistema</a><a href="#step-09"><span>09</span>Selección de base de datos</a><a href="#step-10"><span>10</span>Instalación completada</a><a href="#step-11"><span>11</span>Panel principal de GLPI</a><a href="#step-12"><span>12</span>Categorías ITIL</a><a href="#step-13"><span>13</span>Primera petición de soporte</a><a href="#step-14"><span>14</span>Seguimiento de la petición</a><a href="#step-15"><span>15</span>Solución y cierre de la petición</a><a href="#step-16"><span>16</span>Usuario técnico</a>
+        </nav>
+        <div class="steps">
+          <article class="step" id="step-01">
+            <span class="step-num" aria-hidden="true">01</span>
+            <h3>Apache funcionando</h3>
+            <p>Se instaló Apache2 y se verificó que el servidor web estuviera funcionando correctamente en Linux Mint.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/01-Runnig%20Apache.png" data-alt="Apache funcionando" data-title="01. Apache funcionando" aria-label="Ampliar captura: Apache funcionando"><img src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/01-Runnig%20Apache.png" alt="Apache funcionando" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Apache2</li><li translate="no">Web Server</li></ul>
+          </article>
+          <article class="step" id="step-02">
+            <span class="step-num" aria-hidden="true">02</span>
+            <h3>PHP funcionando</h3>
+            <p>Se instalaron PHP y las extensiones necesarias para permitir la ejecución de GLPI sobre Apache.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/02-Running%20PHP.png" data-alt="PHP funcionando" data-title="02. PHP funcionando" aria-label="Ampliar captura: PHP funcionando"><img src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/02-Running%20PHP.png" alt="PHP funcionando" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">PHP</li><li translate="no">PHP Extensions</li></ul>
+          </article>
+          <article class="step" id="step-03">
+            <span class="step-num" aria-hidden="true">03</span>
+            <h3>MariaDB funcionando</h3>
+            <p>Se instaló MariaDB como sistema gestor de base de datos utilizado por GLPI.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/03-MariaDB-Funcionando.png" data-alt="MariaDB funcionando" data-title="03. MariaDB funcionando" aria-label="Ampliar captura: MariaDB funcionando"><img src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/03-MariaDB-Funcionando.png" alt="MariaDB funcionando" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">MariaDB</li><li translate="no">Database Server</li></ul>
+          </article>
+          <article class="step" id="step-04">
+            <span class="step-num" aria-hidden="true">04</span>
+            <h3>Seguridad de MariaDB</h3>
+            <p>Se ejecutó la configuración de seguridad inicial de MariaDB eliminando usuarios anónimos, base de datos de prueba y acceso remoto de root.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/04-MariaDB-Seguridad-Configurada.png" data-alt="Seguridad MariaDB configurada" data-title="04. Seguridad de MariaDB" aria-label="Ampliar captura: Seguridad de MariaDB"><img src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/04-MariaDB-Seguridad-Configurada.png" alt="Seguridad MariaDB configurada" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">MariaDB Security</li><li translate="no">Hardening</li></ul>
+          </article>
+          <article class="step" id="step-05">
+            <span class="step-num" aria-hidden="true">05</span>
+            <h3>Base de datos de GLPI</h3>
+            <p>Se creó la base de datos glpidb destinada al almacenamiento de la plataforma GLPI.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/05-BaseDatos-GLPI-Creada.png" data-alt="Base de datos GLPI creada" data-title="05. Base de datos de GLPI" aria-label="Ampliar captura: Base de datos de GLPI"><img src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/05-BaseDatos-GLPI-Creada.png" alt="Base de datos GLPI creada" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">glpidb</li><li translate="no">MariaDB</li></ul>
+          </article>
+          <article class="step" id="step-06">
+            <span class="step-num" aria-hidden="true">06</span>
+            <h3>Usuario de base de datos</h3>
+            <p>Se creó el usuario dedicado que utilizará GLPI para conectarse con MariaDB.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/06-Usuario-GLPI-Creado.png" data-alt="Usuario GLPI creado en MariaDB" data-title="06. Usuario de base de datos" aria-label="Ampliar captura: Usuario de base de datos"><img src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/06-Usuario-GLPI-Creado.png" alt="Usuario GLPI creado en MariaDB" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Database User</li><li translate="no">Permissions</li></ul>
+          </article>
+          <article class="step" id="step-07">
+            <span class="step-num" aria-hidden="true">07</span>
+            <h3>Archivos de GLPI preparados</h3>
+            <p>Se descargaron y prepararon los archivos de GLPI 11 dentro del directorio web de Apache.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/07-GLPI-Archivos-Preparados.png" data-alt="Archivos GLPI preparados" data-title="07. Archivos de GLPI preparados" aria-label="Ampliar captura: Archivos de GLPI preparados"><img src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/07-GLPI-Archivos-Preparados.png" alt="Archivos GLPI preparados" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">GLPI 11</li><li translate="no">Apache DocumentRoot</li></ul>
+          </article>
+          <article class="step" id="step-08">
+            <span class="step-num" aria-hidden="true">08</span>
+            <h3>Requisitos del sistema</h3>
+            <p>Se validaron desde el instalador web los requisitos necesarios para ejecutar correctamente GLPI.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/09-GLPI-Requisitos-Sistema.png" data-alt="Requisitos del sistema GLPI" data-title="08. Requisitos del sistema" aria-label="Ampliar captura: Requisitos del sistema"><img src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/09-GLPI-Requisitos-Sistema.png" alt="Requisitos del sistema GLPI" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">GLPI Requirements</li><li translate="no">System Validation</li></ul>
+          </article>
+          <article class="step" id="step-09">
+            <span class="step-num" aria-hidden="true">09</span>
+            <h3>Selección de base de datos</h3>
+            <p>Durante el asistente de instalación se configuró la conexión de GLPI con MariaDB y se seleccionó la base de datos glpidb.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/10-GLPI-BaseDatos-Seleccionada.png" data-alt="Base de datos seleccionada en GLPI" data-title="09. Selección de base de datos" aria-label="Ampliar captura: Selección de base de datos"><img src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/10-GLPI-BaseDatos-Seleccionada.png" alt="Base de datos seleccionada en GLPI" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">GLPI Installer</li><li translate="no">MariaDB Connection</li></ul>
+          </article>
+          <article class="step" id="step-10">
+            <span class="step-num" aria-hidden="true">10</span>
+            <h3>Instalación completada</h3>
+            <p>Se completó correctamente el asistente de instalación de GLPI 11 y se verificó la creación de la plataforma.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/11-GLPI-Instalacion-Completada.png" data-alt="Instalación GLPI completada" data-title="10. Instalación completada" aria-label="Ampliar captura: Instalación completada"><img src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/11-GLPI-Instalacion-Completada.png" alt="Instalación GLPI completada" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Installation</li><li translate="no">GLPI 11</li></ul>
+          </article>
+          <article class="step" id="step-11">
+            <span class="step-num" aria-hidden="true">11</span>
+            <h3>Panel principal de GLPI</h3>
+            <p>Se accedió al panel principal de GLPI para comprobar que la plataforma estaba disponible y operativa.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/12-GLPI-Panel-Principal.png" data-alt="Panel principal de GLPI" data-title="11. Panel principal de GLPI" aria-label="Ampliar captura: Panel principal de GLPI"><img src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/12-GLPI-Panel-Principal.png" alt="Panel principal de GLPI" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">GLPI Dashboard</li><li translate="no">Service Desk</li></ul>
+          </article>
+          <article class="step" id="step-12">
+            <span class="step-num" aria-hidden="true">12</span>
+            <h3>Categorías ITIL</h3>
+            <p>Se configuraron categorías para clasificar solicitudes de soporte de hardware y software.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/13-GLPI-Categorias-Tickets.png" data-alt="Categorías ITIL de GLPI" data-title="12. Categorías ITIL" aria-label="Ampliar captura: Categorías ITIL"><img src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/13-GLPI-Categorias-Tickets.png" alt="Categorías ITIL de GLPI" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">ITIL</li><li translate="no">Ticket Categories</li></ul>
+          </article>
+          <article class="step" id="step-13">
+            <span class="step-num" aria-hidden="true">13</span>
+            <h3>Primera petición de soporte</h3>
+            <p>Se registró una solicitud simulando una incidencia real de soporte: una computadora que no inicia correctamente.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/14-GLPI-Primer-Ticket.png" data-alt="Primer ticket GLPI" data-title="13. Primera petición de soporte" aria-label="Ampliar captura: Primera petición de soporte"><img src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/14-GLPI-Primer-Ticket.png" alt="Primer ticket GLPI" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Ticket</li><li translate="no">Hardware Support</li></ul>
+          </article>
+          <article class="step" id="step-14">
+            <span class="step-num" aria-hidden="true">14</span>
+            <h3>Seguimiento de la petición</h3>
+            <p>Se realizó seguimiento de la incidencia utilizando el flujo de gestión de solicitudes de GLPI.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/15-GLPI-Primer-Ticket.png" data-alt="Seguimiento del primer ticket" data-title="14. Seguimiento de la petición" aria-label="Ampliar captura: Seguimiento de la petición"><img src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/15-GLPI-Primer-Ticket.png" alt="Seguimiento del primer ticket" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Ticket Tracking</li><li translate="no">ITSM</li></ul>
+          </article>
+          <article class="step" id="step-15">
+            <span class="step-num" aria-hidden="true">15</span>
+            <h3>Solución y cierre de la petición</h3>
+            <p>Se registró la solución de la incidencia, se aprobó la resolución y finalmente se cerró la solicitud.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/16-GLPI-Peticion-Cerrada.png" data-alt="Petición GLPI cerrada" data-title="15. Solución y cierre de la petición" aria-label="Ampliar captura: Solución y cierre de la petición"><img src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/16-GLPI-Peticion-Cerrada.png" alt="Petición GLPI cerrada" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Solution</li><li translate="no">Ticket Closed</li></ul>
+          </article>
+          <article class="step" id="step-16">
+            <span class="step-num" aria-hidden="true">16</span>
+            <h3>Usuario técnico</h3>
+            <p>Evidencia relacionada con la configuración de usuarios dentro de la plataforma GLPI para representar diferentes roles del Service Desk.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/17-GLPI-Usuario-Tecnico.png" data-alt="Usuario técnico GLPI" data-title="16. Usuario técnico" aria-label="Ampliar captura: Usuario técnico"><img src="https://raw.githubusercontent.com/orlandyvalvarez/it-service-desk-glpi/main/17-GLPI-Usuario-Tecnico.png" alt="Usuario técnico GLPI" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">GLPI User</li><li translate="no">Technician</li></ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VALIDACIÓN ============ -->
+  <section id="validation">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Validación del laboratorio</h2>
+        <p>La validación se realizó comprobando cada componente necesario para que la plataforma de Service Desk funcionara correctamente.</p>
+      </div>
+      <div class="cmds">
+          <div class="cmd">
+            <div class="cmd-head"><span>Web Server</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span class="sh">systemctl status apache2</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>Database</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span class="sh">systemctl status mariadb</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>PHP</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span class="sh">php -v</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>Apache Configuration</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span class="sh">apache2ctl configtest</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>GLPI</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span>http://localhost/</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>Database</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span class="sql">SHOW DATABASES;</span></code></pre>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESULTADO ============ -->
+  <section id="results">
+    <div class="wrap">
+      <div class="sec-head"><h2>Resultado del laboratorio</h2></div>
+      <div class="result">
+        <div>
+          <h3>IT Service Desk funcional</h3>
+          <p>El laboratorio quedó funcionando como una plataforma básica de mesa de ayuda utilizando GLPI 11 sobre Linux Mint. Se implementaron los componentes necesarios de infraestructura, se configuró la base de datos y se validó el flujo completo de una solicitud de soporte.</p><p>La prueba permitió recorrer el ciclo de una incidencia desde su creación hasta el registro de la solución y posterior cierre de la petición.</p>
+        </div>
+        <ul class="checks"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Linux Mint configurado</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Apache2 funcionando</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>PHP configurado</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>MariaDB funcionando</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Base de datos glpidb creada</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>GLPI 11 instalado</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Categorías ITIL configuradas</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Solicitud de soporte creada</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Seguimiento registrado</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Solución registrada</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Petición cerrada</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Flujo ITSM validado</span></li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REPOSITORIO ============ -->
+  <section class="repo">
+    <div class="wrap">
+      <div class="repo-box">
+        <div>
+          <h2>Documentación completa</h2>
+          <p>El repositorio contiene la documentación técnica, evidencias originales y archivos relacionados con la implementación del laboratorio GLPI.</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="https://github.com/orlandyvalvarez/it-service-desk-glpi" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>Repositorio en GitHub</a>
+          <a class="btn ghost" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2Z"/></svg>Volver al portafolio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="wrap pager" aria-label="Otros proyectos"><a class="prev" href="Proyecto-04.html">Proyecto anterior<strong>Infrastructure Monitoring</strong></a></nav>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Orlandy Vilorio</span>
+    <span>Cloud &amp; Infrastructure</span>
+  </div>
+</footer>
+
+<!-- Visor de capturas -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de capturas" aria-hidden="true" translate="no">
+  <div class="lb-top"><span class="lb-title"></span><button type="button" data-lb="close">Cerrar (Esc)</button></div>
+  <div class="lb-stage"><img alt=""></div>
+  <div class="lb-bottom"><span class="lb-count"></span>
+    <div class="lb-nav"><button type="button" data-lb="prev" aria-label="Captura anterior">Anterior</button><button type="button" data-lb="next" aria-label="Captura siguiente">Siguiente</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="google_translate_element" aria-hidden="true"></div>
+
+<script src="../js/main.js"></script>
+<script src="../js/project.js"></script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto 04 | Infrastructure Monitoring | Orlandy Vilorio</title>
+<meta name="description" content="Laboratorio práctico de Infrastructure Monitoring utilizando Prometheus, Node Exporter y Grafana desarrollado por Orlandy Vilorio.">
+<meta name="theme-color" content="#0D1520">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230D1520'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='700' fill='%234FC3F7' text-anchor='middle'%3EOV%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/project.css">
+<noscript><style>.shot img{opacity:1}.rise{opacity:1;transform:none}</style></noscript>
+</head>
+
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="../index.html" aria-label="Volver al portafolio" translate="no"><b>~/</b>orlandy<span class="cur" aria-hidden="true"></span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menú" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a class="link" href="#overview">Entorno</a>
+      <a class="link" href="#evidence">Evidencias</a>
+      <a class="link" href="#validation">Validación</a>
+      <a class="link" href="#results">Resultado</a>
+      <div class="lang" role="group" aria-label="Idioma" translate="no">
+        <button type="button" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <div class="hero">
+    <canvas id="net" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="p-hero">
+        <span class="status-pill rise d1"><span class="dot"></span>Proyecto 04: laboratorio de infraestructura</span>
+        <h1 class="rise d2">Infrastructure Monitoring</h1>
+        <ul class="chips rise d3" translate="no"><li>Linux</li><li>Node Exporter</li><li>Prometheus</li><li>Grafana</li></ul>
+        <p class="lead rise d4">Laboratorio práctico de monitoreo de infraestructura desarrollado utilizando Node Exporter, Prometheus y Grafana. El objetivo fue implementar un entorno capaz de recopilar métricas de un sistema Linux, procesarlas mediante Prometheus y visualizarlas utilizando dashboards en Grafana.</p>
+        <div class="actions rise d5">
+          <a class="btn" href="https://github.com/orlandyvalvarez/infrastructure-monitoring" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>Ver repositorio</a>
+          <a class="btn ghost" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2Z"/></svg>Volver al portafolio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ENTORNO ============ -->
+  <section id="overview">
+    <div class="wrap ov-grid">
+      <div class="sec-head">
+        <h2>Entorno del laboratorio</h2>
+        <p>El laboratorio fue realizado en un entorno Linux utilizando herramientas de monitoreo orientadas a la recopilación, consulta y visualización de métricas del sistema. Node Exporter se utilizó para exponer las métricas del sistema, Prometheus para recopilarlas y Grafana para representarlas mediante dashboards.</p>
+      </div>
+      <div class="spec">
+        <div class="spec-head" translate="no">lab.conf</div>
+        <dl><div><dt>Sistema Operativo</dt><dd translate="no">Linux</dd></div><div><dt>Monitoring</dt><dd translate="no">Prometheus</dd></div><div><dt>Metrics Exporter</dt><dd translate="no">Node Exporter</dd></div><div><dt>Visualization</dt><dd translate="no">Grafana</dd></div><div><dt>Monitoring Flow</dt><dd translate="no">Exporter → Prometheus</dd></div><div><dt>Metrics Storage</dt><dd translate="no">Prometheus TSDB</dd></div><div><dt>Dashboard</dt><dd translate="no">Node Exporter Full</dd></div><div><dt>Virtualization</dt><dd translate="no">VMware Workstation</dd></div></dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVIDENCIAS ============ -->
+  <section id="evidence" class="steps-section">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Implementación paso a paso</h2>
+        <p>Las siguientes evidencias documentan las principales etapas realizadas durante la implementación del sistema de monitoreo, desde la preparación del entorno hasta la visualización final de las métricas en Grafana.</p>
+      </div>
+      <div class="steps-layout">
+        <nav class="steps-nav" aria-label="Pasos del laboratorio">
+          <h3>12 pasos</h3>
+          <a href="#step-01"><span>01</span>Verificación del sistema y red</a><a href="#step-02"><span>02</span>Node Exporter</a><a href="#step-03"><span>03</span>Prometheus funcionando</a><a href="#step-04"><span>04</span>Prometheus Server Ready</a><a href="#step-05"><span>05</span>Instalación de Grafana</a><a href="#step-06"><span>06</span>Problema de compatibilidad con Firefox</a><a href="#step-07"><span>07</span>Acceso a Grafana</a><a href="#step-08"><span>08</span>Conexión de Grafana</a><a href="#step-09"><span>09</span>Agregar nueva conexión</a><a href="#step-10"><span>10</span>Selección de Prometheus</a><a href="#step-11"><span>11</span>Configuración de la URL de Prometheus</a><a href="#step-12"><span>12</span>Dashboard final de monitoreo</a>
+        </nav>
+        <div class="steps">
+          <article class="step" id="step-01">
+            <span class="step-num" aria-hidden="true">01</span>
+            <h3>Verificación del sistema y red</h3>
+            <p>Se realizó una verificación inicial del sistema Linux y de la configuración de red antes de comenzar la implementación del entorno de monitoreo. Esta comprobación permitió confirmar que el sistema estaba operativo y preparado para instalar los componentes del laboratorio.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/01-verificacion-sistema-red.png" data-alt="Verificación del sistema y red" data-title="01. Verificación del sistema y red" aria-label="Ampliar captura: Verificación del sistema y red"><img src="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/01-verificacion-sistema-red.png" alt="Verificación del sistema y red" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Linux</li><li translate="no">Network</li></ul>
+          </article>
+          <article class="step" id="step-02">
+            <span class="step-num" aria-hidden="true">02</span>
+            <h3>Node Exporter</h3>
+            <p>Se instaló y verificó Node Exporter, componente encargado de exponer métricas del sistema Linux para que Prometheus pueda recopilarlas. Esta etapa establece la fuente de métricas utilizada posteriormente por el sistema de monitoreo.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/02-Node%20SV.png" data-alt="Node Exporter" data-title="02. Node Exporter" aria-label="Ampliar captura: Node Exporter"><img src="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/02-Node%20SV.png" alt="Node Exporter" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Node Exporter</li><li translate="no">Metrics</li></ul>
+          </article>
+          <article class="step" id="step-03">
+            <span class="step-num" aria-hidden="true">03</span>
+            <h3>Prometheus funcionando</h3>
+            <p>Se verificó que Prometheus estuviera instalado y funcionando correctamente. Prometheus será responsable de consultar las métricas expuestas por Node Exporter y almacenarlas para su posterior consulta.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/03%20-Prometheus%20funcionando.png" data-alt="Prometheus funcionando" data-title="03. Prometheus funcionando" aria-label="Ampliar captura: Prometheus funcionando"><img src="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/03%20-Prometheus%20funcionando.png" alt="Prometheus funcionando" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Prometheus</li><li translate="no">Monitoring</li></ul>
+          </article>
+          <article class="step" id="step-04">
+            <span class="step-num" aria-hidden="true">04</span>
+            <h3>Prometheus Server Ready</h3>
+            <p>Se comprobó que el servidor Prometheus estuviera disponible y preparado para realizar consultas de las métricas recopiladas. Esta validación confirma que el servicio de monitoreo está operativo.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/04-Prometheus%20Server%20is%20Ready.png" data-alt="Prometheus Server Ready" data-title="04. Prometheus Server Ready" aria-label="Ampliar captura: Prometheus Server Ready"><img src="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/04-Prometheus%20Server%20is%20Ready.png" alt="Prometheus Server Ready" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Prometheus Server</li><li translate="no">Validation</li></ul>
+          </article>
+          <article class="step" id="step-05">
+            <span class="step-num" aria-hidden="true">05</span>
+            <h3>Instalación de Grafana</h3>
+            <p>Se instaló Grafana como plataforma de visualización para consultar y representar las métricas recopiladas por Prometheus. Grafana será utilizada posteriormente para construir y consultar el dashboard de monitoreo.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/05%20-%20Instal%20Grafana.png" data-alt="Instalación de Grafana" data-title="05. Instalación de Grafana" aria-label="Ampliar captura: Instalación de Grafana"><img src="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/05%20-%20Instal%20Grafana.png" alt="Instalación de Grafana" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Grafana</li><li translate="no">Installation</li></ul>
+          </article>
+          <article class="step" id="step-06">
+            <span class="step-num" aria-hidden="true">06</span>
+            <h3>Problema de compatibilidad con Firefox</h3>
+            <p>Durante la implementación se presentó un problema de compatibilidad al intentar acceder a Grafana mediante Firefox. La evidencia documenta el inconveniente encontrado durante la configuración del entorno.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/06-error-compatibilidad-firefox.png" data-alt="Error de compatibilidad con Firefox" data-title="06. Problema de compatibilidad con Firefox" aria-label="Ampliar captura: Problema de compatibilidad con Firefox"><img src="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/06-error-compatibilidad-firefox.png" alt="Error de compatibilidad con Firefox" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Grafana</li><li translate="no">Troubleshooting</li></ul>
+          </article>
+          <article class="step" id="step-07">
+            <span class="step-num" aria-hidden="true">07</span>
+            <h3>Acceso a Grafana</h3>
+            <p>Después de resolver el inconveniente inicial, se logró acceder correctamente a la interfaz de Grafana. Esto permitió continuar con la configuración de la plataforma de visualización.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/07-Login%20Grafana.png" data-alt="Login de Grafana" data-title="07. Acceso a Grafana" aria-label="Ampliar captura: Acceso a Grafana"><img src="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/07-Login%20Grafana.png" alt="Login de Grafana" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Grafana</li><li translate="no">Web Interface</li></ul>
+          </article>
+          <article class="step" id="step-08">
+            <span class="step-num" aria-hidden="true">08</span>
+            <h3>Conexión de Grafana</h3>
+            <p>Se inició la configuración de la conexión de Grafana con la fuente de datos que proporcionará las métricas del sistema de monitoreo.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/P1%20Conection.png" data-alt="Conexión de Grafana" data-title="08. Conexión de Grafana" aria-label="Ampliar captura: Conexión de Grafana"><img src="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/P1%20Conection.png" alt="Conexión de Grafana" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Grafana</li><li translate="no">Data Source</li></ul>
+          </article>
+          <article class="step" id="step-09">
+            <span class="step-num" aria-hidden="true">09</span>
+            <h3>Agregar nueva conexión</h3>
+            <p>Se seleccionó la opción para agregar una nueva fuente de datos dentro de Grafana. Esta configuración permite establecer el origen desde el cual Grafana consultará las métricas del sistema.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/P2-Add%20new%20Conetion.png" data-alt="Agregar nueva conexión en Grafana" data-title="09. Agregar nueva conexión" aria-label="Ampliar captura: Agregar nueva conexión"><img src="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/P2-Add%20new%20Conetion.png" alt="Agregar nueva conexión en Grafana" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Grafana</li><li translate="no">Data Source</li></ul>
+          </article>
+          <article class="step" id="step-10">
+            <span class="step-num" aria-hidden="true">10</span>
+            <h3>Selección de Prometheus</h3>
+            <p>Se seleccionó Prometheus como fuente de datos para Grafana. De esta manera, Grafana podrá consultar las métricas recopiladas por Prometheus y utilizarlas en los dashboards de monitoreo.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/P3-Prometheus.png" data-alt="Selección de Prometheus en Grafana" data-title="10. Selección de Prometheus" aria-label="Ampliar captura: Selección de Prometheus"><img src="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/P3-Prometheus.png" alt="Selección de Prometheus en Grafana" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Prometheus</li><li translate="no">Grafana</li></ul>
+          </article>
+          <article class="step" id="step-11">
+            <span class="step-num" aria-hidden="true">11</span>
+            <h3>Configuración de la URL de Prometheus</h3>
+            <p>Se configuró en Grafana la dirección del servidor Prometheus para establecer la comunicación entre ambas plataformas. Esta configuración permite que Grafana consulte las métricas almacenadas por Prometheus.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/P4-Prometheus%20SV%20Url.png" data-alt="URL del servidor Prometheus" data-title="11. Configuración de la URL de Prometheus" aria-label="Ampliar captura: Configuración de la URL de Prometheus"><img src="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/P4-Prometheus%20SV%20Url.png" alt="URL del servidor Prometheus" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Prometheus URL</li><li translate="no">Grafana Data Source</li></ul>
+          </article>
+          <article class="step" id="step-12">
+            <span class="step-num" aria-hidden="true">12</span>
+            <h3>Dashboard final de monitoreo</h3>
+            <p>Finalmente se importó y configuró el dashboard Node Exporter Full en Grafana. El dashboard permite visualizar diferentes métricas relacionadas con el funcionamiento y utilización de los recursos del sistema Linux. Esta evidencia representa el resultado visual de la integración entre Node Exporter, Prometheus y Grafana.</p>
+            <button class="shot" type="button" data-full="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/P5%20Final.png" data-alt="Dashboard final de Infrastructure Monitoring" data-title="12. Dashboard final de monitoreo" aria-label="Ampliar captura: Dashboard final de monitoreo"><img src="https://raw.githubusercontent.com/orlandyvalvarez/infrastructure-monitoring/main/P5%20Final.png" alt="Dashboard final de Infrastructure Monitoring" loading="lazy" decoding="async"></button>
+            <ul class="chips"><li translate="no">Grafana Dashboard</li><li translate="no">Node Exporter Full</li></ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VALIDACIÓN ============ -->
+  <section id="validation">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Validación del laboratorio</h2>
+        <p>La validación se realizó comprobando el funcionamiento de los componentes principales del entorno de monitoreo y verificando la comunicación entre Node Exporter, Prometheus y Grafana.</p>
+      </div>
+      <div class="cmds">
+          <div class="cmd">
+            <div class="cmd-head"><span>Node Exporter</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span class="sh">systemctl status node_exporter</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>Prometheus</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span class="sh">systemctl status prometheus</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>Node Exporter Metrics</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span>http://localhost:9100/metrics</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>Prometheus</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span>http://localhost:9090</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>Grafana</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span>http://localhost:3000</span></code></pre>
+          </div>
+          <div class="cmd">
+            <div class="cmd-head"><span>Monitoring Flow</span><button type="button">Copiar</button></div>
+            <pre translate="no"><code><span class="flow">Node Exporter → Prometheus → Grafana</span></code></pre>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESULTADO ============ -->
+  <section id="results">
+    <div class="wrap">
+      <div class="sec-head"><h2>Resultado del laboratorio</h2></div>
+      <div class="result">
+        <div>
+          <h3>Infrastructure Monitoring funcional</h3>
+          <p>El laboratorio quedó funcionando como un entorno básico de monitoreo de infraestructura utilizando Node Exporter, Prometheus y Grafana. Se configuró la recopilación de métricas del sistema Linux y posteriormente se integró Grafana para visualizar la información mediante dashboards.</p><p>La implementación permitió comprobar el flujo completo desde la generación y exposición de métricas hasta su recopilación y representación visual.</p>
+        </div>
+        <ul class="checks"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Sistema Linux preparado</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Node Exporter instalado</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Métricas del sistema disponibles</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Prometheus instalado</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Prometheus funcionando</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Grafana instalado</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Prometheus agregado como Data Source</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>URL de Prometheus configurada</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Dashboard Node Exporter Full</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Métricas visualizadas en Grafana</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Integración Node Exporter → Prometheus</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Integración Prometheus → Grafana</span></li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REPOSITORIO ============ -->
+  <section class="repo">
+    <div class="wrap">
+      <div class="repo-box">
+        <div>
+          <h2>Documentación completa</h2>
+          <p>El repositorio contiene las evidencias originales y documentación relacionada con la implementación del laboratorio de Infrastructure Monitoring.</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="https://github.com/orlandyvalvarez/infrastructure-monitoring" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>Repositorio en GitHub</a>
+          <a class="btn ghost" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2Z"/></svg>Volver al portafolio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="wrap pager" aria-label="Otros proyectos"><a class="prev" href="Proyecto-03.html">Proyecto anterior<strong>Windows Server Directory Services</strong></a><a class="next" href="Proyecto-05.html">Siguiente proyecto<strong>IT Service Desk &amp; Ticketing</strong></a></nav>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Orlandy Vilorio</span>
+    <span>Cloud &amp; Infrastructure</span>
+  </div>
+</footer>
+
+<!-- Visor de capturas -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de capturas" aria-hidden="true" translate="no">
+  <div class="lb-top"><span class="lb-title"></span><button type="button" data-lb="close">Cerrar (Esc)</button></div>
+  <div class="lb-stage"><img alt=""></div>
+  <div class="lb-bottom"><span class="lb-count"></span>
+    <div class="lb-nav"><button type="button" data-lb="prev" aria-label="Captura anterior">Anterior</button><button type="button" data-lb="next" aria-label="Captura siguiente">Siguiente</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="google_translate_element" aria-hidden="true"></div>
+
+<script src="../js/main.js"></script>
+<script src="../js/project.js"></script>
+</body>
+</html>

@@ -122,7 +122,7 @@
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const script = [
     { cmd: "whoami", out: '<span class="k">orlandy-vilorio</span>' },
-    { cmd: "cat role.txt", out: "Cloud &amp; Infrastructure Engineer" },
+    { cmd: "cat role.txt", out: "Cloud &amp; Infrastructure" },
     { cmd: "systemctl status availability", out: '<span class="p">●</span> availability.service\n   Active: <span class="p">active (running)</span> - open to work' },
     { cmd: "ls stack/", out: '<span class="k">linux</span>  <span class="k">windows-server</span>  <span class="k">docker</span>  <span class="k">ansible</span>\n<span class="k">terraform</span>  <span class="k">aws</span>  <span class="k">prometheus</span>  <span class="k">grafana</span>' }
   ];

@@ -11,7 +11,7 @@
       skip: "Saltar al contenido",
       nav_about: "Perfil", nav_edu: "Formación", nav_skills: "Stack", nav_projects: "Proyectos", nav_contact: "Contacto",
       available: "Disponible para nuevas oportunidades",
-      lead: "Licenciado en Informática enfocado en cloud, infraestructura TI, networking, Linux y automatización. Construyo y administro servidores, redes y servicios.",
+      lead: "Licenciado en Informática enfocado en cloud, infraestructura TI, networking, Linux y automatización. Interesado en oportunidades profesionales en infraestructura, soporte IT, redes, sistemas y cloud.",
       cta_projects: "Ver proyectos",
       about_t: "Perfil",
       about_p1: "Licenciado en Informática con formación técnica en soporte IT, redes Cisco, administración de sistemas Windows y Linux, bases de datos, Microsoft 365, cloud computing y fundamentos de seguridad.",

@@ -71,7 +71,7 @@
       e5s: "Network security",
       skills_t: "Technical stack",
       skills_p: "The tools I work with, grouped by area.",
-      s1: "IT Support & ITSM", s2: "Systems & data", s3: "Networking", s4: "Virtualization & automation", s5: "Cloud", s6: "Monitoring & security",
+      s1: "IT Support & ITSM", s2: "Systems administration", s3: "Networking", s4: "Virtualization & automation", s5: "Cloud", s6: "Monitoring & security",
       proj_t: "Projects",
       proj_p: "Published projects have full documentation. The rest are in preparation.",
       live: "Published", soon: "In preparation", view: "View project", soon_l: "Coming soon",

@@ -32,7 +32,7 @@
       e5s: "Seguridad de red",
       skills_t: "Stack técnico",
       skills_p: "Las herramientas con las que trabajo, agrupadas por área.",
-      s1: "Soporte TI e ITSM", s2: "Sistemas y datos", s3: "Redes", s4: "Virtualización y automatización", s5: "Cloud", s6: "Monitoreo y seguridad",
+      s1: "Soporte TI e ITSM", s2: "Administración de sistemas", s3: "Redes", s4: "Virtualización y automatización", s5: "Cloud", s6: "Monitoreo y seguridad",
       proj_t: "Proyectos",
       proj_p: "Los publicados tienen documentación completa. Los demás están en preparación.",
       live: "Publicado", soon: "En preparación", view: "Ver proyecto", soon_l: "Próximamente",
